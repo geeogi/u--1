@@ -11,7 +11,7 @@ const TOP_250_URL = [
   "page=1",
 ].join("");
 
-const USE_LOCAL_DATA = true;
+const USE_LOCAL_DATA = false;
 
 const SVGO_CONFIG = {
   plugins: [
