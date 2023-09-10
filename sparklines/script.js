@@ -1,12 +1,32 @@
 const fs = require("fs");
 const { optimize } = require("svgo");
 
-const baseUrl = "https://api.coingecko.com/api/v3/coins/markets";
-const params1 = "vs_currency=usd&order=market_cap_desc";
-const params2 = "per_page=250&sparkline=false&locale=en";
-const params3 = "page=1";
+const TOP_250_URL = [
+  "https://api.coingecko.com/api/v3/coins/markets",
+  "?",
+  "vs_currency=usd&order=market_cap_desc",
+  "&",
+  "per_page=250&sparkline=false&locale=en",
+  "&",
+  "page=1",
+].join("");
 
 const USE_LOCAL_DATA = true;
+
+const SVGO_CONFIG = {
+  plugins: [
+    "preset-default",
+    "prefixIds",
+    {
+      name: "cleanupNumericValues",
+      params: { floatPrecision: 0 },
+    },
+    {
+      name: "convertPathData",
+      params: { floatPrecision: 0 },
+    },
+  ],
+};
 
 async function fetchTop250() {
   if (USE_LOCAL_DATA) {
@@ -16,61 +36,40 @@ async function fetchTop250() {
       });
     });
   } else {
-    const url = `${baseUrl}?${params1}&${params2}&${params3}`;
-    return fetch(url).then((response) => response.json());
+    return fetch(TOP_250_URL).then((response) => response.json());
   }
 }
+
 const HTML_TEMPLATE = fs.readFileSync("template.html", "utf8");
 
 fetchTop250().then(async (data) => {
   const coins = await Promise.all(
-    data
-      .map((item) => {
-        const imageId = item.image
-          ?.replace?.("https://assets.coingecko.com/coins/images/", "")
-          ?.split("/")?.[0];
+    data.map(async (coin) => {
+      const imageId = coin.image
+        ?.replace?.("https://assets.coingecko.com/coins/images/", "")
+        ?.split("/")?.[0];
 
-        return { ...item, imageId };
-      })
-      .filter(({ imageId }) => imageId !== undefined)
-      .map(async (item) => {
-        const base = "https://www.coingecko.com/coins";
-        const response = await fetch(`${base}/${item.imageId}/sparkline.svg`);
-        const svg = await response.text();
-        const image = "<svg".concat(svg.split("<svg")?.[1]);
+      const base = "https://www.coingecko.com/coins";
+      const response = await fetch(`${base}/${imageId}/sparkline.svg`);
+      const text = await response.text();
 
-        const result = await optimize(image, {
-          plugins: [
-            // set of built-in plugins enabled by default
-            "preset-default",
-            // enable built-in plugins by name
-            "prefixIds",
-            {
-              name: "cleanupNumericValues",
-              params: {
-                floatPrecision: 0,
-              },
-            },
-            {
-              name: "convertPathData",
-              params: {
-                floatPrecision: 0,
-              },
-            },
-          ],
-        });
+      const svg = "<svg"
+        .concat(text.split("<svg")?.[1])
+        .replace('width="135"', 'width="68"')
+        .replace('height="50"', 'height="25"');
 
-        fs.writeFileSync(`images/${item.imageId}.svg`, result.data);
-
-        return item;
-      })
+      const optimized = await optimize(svg, SVGO_CONFIG);
+      const image = optimized.data;
+      return { coin, image };
+    })
   );
 
   const htmlContent = HTML_TEMPLATE.replace(
-    "<!-- content -->",
+    "<!-- CONTENT -->",
     coins
-      .map((coin) => {
-        const { symbol, imageId } = coin;
+      .map(({ coin, image }) => {
+        const { symbol, current_price } = coin;
+
         const fontSize = symbol.length > 5 ? "0.7rem" : "0.8rem";
 
         const style = [
@@ -81,15 +80,11 @@ fetchTop250().then(async (data) => {
         ].join(";");
 
         return `<figure style="${style}">
-          <figcaption>${symbol.toUpperCase()}</figcaption>
-          <img
-            title="${symbol.toUpperCase()}"
-            width="73px"
-            height="25px"
-            src="/images/${imageId}.svg"
-            alt="${symbol.toUpperCase()}"
-            loading="lazy"
-          />
+          <figcaption>
+            <div>${symbol.toUpperCase()}</div>
+            <div style="font-size: 0.7rem; color: #444;">${current_price}</div>
+          </figcaption>
+          ${image}
         </figure>`;
       })
       .join("\n")
