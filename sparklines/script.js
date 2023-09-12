@@ -31,7 +31,7 @@ const SVGO_CONFIG = {
 async function fetchTop250() {
   if (USE_LOCAL_DATA) {
     return new Promise((resolve) => {
-      fs.readFile("api.json", "utf8", (_err, data) => {
+      fs.readFile("mock-api.json", "utf8", (_err, data) => {
         resolve(JSON.parse(data));
       });
     });
