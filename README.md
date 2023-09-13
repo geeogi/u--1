@@ -5,7 +5,7 @@
 - simple, navigable/searchable using browser UI
 - attempt some difference in the UI
 
-## website 1 (sparklines)
+## 1 (sparklines)
 
 [u--1.com](https://u--1.com)
 
