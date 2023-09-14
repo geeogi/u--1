@@ -1,6 +1,6 @@
 # u--1 experiments
 
-This repo contains some experiments in building analytics websites. The ambition is to build analytics websites that feel solid and reliable, like wikipedia or google. I'd also like to keep the tech really simple, using vanilla JS + HTML mostly, and also try some atypical UIs. Basic goals:
+This repo contains some experiments in building analytics websites. The ambition is to build analytics websites that feel solid and reliable, like wikipedia or google. I'd also like to keep the tech really simple, using vanilla JS + HTML mostly, and also try some new UIs. Basic goals:
 
 - zero loading time pre-built html files
 - well structured, no styling, minimum JS
