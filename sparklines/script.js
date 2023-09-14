@@ -82,7 +82,7 @@ fetchTop250().then(async (data) => {
         return `<figure style="${style}">
           <figcaption>
             <div>${symbol.toUpperCase()}</div>
-            <div style="font-size: 0.7rem; color: #444;">${current_price}</div>
+            <div style="font-size: 0.7rem;color: #444;">${current_price}</div>
           </figcaption>
           ${image}
         </figure>`;
