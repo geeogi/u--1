@@ -65,7 +65,7 @@ fetchTop250().then(async (data) => {
   );
 
   const htmlContent = HTML_TEMPLATE.replace(
-    "<!-- CONTENT -->",
+    "<!-- MAIN CONTENT -->",
     coins
       .map(({ coin, image }) => {
         const { symbol, current_price } = coin;
@@ -88,7 +88,7 @@ fetchTop250().then(async (data) => {
         </figure>`;
       })
       .join("\n")
-  );
+  ).replace("0; // TIMESTAMP", Math.round(Date.now() / 1000));
 
   fs.writeFile("index.html", htmlContent, "utf8", (err) => {
     if (err) {
