@@ -43,18 +43,16 @@
     <main style="display: flex; flex-wrap: wrap; font-size: 0.8rem">
       <!-- MAIN CONTENT -->
     </main>
-    <footer id="last_update"></footer>
+    <footer
+      id="last_update"
+      style="color: #f0f0f0; font-size: 0.9rem; padding: 4px"
+    ></footer>
   </body>
   <script>
     function displayTimeSinceUpdate() {
       const timestamp = 0; // TIMESTAMP
       const date = new Date(timestamp * 1000);
-      const now = new Date();
-      const differenceInMillis = now - date;
-      const mins = Math.floor(differenceInMillis / (60 * 1000));
-      const secs = Math.floor((differenceInMillis % (60 * 1000)) / 1000);
-      const message =
-        "Last updated " + mins + " minutes and " + secs + " seconds ago";
+      const message = "Last updated: " + date.toLocaleString();
       document.getElementById("last_update").textContent = message;
       setTimeout(displayTimeSinceUpdate, 10000);
     }
