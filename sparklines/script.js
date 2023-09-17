@@ -70,7 +70,7 @@ fetchTop250().then(async (data) => {
       .map(({ coin, image }) => {
         const { symbol, current_price } = coin;
 
-        const fontSize = symbol.length > 5 ? "0.7rem" : "0.8rem";
+        const fontSize = symbol.length > 5 ? "0.75rem" : "0.8rem";
 
         const style = [
           "margin: 0",
@@ -82,7 +82,7 @@ fetchTop250().then(async (data) => {
         return `<figure style="${style}">
           <figcaption>
             <div>${symbol.toUpperCase()}</div>
-            <div style="font-size: 0.7rem;color: #444;">${current_price}</div>
+            <div style="font-size: 0.75rem;color: #444;">${current_price}</div>
           </figcaption>
           ${image}
         </figure>`;
