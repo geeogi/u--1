@@ -6,7 +6,7 @@ Some experiments in building analytics websites with these goals:
 - well structured, minimum styling, minimum JS
 - simple, navigable/searchable using browser UI
 - attempt some difference in the UI
-- be fully live and usable websites
+- be fully live websites, something I'll use daily
 
 ## 1 (sparklines)
 
