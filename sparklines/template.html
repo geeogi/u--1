@@ -45,18 +45,17 @@
     </main>
     <footer
       id="last_update"
-      style="color: #f0f0f0; font-size: 0.9rem; padding: 4px"
+      style="color: #9a9a9a; font-size: 0.8rem; padding: 4px"
     ></footer>
   </body>
   <script>
-    function displayTimeSinceUpdate() {
+    function displayLastUpdateTime() {
       const timestamp = 0; // TIMESTAMP
       const date = new Date(timestamp * 1000);
       const message = "Last updated: " + date.toLocaleString();
       document.getElementById("last_update").textContent = message;
-      setTimeout(displayTimeSinceUpdate, 10000);
     }
 
-    window.onload = displayTimeSinceUpdate;
+    window.onload = displayLastUpdateTime;
   </script>
 </html>
