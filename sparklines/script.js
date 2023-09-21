@@ -83,6 +83,8 @@ fetchTop250().then(async (data) => {
           `font-size: ${fontSize}`,
           "border-left: solid 1px #f0f0f0",
           "border-bottom: solid 1px #f0f0f0",
+          "min-width: 68px",
+          "min-height: 40px",
         ].join(";");
 
         return `<figure style="${style}">
