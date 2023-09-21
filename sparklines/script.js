@@ -59,7 +59,13 @@ fetchTop250().then(async (data) => {
         .replace('height="50"', 'height="25"');
 
       const optimized = await optimize(svg, SVGO_CONFIG);
+
       const image = optimized.data;
+
+      if (!image) {
+        console.log(text);
+      }
+
       return { coin, image };
     })
   );
