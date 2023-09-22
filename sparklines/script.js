@@ -60,10 +60,10 @@ fetchTop250().then(async (data) => {
         })
         .join(" ");
 
+      const filledPathD = `${pathD} L${svgWidth} ${svgHeight} L0 ${svgHeight} Z`;
+
       const strokeColor =
         prices[0] < prices[prices.length - 1] ? "#31ca5b" : "#ff0000";
-
-      const filledPathD = `${pathD} L${svgWidth} ${svgHeight} L0 ${svgHeight} Z`;
 
       const svg = [
         `<svg xmlns="http://www.w3.org/2000/svg"`,
@@ -76,7 +76,8 @@ fetchTop250().then(async (data) => {
 
       const optimized = await optimize(svg, SVGO_CONFIG);
 
-      const image = optimized.data.replace('opacity="0', 'opacity="0.2');
+      // SVGO seems to lose the 0.2 opacity
+      const image = optimized.data.replace('opacity="0"', 'opacity="0.2"');
 
       return { coin, image };
     })
