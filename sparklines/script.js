@@ -61,7 +61,7 @@ fetchTop250().then(async (data) => {
         .join(" ");
 
       const strokeColor =
-        prices[0] < prices[prices.length - 1] ? "green" : "red";
+        prices[0] < prices[prices.length - 1] ? "#31ca5b" : "#ff0000";
 
       const svg = [
         `<svg xmlns="http://www.w3.org/2000/svg"`,
