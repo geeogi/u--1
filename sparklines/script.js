@@ -6,7 +6,7 @@ const TOP_250_URL = [
   "?",
   "vs_currency=usd&order=market_cap_desc",
   "&",
-  "per_page=250&sparkline=false&locale=en",
+  "per_page=250&sparkline=true&locale=en",
   "&",
   "page=1",
 ].join("");
@@ -45,26 +45,35 @@ const HTML_TEMPLATE = fs.readFileSync("template.html", "utf8");
 fetchTop250().then(async (data) => {
   const coins = await Promise.all(
     data.map(async (coin) => {
-      const imageId = coin.image
-        ?.replace?.("https://assets.coingecko.com/coins/images/", "")
-        ?.split("/")?.[0];
+      const prices = coin.sparkline_in_7d.price;
+      const svgWidth = 68;
+      const svgHeight = 25;
+      const maxPrice = Math.max(...prices);
+      const minPrice = Math.min(...prices);
 
-      const base = "https://www.coingecko.com/coins";
-      const response = await fetch(`${base}/${imageId}/sparkline.svg`);
-      const text = await response.text();
+      const pathD = prices
+        .map((price, index) => {
+          const y = (svgHeight * (price - minPrice)) / (maxPrice - minPrice);
+          const normalisedY = svgHeight - y;
+          const normalisedX = (svgWidth * index) / (prices.length - 1);
+          return `${index === 0 ? "M" : "L"}${normalisedX} ${normalisedY}`;
+        })
+        .join(" ");
 
-      const svg = "<svg"
-        .concat(text.split("<svg")?.[1])
-        .replace('width="135"', 'width="68"')
-        .replace('height="50"', 'height="25"');
+      const strokeColor =
+        prices[0] < prices[prices.length - 1] ? "green" : "red";
+
+      const svg = [
+        `<svg xmlns="http://www.w3.org/2000/svg"`,
+        `width="${svgWidth}" height="${svgHeight}"`,
+        `viewBox="0 0 ${svgWidth} ${svgHeight}">`,
+        `<path fill="none" stroke="${strokeColor}"`,
+        `stroke-width="1" d="${pathD}"></path></svg>`,
+      ].join(" ");
 
       const optimized = await optimize(svg, SVGO_CONFIG);
 
       const image = optimized.data;
-
-      if (!image) {
-        console.log(text);
-      }
 
       return { coin, image };
     })
