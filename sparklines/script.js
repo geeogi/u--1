@@ -63,17 +63,20 @@ fetchTop250().then(async (data) => {
       const strokeColor =
         prices[0] < prices[prices.length - 1] ? "#31ca5b" : "#ff0000";
 
+      const filledPathD = `${pathD} L${svgWidth} ${svgHeight} L0 ${svgHeight} Z`;
+
       const svg = [
         `<svg xmlns="http://www.w3.org/2000/svg"`,
         `width="${svgWidth}" height="${svgHeight}"`,
         `viewBox="0 0 ${svgWidth} ${svgHeight}">`,
+        `<path d="${filledPathD}" fill="${strokeColor}" opacity="0.2"></path>`,
         `<path fill="none" stroke="${strokeColor}"`,
         `stroke-width="1" d="${pathD}"></path></svg>`,
       ].join(" ");
 
       const optimized = await optimize(svg, SVGO_CONFIG);
 
-      const image = optimized.data;
+      const image = optimized.data.replace('opacity="0', 'opacity="0.2');
 
       return { coin, image };
     })
@@ -88,12 +91,10 @@ fetchTop250().then(async (data) => {
         const fontSize = symbol.length > 5 ? "0.75rem" : "0.8rem";
 
         const style = [
-          "margin: 0",
+          "margin: 1px",
           `font-size: ${fontSize}`,
-          "border-left: solid 1px #f0f0f0",
-          "border-bottom: solid 1px #f0f0f0",
-          "min-width: 68px",
-          "min-height: 40px",
+          //"border-left: solid 1px #f0f0f0",
+          //"border-bottom: solid 1px #f0f0f0",
         ].join(";");
 
         return `<figure style="${style}">
