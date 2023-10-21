@@ -31,7 +31,7 @@ const SVGO_CONFIG = {
 async function fetchTop250() {
   if (USE_LOCAL_DATA) {
     return new Promise((resolve) => {
-      fs.readFile("mock-api.json", "utf8", (_err, data) => {
+      fs.readFile("page-index-mock-api.json", "utf8", (_err, data) => {
         resolve(JSON.parse(data));
       });
     });
@@ -40,7 +40,7 @@ async function fetchTop250() {
   }
 }
 
-const HTML_TEMPLATE = fs.readFileSync("template.html", "utf8");
+const HTML_TEMPLATE = fs.readFileSync("page-index-template.html", "utf8");
 
 fetchTop250().then(async (data) => {
   const coins = await Promise.all(
