@@ -1,5 +1,5 @@
-const fs = require("fs");
-const { optimize } = require("svgo");
+import * as fs from "fs";
+import { optimize } from "svgo";
 
 const TOP_250_URL = [
   "https://api.coingecko.com/api/v3/coins/markets",
