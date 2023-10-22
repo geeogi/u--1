@@ -7,6 +7,7 @@ export const EthereumRPC = {
     totalSupply: "0x18160ddd",
     getEthBalance: "0x4d2301cc",
     latestAnswer: "0x50d25bcd",
+    stEthPerToken: "0x035faf82",
   },
 
   // Encode method call data for Ethereum transaction
@@ -79,6 +80,13 @@ export const EthereumRPC = {
     const signature = this.SIGNATURES.latestAnswer;
     const result = await this.callContractMethod(chainlink, signature, []);
     return parseInt(result, 16) / 10 ** 8;
+  },
+
+  async getStETHWstETHExchangeRate() {
+    const wstETH = "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0";
+    const signature = this.SIGNATURES.stEthPerToken;
+    const result = await this.callContractMethod(wstETH, signature, []);
+    return parseInt(result, 16) / 10 ** 18;
   },
 };
 
