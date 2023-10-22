@@ -21,6 +21,7 @@ async function main() {
   const crvStETHLpStETH = await EthereumRPC.balanceOf(stETH, curveStETH);
   const crvStETHLpETH = await EthereumRPC.ethBalance(curveStETH);
   const ethPrice = await EthereumRPC.ethPrice();
+  const stETHPrice = await EthereumRPC.stETHPrice();
 
   console.log("stETH", stETHSupply);
   console.log("stETH APR", stETHApr);
@@ -31,6 +32,7 @@ async function main() {
   console.log("crv stETH balance", crvStETHLpStETH);
   console.log("crv ETH balance", crvStETHLpETH);
   console.log("ETH price", ethPrice);
+  console.log("stETH price", stETHPrice);
 }
 
 main();

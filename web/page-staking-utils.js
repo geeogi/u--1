@@ -82,6 +82,14 @@ export const EthereumRPC = {
     return parseInt(result, 16) / 10 ** 8;
   },
 
+  async stETHPrice() {
+    // chainlink stETH/ETH
+    const chainlink = "0x86392dC19c0b719886221c78AB11eb8Cf5c52812";
+    const signature = this.SIGNATURES.latestAnswer;
+    const result = await this.callContractMethod(chainlink, signature, []);
+    return parseInt(result, 16) / 10 ** 18;
+  },
+
   async getStETHWstETHExchangeRate() {
     const wstETH = "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0";
     const signature = this.SIGNATURES.stEthPerToken;
