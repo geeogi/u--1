@@ -1,4 +1,9 @@
-import { EthereumRPC, LidoAPI } from "./page-staking-utils.js";
+import {
+  CoinbaseAPI,
+  EthereumRPC,
+  LidoAPI,
+  SSVAPI,
+} from "./page-staking-utils.js";
 
 async function main() {
   const CONTRACTS = {
@@ -8,6 +13,7 @@ async function main() {
     wstETH: "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
     cbETH: "0xBe9895146f7AF43049ca1c1AE358B0541Ea49704",
     rETH: "0xae78736cd615f374d3085123a210448e74fc6393",
+    swETH: "0xf951e335afb289353dc249e82926178eac7ded78",
     curveStETH: "0xdc24316b9ae028f1497c275eb9192a3ea0f67022",
     eigenlayerStETH: "0x93c4b944D05dfe6df7645A86cd2206016c51564D",
     eigenlayerCbETH: "0x54945180dB7943c0ed0FEE7EdaB2Bd24620256bc",
@@ -23,6 +29,7 @@ async function main() {
     wstETH,
     cbETH,
     rETH,
+    swETH,
     curveStETH,
     arbWstETHBridge,
     opWstETHBridge,
@@ -36,8 +43,12 @@ async function main() {
   } = CONTRACTS;
 
   const stETHSupply = await EthereumRPC.totalSupply(stETH);
-  // cbETH rETH supply
+  const cbETHSupply = await EthereumRPC.totalSupply(cbETH);
+  const rETHSupply = await EthereumRPC.totalSupply(rETH);
+  const swETHSupply = await EthereumRPC.totalSupply(swETH);
+  const stETHOperators = await EthereumRPC.getLidoNodeOperatorsCount();
   const stETHApr = await LidoAPI.stETHApr();
+  const cbETHApy = await CoinbaseAPI.cbETHApy();
   const stETHwstETHExchange = await EthereumRPC.getStETHWstETHExchangeRate();
   const wstETHSupply = await EthereumRPC.totalSupply(wstETH);
   const wstETHSupplyArb = await EthereumRPC.balanceOf(wstETH, arbWstETHBridge);
@@ -51,12 +62,17 @@ async function main() {
   const elRETHBalance = await EthereumRPC.balanceOf(rETH, eigenlayerRETH);
   const divaStETHBalance = await EthereumRPC.balanceOf(stETH, divsStETH);
   const lybraStETHBalance = await EthereumRPC.balanceOf(stETH, lybraStETH);
-  // swell, obol, ssv
+  const ssvETHStaked = await SSVAPI.totalETHStaked();
   const aaveStETHBalance = await EthereumRPC.balanceOf(stETH, aaveStETH);
   const unstETHBalance = await EthereumRPC.balanceOf(stETH, unstETH);
 
   console.log("stETH", stETHSupply);
+  console.log("cbETH", cbETHSupply);
+  console.log("rETH", rETHSupply);
+  console.log("swETH", swETHSupply);
   console.log("stETH APR", stETHApr);
+  console.log("cbETH APY", cbETHApy);
+  console.log("Lido stETH operators", stETHOperators);
   console.log("stETH:wstETH", stETHwstETHExchange);
   console.log("wstETH", wstETHSupply);
   console.log("wstETH Arb", wstETHSupplyArb);
@@ -70,6 +86,7 @@ async function main() {
   console.log("EL rETH balance", elRETHBalance);
   console.log("DIVA stETH balance", divaStETHBalance);
   console.log("Lybra stETH balance", lybraStETHBalance);
+  console.log("SSV ETH staked", ssvETHStaked);
   console.log("Aave stETH balance", aaveStETHBalance);
   console.log("stETH withdrawal queue", unstETHBalance);
 }

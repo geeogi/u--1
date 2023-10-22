@@ -8,6 +8,7 @@ export const EthereumRPC = {
     getEthBalance: "0x4d2301cc",
     latestAnswer: "0x50d25bcd",
     stEthPerToken: "0x035faf82",
+    getNodeOperatorsCount: "0xa70c70e4",
   },
 
   // Encode method call data for Ethereum transaction
@@ -96,6 +97,22 @@ export const EthereumRPC = {
     const result = await this.callContractMethod(wstETH, signature, []);
     return parseInt(result, 16) / 10 ** 18;
   },
+
+  async getLidoNodeOperatorsCount() {
+    const lidoCuratedStaking = "0x55032650b14df07b85bF18A3a3eC8E0Af2e028d5";
+    const signature = this.SIGNATURES.getNodeOperatorsCount;
+    const result = await this.callContractMethod(lidoCuratedStaking, signature);
+    return parseInt(result, 16);
+  },
+};
+
+export const CoinbaseAPI = {
+  async cbETHApy() {
+    const endpoint = "https://api.exchange.coinbase.com/wrapped-assets/cbeth";
+    const response = await fetch(endpoint);
+    const json = await response.json();
+    return Number(json.apy) * 100;
+  },
 };
 
 export const LidoAPI = {
@@ -104,5 +121,14 @@ export const LidoAPI = {
     const response = await fetch(endpoint);
     const json = await response.json();
     return json.data.apr;
+  },
+};
+
+export const SSVAPI = {
+  async totalETHStaked() {
+    const endpoint = "https://api.ssv.network/api/v4/mainnet/validators/";
+    const response = await fetch(endpoint);
+    const json = await response.json();
+    return Number(json.pagination.total) * 32;
   },
 };
