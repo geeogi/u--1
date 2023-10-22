@@ -1,6 +1,7 @@
 import {
   CoinbaseAPI,
   EthereumRPC,
+  EtherscanAPI,
   LidoAPI,
   SSVAPI,
 } from "./page-staking-utils.js";
@@ -42,6 +43,7 @@ async function main() {
     unstETH,
   } = CONTRACTS;
 
+  const ethSupply = await EtherscanAPI.ethSupply();
   const stETHSupply = await EthereumRPC.totalSupply(stETH);
   const cbETHSupply = await EthereumRPC.totalSupply(cbETH);
   const rETHSupply = await EthereumRPC.totalSupply(rETH);
@@ -66,6 +68,7 @@ async function main() {
   const aaveStETHBalance = await EthereumRPC.balanceOf(stETH, aaveStETH);
   const unstETHBalance = await EthereumRPC.balanceOf(stETH, unstETH);
 
+  console.log("ETH supply", ethSupply);
   console.log("stETH", stETHSupply);
   console.log("cbETH", cbETHSupply);
   console.log("rETH", rETHSupply);

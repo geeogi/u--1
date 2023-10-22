@@ -132,3 +132,17 @@ export const SSVAPI = {
     return Number(json.pagination.total) * 32;
   },
 };
+
+export const EtherscanAPI = {
+  async ethSupply() {
+    const endpoint = "https://api.etherscan.io/api";
+    const query = "module=stats&action=ethsupply2&apikey=YourApiKeyToken";
+    const response = await fetch(`${endpoint}?${query}`);
+    const { result } = await response.json();
+    return (
+      Number(result.EthSupply) / 10 ** 18 +
+      Number(result.Eth2Staking) / 10 ** 18 -
+      Number(result.BurntFees) / 10 ** 18
+    );
+  },
+};
