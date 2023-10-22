@@ -5,6 +5,7 @@ export const EthereumRPC = {
   SIGNATURES: {
     balanceOf: "0x70a08231",
     totalSupply: "0x18160ddd",
+    getETHBalance: "0x4d2301cc",
   },
 
   // Encode method call data for Ethereum transaction
@@ -61,6 +62,14 @@ export const EthereumRPC = {
     const signature = this.SIGNATURES.totalSupply;
     const result = await this.callContractMethod(tokenAddress, signature);
     return parseInt(result, 16) / 10 ** decimals;
+  },
+
+  async ethBalance(address) {
+    const multicall = "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441";
+    const signature = this.SIGNATURES.getETHBalance;
+    const args = [address];
+    const result = await this.callContractMethod(multicall, signature, args);
+    return parseInt(result, 16) / 10 ** 18;
   },
 };
 
