@@ -14,12 +14,14 @@ async function main() {
   const wstETHSupply = await EthereumRPC.totalSupply(wstETH);
   const crvStETHLpStETH = await EthereumRPC.balanceOf(stETH, curveStETH);
   const crvStETHLpETH = await EthereumRPC.ethBalance(curveStETH);
+  const ethPrice = await EthereumRPC.ethPrice();
 
   console.log("stETH", stETHSupply);
   console.log("stETH APR", stETHApr);
   console.log("wstETH", wstETHSupply);
   console.log("crv stETH balance", crvStETHLpStETH);
   console.log("crv ETH balance", crvStETHLpETH);
+  console.log("ETH price", ethPrice);
 }
 
 main();
