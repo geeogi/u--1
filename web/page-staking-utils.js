@@ -146,3 +146,14 @@ export const EtherscanAPI = {
     );
   },
 };
+
+export const EigenLayerAPI = {
+  async nativeRestaking() {
+    const base = "https://api-prod-useast1.eigenlayer.xyz";
+    const pod = "0x0000000000000000000000000000000000000000";
+    const path = `mainnet/restaking/v1/pod/${pod}/summary`;
+    const response = await fetch(`${base}/${path}`);
+    const { globalStats } = await response.json();
+    return Number(globalStats.balance) / 10 ** 18;
+  },
+};

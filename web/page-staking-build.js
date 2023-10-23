@@ -1,5 +1,6 @@
 import {
   CoinbaseAPI,
+  EigenLayerAPI,
   EthereumRPC,
   EtherscanAPI,
   LidoAPI,
@@ -62,6 +63,7 @@ async function main() {
   const elStETHBalance = await EthereumRPC.balanceOf(stETH, eigenlayerStETH);
   const elCbETHBalance = await EthereumRPC.balanceOf(cbETH, eigenlayerCbETH);
   const elRETHBalance = await EthereumRPC.balanceOf(rETH, eigenlayerRETH);
+  const elNativeBalance = await EigenLayerAPI.nativeRestaking();
   const divaStETHBalance = await EthereumRPC.balanceOf(stETH, divsStETH);
   const lybraStETHBalance = await EthereumRPC.balanceOf(stETH, lybraStETH);
   const ssvETHStaked = await SSVAPI.totalETHStaked();
@@ -87,6 +89,7 @@ async function main() {
   console.log("EL stETH balance", elStETHBalance);
   console.log("EL cbETH balance", elCbETHBalance);
   console.log("EL rETH balance", elRETHBalance);
+  console.log("EL native balance", elNativeBalance);
   console.log("DIVA stETH balance", divaStETHBalance);
   console.log("Lybra stETH balance", lybraStETHBalance);
   console.log("SSV ETH staked", ssvETHStaked);
