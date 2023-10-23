@@ -15,6 +15,8 @@ async function main() {
     wstETH: "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
     cbETH: "0xBe9895146f7AF43049ca1c1AE358B0541Ea49704",
     rETH: "0xae78736cd615f374d3085123a210448e74fc6393",
+    frxETH: "0x5e8422345238f34275888049021821e8e08caa1f",
+    sfrxETH: "0xac3e018457b222d93114458476f3e3416abbe38f",
     swETH: "0xf951e335afb289353dc249e82926178eac7ded78",
     curveStETH: "0xdc24316b9ae028f1497c275eb9192a3ea0f67022",
     eigenlayerStETH: "0x93c4b944D05dfe6df7645A86cd2206016c51564D",
@@ -31,6 +33,8 @@ async function main() {
     wstETH,
     cbETH,
     rETH,
+    frxETH,
+    sfrxETH,
     swETH,
     curveStETH,
     arbWstETHBridge,
@@ -48,6 +52,8 @@ async function main() {
   const stETHSupply = await EthereumRPC.totalSupply(stETH);
   const cbETHSupply = await EthereumRPC.totalSupply(cbETH);
   const rETHSupply = await EthereumRPC.totalSupply(rETH);
+  const frxETHSupply = await EthereumRPC.totalSupply(frxETH);
+  const sfrxETHSupply = await EthereumRPC.totalSupply(sfrxETH);
   const swETHSupply = await EthereumRPC.totalSupply(swETH);
   const stETHOperators = await EthereumRPC.getLidoNodeOperatorsCount();
   const stETHApr = await LidoAPI.stETHApr();
@@ -74,6 +80,8 @@ async function main() {
   console.log("stETH", stETHSupply);
   console.log("cbETH", cbETHSupply);
   console.log("rETH", rETHSupply);
+  console.log("frxETH", frxETHSupply);
+  console.log("sfrxETH", sfrxETHSupply);
   console.log("swETH", swETHSupply);
   console.log("stETH APR", stETHApr);
   console.log("cbETH APY", cbETHApy);
