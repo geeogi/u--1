@@ -1,3 +1,4 @@
+import * as fs from "fs";
 import {
   CoinbaseAPI,
   EigenLayerAPI,
@@ -73,6 +74,7 @@ async function main() {
   const divaStETHBalance = await EthereumRPC.balanceOf(stETH, divsStETH);
   const lybraStETHBalance = await EthereumRPC.balanceOf(stETH, lybraStETH);
   const ssvETHStaked = await SSVAPI.totalETHStaked();
+  // aave v3 wstETH balance, eth, op, arb, cbETH
   const aaveStETHBalance = await EthereumRPC.balanceOf(stETH, aaveStETH);
   const unstETHBalance = await EthereumRPC.balanceOf(stETH, unstETH);
 
@@ -103,6 +105,46 @@ async function main() {
   console.log("SSV ETH staked", ssvETHStaked);
   console.log("Aave stETH balance", aaveStETHBalance);
   console.log("stETH withdrawal queue", unstETHBalance);
+
+  let htmlContext = fs.readFileSync("page-staking-template.html", "utf8");
+
+  htmlContext = htmlContext
+    .replaceAll("ethSupply", ethSupply)
+    .replaceAll("stETHSupply", stETHSupply)
+    .replaceAll("cbETHSupply", cbETHSupply)
+    .replaceAll("rETHSupply", rETHSupply)
+    .replaceAll("frxETHSupply", frxETHSupply)
+    .replaceAll("sfrxETHSupply", sfrxETHSupply)
+    .replaceAll("swETHSupply", swETHSupply)
+    .replaceAll("stETHApr", stETHApr)
+    .replaceAll("cbETHApy", cbETHApy)
+    .replaceAll("stETHOperators", stETHOperators)
+    .replaceAll("stETHwstETHExchange", stETHwstETHExchange)
+    .replaceAll("wstETHSupply", wstETHSupply)
+    .replaceAll("wstETHSupplyArb", wstETHSupplyArb)
+    .replaceAll("wstETHSupplyOp", wstETHSupplyOp)
+    .replaceAll("crvStETHLpSTETH", crvStETHLpStETH)
+    .replaceAll("crvStETHLpETH", crvStETHLpETH)
+    .replaceAll("ethPrice", ethPrice)
+    .replaceAll("stETHPrice", stETHPrice)
+    .replaceAll("elStETHBalance", elStETHBalance)
+    .replaceAll("elCbETHBalance", elCbETHBalance)
+    .replaceAll("elRETHBalance", elRETHBalance)
+    .replaceAll("elNativeBalance", elNativeBalance)
+    .replaceAll("divaStETHBalance", divaStETHBalance)
+    .replaceAll("lybraStETHBalance", lybraStETHBalance)
+    .replaceAll("ssvETHStaked", ssvETHStaked)
+    .replaceAll("aaveStETHBalance", aaveStETHBalance)
+    .replaceAll("unstETHBalance", unstETHBalance)
+    .replaceAll("0; // TIMESTAMP", Math.round(Date.now() / 1000));
+
+  fs.writeFile("eth-staking.html", htmlContext, "utf8", (err) => {
+    if (err) {
+      console.error("An error occurred:", err);
+    } else {
+      console.log("HTML file written successfully");
+    }
+  });
 }
 
 main();
