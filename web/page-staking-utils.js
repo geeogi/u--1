@@ -1,4 +1,4 @@
-export const EthereumRPC = {
+export const RPC = {
   ENDPOINT:
     "https://eth-mainnet.g.alchemy.com/v2/VjRG6l7jUiq9cJNzPDoLIw2lFz-pz_Ra",
 

@@ -41,36 +41,36 @@
       <h1>ETH staking</h1>
       <div>
         <h2>ETH</h2>
-        <p>Total ETH supply: <span>120260008.34764354</span></p>
-        <p>Total ETH staked: <span>totalETHStaked</span></p>
-        <p>ETH price (chainlink): <span>1791.14301227</span></p>
+        <p>Total ETH supply: <span>@ethSupply@</span></p>
+        <p>Total ETH staked: <span>@totalETHStaked@</span></p>
+        <p>ETH price (chainlink): <span>[object Promise]</span></p>
       </div>
       <div>
         <h2>Liquid staking</h2>
-        <p>stETH supply: <span>8787492.74997555</span></p>
-        <p>cbETH supply: <span>1310633.367524984</span></p>
-        <p>rETH supply: <span>533311.2057285066</span></p>
-        <p>frxETH supply: <span>280527.5258051228</span></p>
-        <p>swETH supply: <span>47088.522037028655</span></p>
+        <p>stETH supply: <span>[object Promise]</span></p>
+        <p>cbETH supply: <span>[object Promise]</span></p>
+        <p>rETH supply: <span>[object Promise]</span></p>
+        <p>frxETH supply: <span>[object Promise]</span></p>
+        <p>swETH supply: <span>[object Promise]</span></p>
       </div>
       <div>
         <h2>DVT</h2>
-        <p>SSV ETH staked: <span>15584</span></p>
-        <p>DIVA stETH staked: <span>16372.74837416221</span></p>
+        <p>SSV ETH staked: <span>[object Promise]</span></p>
+        <p>DIVA stETH staked: <span>[object Promise]</span></p>
       </div>
       <div>
         <h2>Lido stETH</h2>
-        <p>stETH supply: <span>8787492.74997555</span></p>
-        <p>stETH APR: <span>3.9</span></p>
-        <p>stETH/ETH price (chainlink): <span>0.9991291176806926</span></p>
-        <p>Lido operators: <span>39</span></p>
-        <p>stETH withdrawal queue: <span>13251.064937153753</span></p>
+        <p>stETH supply: <span>[object Promise]</span></p>
+        <p>stETH APR: <span>[object Promise]</span></p>
+        <p>stETH/ETH price (chainlink): <span>[object Promise]</span></p>
+        <p>Lido operators: <span>[object Promise]</span></p>
+        <p>stETH withdrawal queue: <span>[object Promise]</span></p>
       </div>
       <div>
         <h2>Lido wstETH</h2>
-        <p>wstETH supply: <span>w8787492.74997555</span></p>
-        <p>wstETH on Arb: <span>w8787492.74997555Arb</span></p>
-        <p>wstETH on Op: <span>w8787492.74997555Op</span></p>
+        <p>wstETH supply: <span>[object Promise]</span></p>
+        <p>wstETH on Arb: <span>[object Promise]</span></p>
+        <p>wstETH on Op: <span>[object Promise]</span></p>
       </div>
     </main>
     <footer
@@ -80,7 +80,7 @@
   </body>
   <script>
     function displayLastUpdateTime() {
-      const timestamp = 1698352746
+      const timestamp = 1698437450;
       const date = new Date(timestamp * 1000);
       const message = "Last updated: " + date.toLocaleString();
       document.getElementById("last_update").textContent = message;

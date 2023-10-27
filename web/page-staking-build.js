@@ -2,7 +2,7 @@ import * as fs from "fs";
 import {
   CoinbaseAPI,
   EigenLayerAPI,
-  EthereumRPC,
+  RPC,
   EtherscanAPI,
   LidoAPI,
   SSVAPI,
@@ -49,96 +49,51 @@ async function main() {
     unstETH,
   } = CONTRACTS;
 
-  const ethSupply = await EtherscanAPI.ethSupply();
-  const stETHSupply = await EthereumRPC.totalSupply(stETH);
-  const cbETHSupply = await EthereumRPC.totalSupply(cbETH);
-  const rETHSupply = await EthereumRPC.totalSupply(rETH);
-  const frxETHSupply = await EthereumRPC.totalSupply(frxETH);
-  const sfrxETHSupply = await EthereumRPC.totalSupply(sfrxETH);
-  const swETHSupply = await EthereumRPC.totalSupply(swETH);
-  const stETHOperators = await EthereumRPC.getLidoNodeOperatorsCount();
-  const stETHApr = await LidoAPI.stETHApr();
-  const cbETHApy = await CoinbaseAPI.cbETHApy();
-  const stETHwstETHExchange = await EthereumRPC.getStETHWstETHExchangeRate();
-  const wstETHSupply = await EthereumRPC.totalSupply(wstETH);
-  const wstETHSupplyArb = await EthereumRPC.balanceOf(wstETH, arbWstETHBridge);
-  const wstETHSupplyOp = await EthereumRPC.balanceOf(wstETH, opWstETHBridge);
-  const crvStETHLpStETH = await EthereumRPC.balanceOf(stETH, curveStETH);
-  const crvStETHLpETH = await EthereumRPC.ethBalance(curveStETH);
-  const ethPrice = await EthereumRPC.ethPrice();
-  const stETHPrice = await EthereumRPC.stETHPrice();
-  const elStETHBalance = await EthereumRPC.balanceOf(stETH, eigenlayerStETH);
-  const elCbETHBalance = await EthereumRPC.balanceOf(cbETH, eigenlayerCbETH);
-  const elRETHBalance = await EthereumRPC.balanceOf(rETH, eigenlayerRETH);
-  const elNativeBalance = await EigenLayerAPI.nativeRestaking();
-  const divaStETHBalance = await EthereumRPC.balanceOf(stETH, divsStETH);
-  const lybraStETHBalance = await EthereumRPC.balanceOf(stETH, lybraStETH);
-  const ssvETHStaked = await SSVAPI.totalETHStaked();
-  // aave v3 wstETH balance, eth, op, arb, cbETH
-  const aaveStETHBalance = await EthereumRPC.balanceOf(stETH, aaveStETH);
-  const unstETHBalance = await EthereumRPC.balanceOf(stETH, unstETH);
+  const values = [
+    { key: "ethSupply", value: EtherscanAPI.ethSupply() },
+    { key: "stETHSupply", value: RPC.totalSupply(stETH) },
+    { key: "cbETHSupply", value: RPC.totalSupply(cbETH) },
+    { key: "rETHSupply", value: RPC.totalSupply(rETH) },
+    { key: "frxETHSupply", value: RPC.totalSupply(frxETH) },
+    { key: "sfrxETHSupply", value: RPC.totalSupply(sfrxETH) },
+    { key: "swETHSupply", value: RPC.totalSupply(swETH) },
+    { key: "stETHOperators", value: RPC.getLidoNodeOperatorsCount() },
+    { key: "stETHApr", value: LidoAPI.stETHApr() },
+    { key: "cbETHApy", value: CoinbaseAPI.cbETHApy() },
+    { key: "stETHwstETHExchange", value: RPC.getStETHWstETHExchangeRate() },
+    { key: "wstETHSupply", value: RPC.totalSupply(wstETH) },
+    { key: "wstETHSupplyArb", value: RPC.balanceOf(wstETH, arbWstETHBridge) },
+    { key: "wstETHSupplyOp", value: RPC.balanceOf(wstETH, opWstETHBridge) },
+    { key: "crvStETHLpStETH", value: RPC.balanceOf(stETH, curveStETH) },
+    { key: "crvStETHLpETH", value: RPC.ethBalance(curveStETH) },
+    { key: "ethPrice", value: RPC.ethPrice() },
+    { key: "stETHPrice", value: RPC.stETHPrice() },
+    { key: "elStETHBalance", value: RPC.balanceOf(stETH, eigenlayerStETH) },
+    { key: "elCbETHBalance", value: RPC.balanceOf(cbETH, eigenlayerCbETH) },
+    { key: "elRETHBalance", value: RPC.balanceOf(rETH, eigenlayerRETH) },
+    { key: "elNativeBalance", value: EigenLayerAPI.nativeRestaking() },
+    { key: "divaStETHBalance", value: RPC.balanceOf(stETH, divsStETH) },
+    { key: "lybraStETHBalance", value: RPC.balanceOf(stETH, lybraStETH) },
+    { key: "ssvETHStaked", value: SSVAPI.totalETHStaked() },
+    { key: "aaveStETHBalance", value: RPC.balanceOf(stETH, aaveStETH) },
+    { key: "unstETHBalance", value: RPC.balanceOf(stETH, unstETH) },
+    { key: "timestamp", value: Math.round(Date.now() / 1000) },
+    // Add other balances for aave v3 (eth, op, arb, cbETH)
+  ];
 
-  console.log("ETH supply", ethSupply);
-  console.log("stETH", stETHSupply);
-  console.log("cbETH", cbETHSupply);
-  console.log("rETH", rETHSupply);
-  console.log("frxETH", frxETHSupply);
-  console.log("sfrxETH", sfrxETHSupply);
-  console.log("swETH", swETHSupply);
-  console.log("stETH APR", stETHApr);
-  console.log("cbETH APY", cbETHApy);
-  console.log("Lido stETH operators", stETHOperators);
-  console.log("stETH:wstETH", stETHwstETHExchange);
-  console.log("wstETH", wstETHSupply);
-  console.log("wstETH Arb", wstETHSupplyArb);
-  console.log("wstETH Op", wstETHSupplyOp);
-  console.log("crv stETH balance", crvStETHLpStETH);
-  console.log("crv ETH balance", crvStETHLpETH);
-  console.log("ETH price", ethPrice);
-  console.log("stETH price", stETHPrice);
-  console.log("EL stETH balance", elStETHBalance);
-  console.log("EL cbETH balance", elCbETHBalance);
-  console.log("EL rETH balance", elRETHBalance);
-  console.log("EL native balance", elNativeBalance);
-  console.log("DIVA stETH balance", divaStETHBalance);
-  console.log("Lybra stETH balance", lybraStETHBalance);
-  console.log("SSV ETH staked", ssvETHStaked);
-  console.log("Aave stETH balance", aaveStETHBalance);
-  console.log("stETH withdrawal queue", unstETHBalance);
+  await Promise.all(values.map((item) => item.value));
 
-  let htmlContext = fs.readFileSync("page-staking-template.html", "utf8");
+  console.log(values)
 
-  htmlContext = htmlContext
-    .replaceAll("ethSupply", ethSupply)
-    .replaceAll("stETHSupply", stETHSupply)
-    .replaceAll("cbETHSupply", cbETHSupply)
-    .replaceAll("rETHSupply", rETHSupply)
-    .replaceAll("frxETHSupply", frxETHSupply)
-    .replaceAll("sfrxETHSupply", sfrxETHSupply)
-    .replaceAll("swETHSupply", swETHSupply)
-    .replaceAll("stETHApr", stETHApr)
-    .replaceAll("cbETHApy", cbETHApy)
-    .replaceAll("stETHOperators", stETHOperators)
-    .replaceAll("stETHwstETHExchange", stETHwstETHExchange)
-    .replaceAll("wstETHSupply", wstETHSupply)
-    .replaceAll("wstETHSupplyArb", wstETHSupplyArb)
-    .replaceAll("wstETHSupplyOp", wstETHSupplyOp)
-    .replaceAll("crvStETHLpSTETH", crvStETHLpStETH)
-    .replaceAll("crvStETHLpETH", crvStETHLpETH)
-    .replaceAll("ethPrice", ethPrice)
-    .replaceAll("stETHPrice", stETHPrice)
-    .replaceAll("elStETHBalance", elStETHBalance)
-    .replaceAll("elCbETHBalance", elCbETHBalance)
-    .replaceAll("elRETHBalance", elRETHBalance)
-    .replaceAll("elNativeBalance", elNativeBalance)
-    .replaceAll("divaStETHBalance", divaStETHBalance)
-    .replaceAll("lybraStETHBalance", lybraStETHBalance)
-    .replaceAll("ssvETHStaked", ssvETHStaked)
-    .replaceAll("aaveStETHBalance", aaveStETHBalance)
-    .replaceAll("unstETHBalance", unstETHBalance)
-    .replaceAll("0; // TIMESTAMP", Math.round(Date.now() / 1000));
+  values.forEach((item) => console.log(item.key, item.value));
 
-  fs.writeFile("eth-staking.html", htmlContext, "utf8", (err) => {
+  let htmlContent = fs.readFileSync("page-staking-template.html", "utf8");
+
+  values.forEach((item) => {
+    htmlContent = htmlContent.replaceAll(`@${item.key}@`, item.value);
+  });
+
+  fs.writeFile("eth-staking.html", htmlContent, "utf8", (err) => {
     if (err) {
       console.error("An error occurred:", err);
     } else {
