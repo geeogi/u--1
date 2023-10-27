@@ -39,38 +39,42 @@
   <body>
     <main>
       <h1>ETH staking</h1>
-      <div>
-        <h2>ETH</h2>
-        <p>Total ETH supply: <span>@ethSupply@</span></p>
-        <p>Total ETH staked: <span>@totalETHStaked@</span></p>
-        <p>ETH price (chainlink): <span>[object Promise]</span></p>
-      </div>
-      <div>
-        <h2>Liquid staking</h2>
-        <p>stETH supply: <span>[object Promise]</span></p>
-        <p>cbETH supply: <span>[object Promise]</span></p>
-        <p>rETH supply: <span>[object Promise]</span></p>
-        <p>frxETH supply: <span>[object Promise]</span></p>
-        <p>swETH supply: <span>[object Promise]</span></p>
-      </div>
-      <div>
-        <h2>DVT</h2>
-        <p>SSV ETH staked: <span>[object Promise]</span></p>
-        <p>DIVA stETH staked: <span>[object Promise]</span></p>
-      </div>
-      <div>
-        <h2>Lido stETH</h2>
-        <p>stETH supply: <span>[object Promise]</span></p>
-        <p>stETH APR: <span>[object Promise]</span></p>
-        <p>stETH/ETH price (chainlink): <span>[object Promise]</span></p>
-        <p>Lido operators: <span>[object Promise]</span></p>
-        <p>stETH withdrawal queue: <span>[object Promise]</span></p>
-      </div>
-      <div>
-        <h2>Lido wstETH</h2>
-        <p>wstETH supply: <span>[object Promise]</span></p>
-        <p>wstETH on Arb: <span>[object Promise]</span></p>
-        <p>wstETH on Op: <span>[object Promise]</span></p>
+      <div
+        style="display: flex; flex-wrap: wrap; column-gap: 32px; row-gap: 32px"
+      >
+        <div>
+          <h2>ETH</h2>
+          <p>Total ETH supply: <span>@ethSupply@</span></p>
+          <p>Total ETH staked: <span>@totalETHStaked@</span></p>
+          <p>ETH price (chainlink): <span>[object Promise]</span></p>
+        </div>
+        <div>
+          <h2>Liquid staking</h2>
+          <p>stETH supply: <span>[object Promise]</span></p>
+          <p>cbETH supply: <span>[object Promise]</span></p>
+          <p>rETH supply: <span>[object Promise]</span></p>
+          <p>frxETH supply: <span>[object Promise]</span></p>
+          <p>swETH supply: <span>[object Promise]</span></p>
+        </div>
+        <div>
+          <h2>DVT</h2>
+          <p>SSV ETH staked: <span>@ssvETHStaked@</span></p>
+          <p>DIVA stETH staked: <span>[object Promise]</span></p>
+        </div>
+        <div>
+          <h2>Lido stETH</h2>
+          <p>stETH supply: <span>[object Promise]</span></p>
+          <p>stETH APR: <span>@stETHApr@</span></p>
+          <p>stETH/ETH price (chainlink): <span>[object Promise]</span></p>
+          <p>Lido operators: <span>[object Promise]</span></p>
+          <p>stETH withdrawal queue: <span>[object Promise]</span></p>
+        </div>
+        <div>
+          <h2>Lido wstETH</h2>
+          <p>wstETH supply: <span>[object Promise]</span></p>
+          <p>wstETH on Arb: <span>[object Promise]</span></p>
+          <p>wstETH on Op: <span>[object Promise]</span></p>
+        </div>
       </div>
     </main>
     <footer
@@ -80,7 +84,7 @@
   </body>
   <script>
     function displayLastUpdateTime() {
-      const timestamp = 1698437450;
+      const timestamp = 1698438441;
       const date = new Date(timestamp * 1000);
       const message = "Last updated: " + date.toLocaleString();
       document.getElementById("last_update").textContent = message;

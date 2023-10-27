@@ -1,11 +1,11 @@
 import * as fs from "fs";
 import {
-  CoinbaseAPI,
-  EigenLayerAPI,
+  //CoinbaseAPI,
+  //EigenLayerAPI,
   RPC,
-  EtherscanAPI,
-  LidoAPI,
-  SSVAPI,
+  //EtherscanAPI,
+  //LidoAPI,
+  //SSVAPI,
 } from "./page-staking-utils.js";
 
 async function main() {
@@ -50,7 +50,6 @@ async function main() {
   } = CONTRACTS;
 
   const values = [
-    { key: "ethSupply", value: EtherscanAPI.ethSupply() },
     { key: "stETHSupply", value: RPC.totalSupply(stETH) },
     { key: "cbETHSupply", value: RPC.totalSupply(cbETH) },
     { key: "rETHSupply", value: RPC.totalSupply(rETH) },
@@ -58,8 +57,6 @@ async function main() {
     { key: "sfrxETHSupply", value: RPC.totalSupply(sfrxETH) },
     { key: "swETHSupply", value: RPC.totalSupply(swETH) },
     { key: "stETHOperators", value: RPC.getLidoNodeOperatorsCount() },
-    { key: "stETHApr", value: LidoAPI.stETHApr() },
-    { key: "cbETHApy", value: CoinbaseAPI.cbETHApy() },
     { key: "stETHwstETHExchange", value: RPC.getStETHWstETHExchangeRate() },
     { key: "wstETHSupply", value: RPC.totalSupply(wstETH) },
     { key: "wstETHSupplyArb", value: RPC.balanceOf(wstETH, arbWstETHBridge) },
@@ -71,10 +68,8 @@ async function main() {
     { key: "elStETHBalance", value: RPC.balanceOf(stETH, eigenlayerStETH) },
     { key: "elCbETHBalance", value: RPC.balanceOf(cbETH, eigenlayerCbETH) },
     { key: "elRETHBalance", value: RPC.balanceOf(rETH, eigenlayerRETH) },
-    { key: "elNativeBalance", value: EigenLayerAPI.nativeRestaking() },
     { key: "divaStETHBalance", value: RPC.balanceOf(stETH, divsStETH) },
     { key: "lybraStETHBalance", value: RPC.balanceOf(stETH, lybraStETH) },
-    { key: "ssvETHStaked", value: SSVAPI.totalETHStaked() },
     { key: "aaveStETHBalance", value: RPC.balanceOf(stETH, aaveStETH) },
     { key: "unstETHBalance", value: RPC.balanceOf(stETH, unstETH) },
     { key: "timestamp", value: Math.round(Date.now() / 1000) },
