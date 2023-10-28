@@ -39,41 +39,36 @@
   <body>
     <main>
       <h1>ETH staking</h1>
-      <div
-        style="display: flex; flex-wrap: wrap; column-gap: 32px; row-gap: 32px"
-      >
-        <div>
+      <div style="column-width: 300px; column-gap: 32px">
+        <div style="break-inside: avoid">
           <h2>ETH</h2>
-          <p>Total ETH supply: <span>@ethSupply@</span></p>
-          <p>Total ETH staked: <span>@totalETHStaked@</span></p>
-          <p>ETH price (chainlink): <span>@ethPrice@</span></p>
+          <p>ETH price (Chainlink): {ethPrice}</p>
         </div>
-        <div>
+        <div style="break-inside: avoid">
           <h2>Liquid staking</h2>
-          <p>stETH supply: <span>@stETHSupply@</span></p>
-          <p>cbETH supply: <span>@cbETHSupply@</span></p>
-          <p>rETH supply: <span>@rETHSupply@</span></p>
-          <p>frxETH supply: <span>@frxETHSupply@</span></p>
-          <p>swETH supply: <span>@swETHSupply@</span></p>
+          <p>Lido stETH supply: {stETHSupply}</p>
+          <p>Coinbase cbETH supply: {cbETHSupply}</p>
+          <p>RocketPool rETH supply: {rETHSupply}</p>
+          <p>Frax frxETH supply: {frxETHSupply}</p>
+          <p>Stakewise sETH2 supply: {sETH2Supply}</p>
+          <p>Swell swETH supply: {swETHSupply}</p>
         </div>
-        <div>
-          <h2>DVT</h2>
-          <p>SSV ETH staked: <span>@ssvETHStaked@</span></p>
-          <p>DIVA stETH staked: <span>@divaStETHBalance@</span></p>
-        </div>
-        <div>
+        <div style="break-inside: avoid">
           <h2>Lido stETH</h2>
-          <p>stETH supply: <span>@stETHSupply@</span></p>
-          <p>stETH APR: <span>@stETHApr@</span></p>
-          <p>stETH/ETH price (chainlink): <span>@stETHPrice@</span></p>
-          <p>Lido operators: <span>@stETHOperators@</span></p>
-          <p>stETH withdrawal queue: <span>@unstETHBalance@</span></p>
+          <p>stETH supply: {stETHSupply}</p>
+          <p>stETH/ETH price (Chainlink): {stETHPrice}</p>
+          <p>Lido operators: {stETHOperators}</p>
+          <p>stETH withdrawal queue: {unstETHBalance}</p>
         </div>
-        <div>
+        <div style="break-inside: avoid">
           <h2>Lido wstETH</h2>
-          <p>wstETH supply: <span>@wstETHSupply@</span></p>
-          <p>wstETH on Arb: <span>@wstETHSupplyArb@</span></p>
-          <p>wstETH on Op: <span>@wstETHSupplyOp@</span></p>
+          <p>wstETH supply: {wstETHSupply}</p>
+          <p>wstETH on Arb: {wstETHSupplyArb}</p>
+          <p>wstETH on Op: {wstETHSupplyOp}</p>
+        </div>
+        <div style="break-inside: avoid">
+          <h2>DVT</h2>
+          <p>DIVA stETH staked: {divaStETHBalance}</p>
         </div>
       </div>
     </main>
@@ -84,7 +79,7 @@
   </body>
   <script>
     function displayLastUpdateTime() {
-      const timestamp = @timestamp@;
+      const timestamp = {timestamp};
       const date = new Date(timestamp * 1000);
       const message = "Last updated: " + date.toLocaleString();
       document.getElementById("last_update").textContent = message;

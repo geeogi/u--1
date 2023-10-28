@@ -39,41 +39,231 @@
   <body>
     <main>
       <h1>ETH staking</h1>
-      <div
-        style="display: flex; flex-wrap: wrap; column-gap: 32px; row-gap: 32px"
-      >
-        <div>
+      <div style="column-width: 300px; column-gap: 32px">
+        <div style="break-inside: avoid">
           <h2>ETH</h2>
-          <p>Total ETH supply: <span>@ethSupply@</span></p>
-          <p>Total ETH staked: <span>@totalETHStaked@</span></p>
-          <p>ETH price (chainlink): <span>[object Promise]</span></p>
+          <p>ETH price (Chainlink): <span
+          title="ethPrice"
+          onclick="document.getElementById('dialog-ethPrice').showModal()"
+          >1778.52</span
+        ><dialog id="dialog-ethPrice">
+          <p>contract: undefined (0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419)</p>
+          <p>method: undefined (0x50d25bcd)</p>
+          
+          
+          <p>result: 1778.52</p>
+          <form method="dialog">
+            <button>OK</button>
+          </form>
+        </dialog></p>
         </div>
-        <div>
+        <div style="break-inside: avoid">
           <h2>Liquid staking</h2>
-          <p>stETH supply: <span>[object Promise]</span></p>
-          <p>cbETH supply: <span>[object Promise]</span></p>
-          <p>rETH supply: <span>[object Promise]</span></p>
-          <p>frxETH supply: <span>[object Promise]</span></p>
-          <p>swETH supply: <span>[object Promise]</span></p>
+          <p>Lido stETH supply: <span
+          title="stETHSupply"
+          onclick="document.getElementById('dialog-stETHSupply').showModal()"
+          >8,783,293</span
+        ><dialog id="dialog-stETHSupply">
+          <p>contract: undefined (0xae7ab96520de3a18e5e111b5eaab095312d7fe84)</p>
+          <p>method: undefined (0x18160ddd)</p>
+          
+          
+          <p>result: 8,783,293</p>
+          <form method="dialog">
+            <button>OK</button>
+          </form>
+        </dialog></p>
+          <p>Coinbase cbETH supply: <span
+          title="cbETHSupply"
+          onclick="document.getElementById('dialog-cbETHSupply').showModal()"
+          >1,292,811</span
+        ><dialog id="dialog-cbETHSupply">
+          <p>contract: undefined (0xBe9895146f7AF43049ca1c1AE358B0541Ea49704)</p>
+          <p>method: undefined (0x18160ddd)</p>
+          
+          
+          <p>result: 1,292,811</p>
+          <form method="dialog">
+            <button>OK</button>
+          </form>
+        </dialog></p>
+          <p>RocketPool rETH supply: <span
+          title="rETHSupply"
+          onclick="document.getElementById('dialog-rETHSupply').showModal()"
+          >534,729</span
+        ><dialog id="dialog-rETHSupply">
+          <p>contract: undefined (0xae78736cd615f374d3085123a210448e74fc6393)</p>
+          <p>method: undefined (0x18160ddd)</p>
+          
+          
+          <p>result: 534,729</p>
+          <form method="dialog">
+            <button>OK</button>
+          </form>
+        </dialog></p>
+          <p>Frax frxETH supply: <span
+          title="frxETHSupply"
+          onclick="document.getElementById('dialog-frxETHSupply').showModal()"
+          >281,349</span
+        ><dialog id="dialog-frxETHSupply">
+          <p>contract: undefined (0x5e8422345238f34275888049021821e8e08caa1f)</p>
+          <p>method: undefined (0x18160ddd)</p>
+          
+          
+          <p>result: 281,349</p>
+          <form method="dialog">
+            <button>OK</button>
+          </form>
+        </dialog></p>
+          <p>Stakewise sETH2 supply: <span
+          title="sETH2Supply"
+          onclick="document.getElementById('dialog-sETH2Supply').showModal()"
+          >85,803</span
+        ><dialog id="dialog-sETH2Supply">
+          <p>contract: undefined (0xFe2e637202056d30016725477c5da089Ab0A043A)</p>
+          <p>method: undefined (0x18160ddd)</p>
+          
+          
+          <p>result: 85,803</p>
+          <form method="dialog">
+            <button>OK</button>
+          </form>
+        </dialog></p>
+          <p>Swell swETH supply: <span
+          title="swETHSupply"
+          onclick="document.getElementById('dialog-swETHSupply').showModal()"
+          >47,122</span
+        ><dialog id="dialog-swETHSupply">
+          <p>contract: undefined (0xf951e335afb289353dc249e82926178eac7ded78)</p>
+          <p>method: undefined (0x18160ddd)</p>
+          
+          
+          <p>result: 47,122</p>
+          <form method="dialog">
+            <button>OK</button>
+          </form>
+        </dialog></p>
         </div>
-        <div>
-          <h2>DVT</h2>
-          <p>SSV ETH staked: <span>@ssvETHStaked@</span></p>
-          <p>DIVA stETH staked: <span>[object Promise]</span></p>
-        </div>
-        <div>
+        <div style="break-inside: avoid">
           <h2>Lido stETH</h2>
-          <p>stETH supply: <span>[object Promise]</span></p>
-          <p>stETH APR: <span>@stETHApr@</span></p>
-          <p>stETH/ETH price (chainlink): <span>[object Promise]</span></p>
-          <p>Lido operators: <span>[object Promise]</span></p>
-          <p>stETH withdrawal queue: <span>[object Promise]</span></p>
+          <p>stETH supply: <span
+          title="stETHSupply"
+          onclick="document.getElementById('dialog-stETHSupply').showModal()"
+          >8,783,293</span
+        ><dialog id="dialog-stETHSupply">
+          <p>contract: undefined (0xae7ab96520de3a18e5e111b5eaab095312d7fe84)</p>
+          <p>method: undefined (0x18160ddd)</p>
+          
+          
+          <p>result: 8,783,293</p>
+          <form method="dialog">
+            <button>OK</button>
+          </form>
+        </dialog></p>
+          <p>stETH/ETH price (Chainlink): <span
+          title="stETHPrice"
+          onclick="document.getElementById('dialog-stETHPrice').showModal()"
+          >0.9989</span
+        ><dialog id="dialog-stETHPrice">
+          <p>contract: undefined (0x86392dC19c0b719886221c78AB11eb8Cf5c52812)</p>
+          <p>method: undefined (0x50d25bcd)</p>
+          
+          
+          <p>result: 0.9989</p>
+          <form method="dialog">
+            <button>OK</button>
+          </form>
+        </dialog></p>
+          <p>Lido operators: <span
+          title="stETHOperators"
+          onclick="document.getElementById('dialog-stETHOperators').showModal()"
+          >39</span
+        ><dialog id="dialog-stETHOperators">
+          <p>contract: undefined (0x55032650b14df07b85bF18A3a3eC8E0Af2e028d5)</p>
+          <p>method: undefined (0xa70c70e4)</p>
+          
+          
+          <p>result: 39</p>
+          <form method="dialog">
+            <button>OK</button>
+          </form>
+        </dialog></p>
+          <p>stETH withdrawal queue: <span
+          title="unstETHBalance"
+          onclick="document.getElementById('dialog-unstETHBalance').showModal()"
+          >5937.1</span
+        ><dialog id="dialog-unstETHBalance">
+          <p>contract: undefined (0xae7ab96520de3a18e5e111b5eaab095312d7fe84)</p>
+          <p>method: undefined (0x70a08231)</p>
+          <p>arg0: undefined  (0x889edC2eDab5f40e902b864aD4d7AdE8E412F9B1)</p>
+          
+          <p>result: 5937.1</p>
+          <form method="dialog">
+            <button>OK</button>
+          </form>
+        </dialog></p>
         </div>
-        <div>
+        <div style="break-inside: avoid">
           <h2>Lido wstETH</h2>
-          <p>wstETH supply: <span>[object Promise]</span></p>
-          <p>wstETH on Arb: <span>[object Promise]</span></p>
-          <p>wstETH on Op: <span>[object Promise]</span></p>
+          <p>wstETH supply: <span
+          title="wstETHSupply"
+          onclick="document.getElementById('dialog-wstETHSupply').showModal()"
+          >3,198,623</span
+        ><dialog id="dialog-wstETHSupply">
+          <p>contract: undefined (0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0)</p>
+          <p>method: undefined (0x18160ddd)</p>
+          
+          
+          <p>result: 3,198,623</p>
+          <form method="dialog">
+            <button>OK</button>
+          </form>
+        </dialog></p>
+          <p>wstETH on Arb: <span
+          title="wstETHSupplyArb"
+          onclick="document.getElementById('dialog-wstETHSupplyArb').showModal()"
+          >95,205</span
+        ><dialog id="dialog-wstETHSupplyArb">
+          <p>contract: undefined (0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0)</p>
+          <p>method: undefined (0x70a08231)</p>
+          <p>arg0: undefined  (0x0F25c1DC2a9922304f2eac71DCa9B07E310e8E5a)</p>
+          
+          <p>result: 95,205</p>
+          <form method="dialog">
+            <button>OK</button>
+          </form>
+        </dialog></p>
+          <p>wstETH on Op: <span
+          title="wstETHSupplyOp"
+          onclick="document.getElementById('dialog-wstETHSupplyOp').showModal()"
+          >44,691</span
+        ><dialog id="dialog-wstETHSupplyOp">
+          <p>contract: undefined (0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0)</p>
+          <p>method: undefined (0x70a08231)</p>
+          <p>arg0: undefined  (0x76943C0D61395d8F2edF9060e1533529cAe05dE6)</p>
+          
+          <p>result: 44,691</p>
+          <form method="dialog">
+            <button>OK</button>
+          </form>
+        </dialog></p>
+        </div>
+        <div style="break-inside: avoid">
+          <h2>DVT</h2>
+          <p>DIVA stETH staked: <span
+          title="divaStETHBalance"
+          onclick="document.getElementById('dialog-divaStETHBalance').showModal()"
+          >16,511</span
+        ><dialog id="dialog-divaStETHBalance">
+          <p>contract: undefined (0xae7ab96520de3a18e5e111b5eaab095312d7fe84)</p>
+          <p>method: undefined (0x70a08231)</p>
+          <p>arg0: undefined  (0x1ce8aAfb51e79F6BDc0EF2eBd6fD34b00620f6dB)</p>
+          
+          <p>result: 16,511</p>
+          <form method="dialog">
+            <button>OK</button>
+          </form>
+        </dialog></p>
         </div>
       </div>
     </main>
@@ -84,7 +274,7 @@
   </body>
   <script>
     function displayLastUpdateTime() {
-      const timestamp = 1698438441;
+      const timestamp = 1698523667;
       const date = new Date(timestamp * 1000);
       const message = "Last updated: " + date.toLocaleString();
       document.getElementById("last_update").textContent = message;
