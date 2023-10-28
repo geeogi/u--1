@@ -1,103 +1,77 @@
 import * as fs from "fs";
-import {
-  //CoinbaseAPI,
-  //EigenLayerAPI,
-  RPC,
-  //EtherscanAPI,
-  //LidoAPI,
-  //SSVAPI,
-} from "./page-staking-utils.js";
+import { RPC } from "./page-staking-utils.js";
 
 async function main() {
-  const {
-    stETH,
-    wstETH,
-    cbETH,
-    rETH,
-    frxETH,
-    sfrxETH,
-    swETH,
-    sETH2,
-    curveStETH,
-    arbWstETHBridge,
-    opWstETHBridge,
-    eigenlayerStETH,
-    eigenlayerCbETH,
-    eigenlayerRETH,
-    divsStETH,
-    lybraStETH,
-    aaveStETH,
-    unstETH,
-  } = RPC.CONTRACTS;
+  const { CONTRACTS } = RPC;
 
-  const values = [
-    { key: "stETHSupply", call: RPC.totalSupply(stETH) },
-    { key: "cbETHSupply", call: RPC.totalSupply(cbETH) },
-    { key: "rETHSupply", call: RPC.totalSupply(rETH) },
-    { key: "frxETHSupply", call: RPC.totalSupply(frxETH) },
-    { key: "sfrxETHSupply", call: RPC.totalSupply(sfrxETH) },
-    { key: "swETHSupply", call: RPC.totalSupply(swETH) },
-    { key: "sETH2Supply", call: RPC.totalSupply(sETH2) },
-    { key: "stETHOperators", call: RPC.getLidoNodeOperatorsCount() },
-    { key: "stETHwstETHExchange", call: RPC.getStETHWstETHExchangeRate() },
-    { key: "wstETHSupply", call: RPC.totalSupply(wstETH) },
-    { key: "wstETHSupplyArb", call: RPC.balanceOf(wstETH, arbWstETHBridge) },
-    { key: "wstETHSupplyOp", call: RPC.balanceOf(wstETH, opWstETHBridge) },
-    { key: "crvStETHLpStETH", call: RPC.balanceOf(stETH, curveStETH) },
-    { key: "crvStETHLpETH", call: RPC.ethBalance(curveStETH) },
-    { key: "ethPrice", call: RPC.ethPrice() },
-    { key: "stETHPrice", call: RPC.stETHPrice() },
-    { key: "elStETHBalance", call: RPC.balanceOf(stETH, eigenlayerStETH) },
-    { key: "elCbETHBalance", call: RPC.balanceOf(cbETH, eigenlayerCbETH) },
-    { key: "elRETHBalance", call: RPC.balanceOf(rETH, eigenlayerRETH) },
-    { key: "divaStETHBalance", call: RPC.balanceOf(stETH, divsStETH) },
-    { key: "lybraStETHBalance", call: RPC.balanceOf(stETH, lybraStETH) },
-    { key: "aaveStETHBalance", call: RPC.balanceOf(stETH, aaveStETH) },
-    { key: "unstETHBalance", call: RPC.balanceOf(stETH, unstETH) },
+  const values = {
     // Add other balances for aave v3 (eth, op, arb, cbETH)
-  ];
+    aaveStETHBalance: RPC.balanceOf(CONTRACTS.stETH, CONTRACTS.aaveV2StETH),
+    cbETHSupply: RPC.totalSupply(CONTRACTS.cbETH),
+    crvStETHLpETH: RPC.ethBalance(CONTRACTS.curveStETH),
+    crvStETHLpStETH: RPC.balanceOf(CONTRACTS.stETH, CONTRACTS.curveStETH),
+    divaStETHBalance: RPC.balanceOf(CONTRACTS.stETH, CONTRACTS.divsStETH),
+    elCbETHBalance: RPC.balanceOf(CONTRACTS.cbETH, CONTRACTS.eigenlayerCbETH),
+    elRETHBalance: RPC.balanceOf(CONTRACTS.rETH, CONTRACTS.eigenlayerRETH),
+    elStETHBalance: RPC.balanceOf(CONTRACTS.stETH, CONTRACTS.eigenlayerStETH),
+    ethPrice: RPC.ethPrice(),
+    frxETHSupply: RPC.totalSupply(CONTRACTS.frxETH),
+    lybraStETHBalance: RPC.balanceOf(CONTRACTS.stETH, CONTRACTS.lybraStETH),
+    rETHSupply: RPC.totalSupply(CONTRACTS.rETH),
+    sETH2Supply: RPC.totalSupply(CONTRACTS.sETH2),
+    sfrxETHSupply: RPC.totalSupply(CONTRACTS.sfrxETH),
+    stETHOperators: RPC.getLidoNodeOperatorsCount(),
+    stETHPrice: RPC.stETHPrice(),
+    stETHSupply: RPC.totalSupply(CONTRACTS.stETH),
+    stETHwstETHExchange: RPC.getStETHWstETHExchangeRate(),
+    swETHSupply: RPC.totalSupply(CONTRACTS.swETH),
+    unstETHBalance: RPC.balanceOf(CONTRACTS.stETH, CONTRACTS.unstETH),
+    wstETHSupply: RPC.totalSupply(CONTRACTS.wstETH),
+    wstETHSupplyArb: RPC.balanceOf(CONTRACTS.wstETH, CONTRACTS.arbWstETHBridge),
+    wstETHSupplyOp: RPC.balanceOf(CONTRACTS.wstETH, CONTRACTS.opWstETHBridge),
+  };
 
   await Promise.all(
-    values.map((item, index) =>
-      item.call.then?.((resolvedCall) => {
-        values[index].call = resolvedCall;
+    Object.keys(values).map((key) =>
+      values[key].then?.((resolvedCall) => {
+        values[key] = resolvedCall;
       })
     )
   );
 
   let htmlContent = fs.readFileSync("page-staking-template.html", "utf8");
 
-  values.forEach((item) => {
+  Object.entries(values).forEach(([key, call]) => {
     const value =
-      typeof item.call.value === "number"
-        ? item.call.value > 9999
-          ? Math.round(item.call.value).toLocaleString()
-          : item.call.value > 1
-          ? Math.round(item.call.value * 100) / 100
-          : Math.round(item.call.value * 100000) / 100000
-        : item.call.value;
+      typeof call.value === "number"
+        ? call.value > 9999
+          ? Math.round(call.value).toLocaleString()
+          : call.value > 1
+          ? Math.round(call.value * 100) / 100
+          : Math.round(call.value * 100000) / 100000
+        : call.value;
 
-    const methodName = RPC.getName(item.call.methodSignature);
-    const contractName = RPC.getName(item.call.contractAddress);
-    const arg0 = item.call.args?.[0];
+    const methodName = RPC.getName(call.methodSignature);
+    const contractName = RPC.getName(call.contractAddress);
+    const arg0 = call.args?.[0];
     const arg0Name = RPC.getName(arg0);
-    const arg1 = item.call.args?.[1];
+    const arg1 = call.args?.[1];
     const arg1Name = RPC.getName(arg1);
 
     htmlContent = htmlContent.replaceAll(
-      `{${item.key}}`,
+      `{${key}}`,
       [
         `<span
-          title="${item.key}"
-          onclick="document.getElementById('dialog-${item.key}').showModal()"
+          title="${call.value}"
+          onclick="document.getElementById('dialog-${key}').showModal()"
           >${value}</span
         >`,
-        `<dialog id="dialog-${item.key}">
-          <p>contract: ${contractName} (${item.call.contractAddress})</p>
-          <p>method: ${methodName} (${item.call.methodSignature})</p>
-          ${arg0 ? `<p>arg0: ${arg0Name}  (${arg0})</p>` : ""}
-          ${arg1 ? `<p>arg1: ${arg1Name}  (${arg1})</p>` : ""}
-          <p>result: ${value}</p>
+        `<dialog id="dialog-${key}">
+          <p><b>contract</b>: ${contractName} (${call.contractAddress})</p>
+          <p><b>method</b>: ${methodName} (${call.methodSignature})</p>
+          ${arg0 ? `<p><b>arg0</b>: ${arg0Name}  (${arg0})</p>` : ""}
+          ${arg1 ? `<p><b>arg1</b>: ${arg1Name}  (${arg1})</p>` : ""}
+          <p><b>result</b>: ${value}</p>
           <form method="dialog">
             <button>OK</button>
           </form>
