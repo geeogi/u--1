@@ -47,77 +47,82 @@
       <div style="column-width: 300px; column-gap: 32px">
         <div>
           <h2>ETH</h2>
-          <p>ETH price (Chainlink): <span title="1789.48045468">1789.48</span>&nbsp;<button
+          <p>ETH price (Chainlink): <span title="1789.4588">1789.46</span>&nbsp;<button
           onclick="document.getElementById('dialog-ethPrice').showModal()"
         >
           ⓘ
         </button><dialog id="dialog-ethPrice">
-          <p><b>contract</b>: ethUsdChainlink (0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419)</p>
+          <p><b>description</b>: Current price of ETH</p>
+          <p><b>contract</b>: Chainlink ETH/USD (0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419)</p>
           <p><b>method</b>: latestAnswer (0x50d25bcd)</p>
           
           
-          <p><b>result</b>: 1789.48</p>
+          <p><b>result</b>: 1789.46</p>
           <form method="dialog">
-            <button>OK</button>
+            <button>CLOSE</button>
           </form>
         </dialog></p>
         </div>
         <div>
           <h2>Liquid staking</h2>
-          <p>Lido stETH supply: <span title="8788503.348222867">8,788,503</span>&nbsp;<button
+          <p>Lido stETH supply: <span title="8790856.370261941">8,790,856</span>&nbsp;<button
           onclick="document.getElementById('dialog-stETHSupply').showModal()"
         >
           ⓘ
         </button><dialog id="dialog-stETHSupply">
+          <p><b>description</b>: Total supply of Lido stETH</p>
           <p><b>contract</b>: stETH (0xae7ab96520de3a18e5e111b5eaab095312d7fe84)</p>
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 8,788,503</p>
+          <p><b>result</b>: 8,790,856</p>
           <form method="dialog">
-            <button>OK</button>
+            <button>CLOSE</button>
           </form>
         </dialog></p>
-          <p>Coinbase cbETH supply: <span title="1293718.476678342">1,293,718</span>&nbsp;<button
+          <p>Coinbase cbETH supply: <span title="1292902.6945053858">1,292,903</span>&nbsp;<button
           onclick="document.getElementById('dialog-cbETHSupply').showModal()"
         >
           ⓘ
         </button><dialog id="dialog-cbETHSupply">
+          <p><b>description</b>: Total supply of cbETH</p>
           <p><b>contract</b>: cbETH (0xBe9895146f7AF43049ca1c1AE358B0541Ea49704)</p>
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 1,293,718</p>
+          <p><b>result</b>: 1,292,903</p>
           <form method="dialog">
-            <button>OK</button>
+            <button>CLOSE</button>
           </form>
         </dialog></p>
-          <p>RocketPool rETH supply: <span title="535652.0615779284">535,652</span>&nbsp;<button
+          <p>RocketPool rETH supply: <span title="535788.2025689088">535,788</span>&nbsp;<button
           onclick="document.getElementById('dialog-rETHSupply').showModal()"
         >
           ⓘ
         </button><dialog id="dialog-rETHSupply">
+          <p><b>description</b>: Total supply of Rocket Pool ETH (rETH)</p>
           <p><b>contract</b>: rETH (0xae78736cd615f374d3085123a210448e74fc6393)</p>
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 535,652</p>
+          <p><b>result</b>: 535,788</p>
           <form method="dialog">
-            <button>OK</button>
+            <button>CLOSE</button>
           </form>
         </dialog></p>
-          <p>Frax sfrxETH supply: <span title="195843.91703847438">195,844</span>&nbsp;<button
+          <p>Frax sfrxETH supply: <span title="195853.52598150668">195,854</span>&nbsp;<button
           onclick="document.getElementById('dialog-sfrxETHSupply').showModal()"
         >
           ⓘ
         </button><dialog id="dialog-sfrxETHSupply">
+          <p><b>description</b>: Total supply of staked Frax Ether (sfrxETH)</p>
           <p><b>contract</b>: sfrxETH (0xac3e018457b222d93114458476f3e3416abbe38f)</p>
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 195,844</p>
+          <p><b>result</b>: 195,854</p>
           <form method="dialog">
-            <button>OK</button>
+            <button>CLOSE</button>
           </form>
         </dialog></p>
           <p>Stakewise sETH2 supply: <span title="85803.82950376821">85,804</span>&nbsp;<button
@@ -125,44 +130,47 @@
         >
           ⓘ
         </button><dialog id="dialog-sETH2Supply">
+          <p><b>description</b>: Total supply of Stakewise sETH2</p>
           <p><b>contract</b>: sETH2 (0xFe2e637202056d30016725477c5da089Ab0A043A)</p>
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
           <p><b>result</b>: 85,804</p>
           <form method="dialog">
-            <button>OK</button>
+            <button>CLOSE</button>
           </form>
         </dialog></p>
-          <p>Swell swETH supply: <span title="47128.2789899463">47,128</span>&nbsp;<button
+          <p>Swell swETH supply: <span title="47130.9423969931">47,131</span>&nbsp;<button
           onclick="document.getElementById('dialog-swETHSupply').showModal()"
         >
           ⓘ
         </button><dialog id="dialog-swETHSupply">
+          <p><b>description</b>: Total supply of Swell swETH</p>
           <p><b>contract</b>: swETH (0xf951e335afb289353dc249e82926178eac7ded78)</p>
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 47,128</p>
+          <p><b>result</b>: 47,131</p>
           <form method="dialog">
-            <button>OK</button>
+            <button>CLOSE</button>
           </form>
         </dialog></p>
         </div>
         <div>
           <h2>Lido stETH</h2>
-          <p>stETH supply: <span title="8788503.348222867">8,788,503</span>&nbsp;<button
+          <p>stETH supply: <span title="8790856.370261941">8,790,856</span>&nbsp;<button
           onclick="document.getElementById('dialog-stETHSupply').showModal()"
         >
           ⓘ
         </button><dialog id="dialog-stETHSupply">
+          <p><b>description</b>: Total supply of Lido stETH</p>
           <p><b>contract</b>: stETH (0xae7ab96520de3a18e5e111b5eaab095312d7fe84)</p>
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 8,788,503</p>
+          <p><b>result</b>: 8,790,856</p>
           <form method="dialog">
-            <button>OK</button>
+            <button>CLOSE</button>
           </form>
         </dialog></p>
           <p>stETH/ETH price (Chainlink): <span title="0.9994007395203257">0.9994</span>&nbsp;<button
@@ -170,13 +178,59 @@
         >
           ⓘ
         </button><dialog id="dialog-stETHPrice">
-          <p><b>contract</b>: stETHETHChainlink (0x86392dC19c0b719886221c78AB11eb8Cf5c52812)</p>
+          <p><b>description</b>: Current price of stETH/ETH</p>
+          <p><b>contract</b>: Chainlink stETH/ETH (0x86392dC19c0b719886221c78AB11eb8Cf5c52812)</p>
           <p><b>method</b>: latestAnswer (0x50d25bcd)</p>
           
           
           <p><b>result</b>: 0.9994</p>
           <form method="dialog">
-            <button>OK</button>
+            <button>CLOSE</button>
+          </form>
+        </dialog></p>
+          <p>Curve stETH LP ETH: <span title="60636.94031643344">60,637</span>&nbsp;<button
+          onclick="document.getElementById('dialog-crvStETHLpETH').showModal()"
+        >
+          ⓘ
+        </button><dialog id="dialog-crvStETHLpETH">
+          <p><b>description</b>: Balance of ETH in Curve stETH/ETH</p>
+          <p><b>contract</b>: Multicall (0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441)</p>
+          <p><b>method</b>: getEthBalance (0x4d2301cc)</p>
+          <p><b>arg0</b>: Curve stETH  (0xdc24316b9ae028f1497c275eb9192a3ea0f67022)</p>
+          
+          <p><b>result</b>: 60,637</p>
+          <form method="dialog">
+            <button>CLOSE</button>
+          </form>
+        </dialog></p>
+          <p>Curve stETH LP stETH: <span title="60969.511415306486">60,970</span>&nbsp;<button
+          onclick="document.getElementById('dialog-crvStETHLpStETH').showModal()"
+        >
+          ⓘ
+        </button><dialog id="dialog-crvStETHLpStETH">
+          <p><b>description</b>: Balance of stETH in Curve stETH/ETH</p>
+          <p><b>contract</b>: stETH (0xae7ab96520de3a18e5e111b5eaab095312d7fe84)</p>
+          <p><b>method</b>: balanceOf (0x70a08231)</p>
+          <p><b>arg0</b>: Curve stETH  (0xdc24316b9ae028f1497c275eb9192a3ea0f67022)</p>
+          
+          <p><b>result</b>: 60,970</p>
+          <form method="dialog">
+            <button>CLOSE</button>
+          </form>
+        </dialog></p>
+          <p>Aave V2 stETH: <span title="615699.4002389951">615,699</span>&nbsp;<button
+          onclick="document.getElementById('dialog-aaveV2StETHBalance').showModal()"
+        >
+          ⓘ
+        </button><dialog id="dialog-aaveV2StETHBalance">
+          <p><b>description</b>: Balance of stETH in Aave V2</p>
+          <p><b>contract</b>: stETH (0xae7ab96520de3a18e5e111b5eaab095312d7fe84)</p>
+          <p><b>method</b>: balanceOf (0x70a08231)</p>
+          <p><b>arg0</b>: Aave V2 stETH  (0x1982b2F5814301d4e9a8b0201555376e62F82428)</p>
+          
+          <p><b>result</b>: 615,699</p>
+          <form method="dialog">
+            <button>CLOSE</button>
           </form>
         </dialog></p>
           <p>Lido operators: <span title="39">39</span>&nbsp;<button
@@ -184,72 +238,77 @@
         >
           ⓘ
         </button><dialog id="dialog-stETHOperators">
-          <p><b>contract</b>: lidoNodeOperatorsRegistry (0x55032650b14df07b85bF18A3a3eC8E0Af2e028d5)</p>
+          <p><b>description</b>: Number of node operators in the Lido stETH protocol</p>
+          <p><b>contract</b>: Lido Node Registry (0x55032650b14df07b85bF18A3a3eC8E0Af2e028d5)</p>
           <p><b>method</b>: getNodeOperatorsCount (0xa70c70e4)</p>
           
           
           <p><b>result</b>: 39</p>
           <form method="dialog">
-            <button>OK</button>
+            <button>CLOSE</button>
           </form>
         </dialog></p>
-          <p>stETH buffered ETH: <span title="7375.481003455839">7375.48</span>&nbsp;<button
+          <p>stETH buffered ETH: <span title="9635.381469927042">9635.38</span>&nbsp;<button
           onclick="document.getElementById('dialog-stETHBufferedEther').showModal()"
         >
           ⓘ
         </button><dialog id="dialog-stETHBufferedEther">
+          <p><b>description</b>: ETH in the stETH buffer to be deposited in the beacon chain or withdrawn</p>
           <p><b>contract</b>: stETH (0xae7ab96520de3a18e5e111b5eaab095312d7fe84)</p>
           <p><b>method</b>: getBufferedEther (0x47b714e0)</p>
           
           
-          <p><b>result</b>: 7375.48</p>
+          <p><b>result</b>: 9635.38</p>
           <form method="dialog">
-            <button>OK</button>
+            <button>CLOSE</button>
           </form>
         </dialog></p>
-          <p>stETH withdrawal queue: <span title="6392.56461159433">6392.56</span>&nbsp;<button
+          <p>stETH withdrawal queue: <span title="3851.5962180910938">3851.6</span>&nbsp;<button
           onclick="document.getElementById('dialog-unstETHBalance').showModal()"
         >
           ⓘ
         </button><dialog id="dialog-unstETHBalance">
+          <p><b>description</b>: stETH waiting in the Lido withdrawal queue</p>
           <p><b>contract</b>: stETH (0xae7ab96520de3a18e5e111b5eaab095312d7fe84)</p>
           <p><b>method</b>: balanceOf (0x70a08231)</p>
           <p><b>arg0</b>: unstETH  (0x889edC2eDab5f40e902b864aD4d7AdE8E412F9B1)</p>
           
-          <p><b>result</b>: 6392.56</p>
+          <p><b>result</b>: 3851.6</p>
           <form method="dialog">
-            <button>OK</button>
+            <button>CLOSE</button>
           </form>
         </dialog></p>
         </div>
         <div>
           <h2>Lido wstETH</h2>
-          <p>wstETH supply: <span title="3198839.4514642525">3,198,839</span>&nbsp;<button
+          <p>wstETH supply: <span title="3195996.6269242167">3,195,997</span>&nbsp;<button
           onclick="document.getElementById('dialog-wstETHSupply').showModal()"
         >
           ⓘ
         </button><dialog id="dialog-wstETHSupply">
+          <p><b>description</b>: Total supply of Lido wstETH</p>
           <p><b>contract</b>: wstETH (0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0)</p>
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 3,198,839</p>
+          <p><b>result</b>: 3,195,997</p>
           <form method="dialog">
-            <button>OK</button>
+            <button>CLOSE</button>
           </form>
         </dialog></p>
-          <p>wstETH on Arb: <span title="95200.30355624483">95,200</span>&nbsp;<button
+          <p>wstETH on Arb: <span title="95210.08824621602">95,210</span>&nbsp;<button
           onclick="document.getElementById('dialog-wstETHSupplyArb').showModal()"
         >
           ⓘ
         </button><dialog id="dialog-wstETHSupplyArb">
+          <p><b>description</b>: Balance of wstETH in the Arbitrum ERC-20 bridge</p>
           <p><b>contract</b>: wstETH (0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0)</p>
           <p><b>method</b>: balanceOf (0x70a08231)</p>
-          <p><b>arg0</b>: arbWstETHBridge  (0x0F25c1DC2a9922304f2eac71DCa9B07E310e8E5a)</p>
+          <p><b>arg0</b>: Arbitrum ERC20 bridge  (0x0F25c1DC2a9922304f2eac71DCa9B07E310e8E5a)</p>
           
-          <p><b>result</b>: 95,200</p>
+          <p><b>result</b>: 95,210</p>
           <form method="dialog">
-            <button>OK</button>
+            <button>CLOSE</button>
           </form>
         </dialog></p>
           <p>wstETH on Op: <span title="45848.120685432965">45,848</span>&nbsp;<button
@@ -257,34 +316,84 @@
         >
           ⓘ
         </button><dialog id="dialog-wstETHSupplyOp">
+          <p><b>description</b>: Balance of wstETH in the Optimism wstETH bridge</p>
           <p><b>contract</b>: wstETH (0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0)</p>
           <p><b>method</b>: balanceOf (0x70a08231)</p>
-          <p><b>arg0</b>: opWstETHBridge  (0x76943C0D61395d8F2edF9060e1533529cAe05dE6)</p>
+          <p><b>arg0</b>: OP ERC20 Bridge  (0x76943C0D61395d8F2edF9060e1533529cAe05dE6)</p>
           
           <p><b>result</b>: 45,848</p>
           <form method="dialog">
-            <button>OK</button>
+            <button>CLOSE</button>
           </form>
         </dialog></p>
         </div>
         <div>
           <h2>DVT</h2>
-          <p>DIVA stETH staked: <span title="16529.481229892554">16,529</span>&nbsp;<button
+          <p>DIVA stETH staked: <span title="16531.02545345121">16,531</span>&nbsp;<button
           onclick="document.getElementById('dialog-divaStETHBalance').showModal()"
         >
           ⓘ
         </button><dialog id="dialog-divaStETHBalance">
+          <p><b>description</b>: Balance of stETH in Diva</p>
           <p><b>contract</b>: stETH (0xae7ab96520de3a18e5e111b5eaab095312d7fe84)</p>
           <p><b>method</b>: balanceOf (0x70a08231)</p>
-          <p><b>arg0</b>: divsStETH  (0x1ce8aAfb51e79F6BDc0EF2eBd6fD34b00620f6dB)</p>
+          <p><b>arg0</b>: Diva stETH  (0x1ce8aAfb51e79F6BDc0EF2eBd6fD34b00620f6dB)</p>
           
-          <p><b>result</b>: 16,529</p>
+          <p><b>result</b>: 16,531</p>
           <form method="dialog">
-            <button>OK</button>
+            <button>CLOSE</button>
           </form>
         </dialog></p>
           <p>SSV ETH staked: 22k as of Oct 2023</p>
           <p>Obol: testnet</p>
+        </div>
+        <div>
+          <h2>EigenLayer</h2>
+          <p>EL stETH staked: <span title="85039.08853815198">85,039</span>&nbsp;<button
+          onclick="document.getElementById('dialog-elStETHBalance').showModal()"
+        >
+          ⓘ
+        </button><dialog id="dialog-elStETHBalance">
+          <p><b>description</b>: Balance of stETH in Eigenlayer</p>
+          <p><b>contract</b>: stETH (0xae7ab96520de3a18e5e111b5eaab095312d7fe84)</p>
+          <p><b>method</b>: balanceOf (0x70a08231)</p>
+          <p><b>arg0</b>: EigenLayer stETH  (0x93c4b944D05dfe6df7645A86cd2206016c51564D)</p>
+          
+          <p><b>result</b>: 85,039</p>
+          <form method="dialog">
+            <button>CLOSE</button>
+          </form>
+        </dialog></p>
+          <p>EL cbETH staked: <span title="19630.848247409926">19,631</span>&nbsp;<button
+          onclick="document.getElementById('dialog-elCbETHBalance').showModal()"
+        >
+          ⓘ
+        </button><dialog id="dialog-elCbETHBalance">
+          <p><b>description</b>: Balance of cbETH in Eigenlayer</p>
+          <p><b>contract</b>: cbETH (0xBe9895146f7AF43049ca1c1AE358B0541Ea49704)</p>
+          <p><b>method</b>: balanceOf (0x70a08231)</p>
+          <p><b>arg0</b>: EigenLayer cbETH  (0x54945180dB7943c0ed0FEE7EdaB2Bd24620256bc)</p>
+          
+          <p><b>result</b>: 19,631</p>
+          <form method="dialog">
+            <button>CLOSE</button>
+          </form>
+        </dialog></p>
+          <p>EL rETH staked: <span title="18801.589721705215">18,802</span>&nbsp;<button
+          onclick="document.getElementById('dialog-elRETHBalance').showModal()"
+        >
+          ⓘ
+        </button><dialog id="dialog-elRETHBalance">
+          <p><b>description</b>: Balance of rETH in Eigenlayer</p>
+          <p><b>contract</b>: rETH (0xae78736cd615f374d3085123a210448e74fc6393)</p>
+          <p><b>method</b>: balanceOf (0x70a08231)</p>
+          <p><b>arg0</b>: EigenLayer rETH  (0x1BeE69b7dFFfA4E2d53C2a2Df135C388AD25dCD2)</p>
+          
+          <p><b>result</b>: 18,802</p>
+          <form method="dialog">
+            <button>CLOSE</button>
+          </form>
+        </dialog></p>
         </div>
       </div>
     </main>
