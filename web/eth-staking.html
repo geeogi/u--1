@@ -35,6 +35,11 @@
       content="no-cache, no-store, must-revalidate"
     />
     <meta http-equiv="Pragma" content="no-cache" />
+    <style>
+      * {
+        break-inside: avoid;
+      }
+    </style>
   </head>
   <body>
     <main>
@@ -42,7 +47,7 @@
       <div style="column-width: 300px; column-gap: 32px">
         <div>
           <h2>ETH</h2>
-          <p>ETH price (Chainlink): <span title="1788.831483">1788.83</span>&nbsp;<button
+          <p>ETH price (Chainlink): <span title="1784.37">1784.37</span>&nbsp;<button
           onclick="document.getElementById('dialog-ethPrice').showModal()"
         >
           ⓘ
@@ -51,7 +56,7 @@
           <p><b>method</b>: latestAnswer (0x50d25bcd)</p>
           
           
-          <p><b>result</b>: 1788.83</p>
+          <p><b>result</b>: 1784.37</p>
           <form method="dialog">
             <button>OK</button>
           </form>
@@ -59,7 +64,7 @@
         </div>
         <div>
           <h2>Liquid staking</h2>
-          <p>Lido stETH supply: <span title="8787346.34896798">8,787,346</span>&nbsp;<button
+          <p>Lido stETH supply: <span title="8787570.414610445">8,787,570</span>&nbsp;<button
           onclick="document.getElementById('dialog-stETHSupply').showModal()"
         >
           ⓘ
@@ -68,12 +73,12 @@
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 8,787,346</p>
+          <p><b>result</b>: 8,787,570</p>
           <form method="dialog">
             <button>OK</button>
           </form>
         </dialog></p>
-          <p>Coinbase cbETH supply: <span title="1293734.2438310636">1,293,734</span>&nbsp;<button
+          <p>Coinbase cbETH supply: <span title="1293718.476678342">1,293,718</span>&nbsp;<button
           onclick="document.getElementById('dialog-cbETHSupply').showModal()"
         >
           ⓘ
@@ -82,12 +87,12 @@
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 1,293,734</p>
+          <p><b>result</b>: 1,293,718</p>
           <form method="dialog">
             <button>OK</button>
           </form>
         </dialog></p>
-          <p>RocketPool rETH supply: <span title="535492.4984820825">535,492</span>&nbsp;<button
+          <p>RocketPool rETH supply: <span title="535483.4971791175">535,483</span>&nbsp;<button
           onclick="document.getElementById('dialog-rETHSupply').showModal()"
         >
           ⓘ
@@ -96,26 +101,26 @@
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 535,492</p>
+          <p><b>result</b>: 535,483</p>
           <form method="dialog">
             <button>OK</button>
           </form>
         </dialog></p>
-          <p>Frax frxETH supply: <span title="281353.58062151517">281,354</span>&nbsp;<button
-          onclick="document.getElementById('dialog-frxETHSupply').showModal()"
+          <p>Frax sfrxETH supply: <span title="195842.0351402956">195,842</span>&nbsp;<button
+          onclick="document.getElementById('dialog-sfrxETHSupply').showModal()"
         >
           ⓘ
-        </button><dialog id="dialog-frxETHSupply">
-          <p><b>contract</b>: frxETH (0x5e8422345238f34275888049021821e8e08caa1f)</p>
+        </button><dialog id="dialog-sfrxETHSupply">
+          <p><b>contract</b>: sfrxETH (0xac3e018457b222d93114458476f3e3416abbe38f)</p>
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 281,354</p>
+          <p><b>result</b>: 195,842</p>
           <form method="dialog">
             <button>OK</button>
           </form>
         </dialog></p>
-          <p>Stakewise sETH2 supply: <span title="85803.82902376821">85,804</span>&nbsp;<button
+          <p>Stakewise sETH2 supply: <span title="85803.82950376821">85,804</span>&nbsp;<button
           onclick="document.getElementById('dialog-sETH2Supply').showModal()"
         >
           ⓘ
@@ -129,7 +134,7 @@
             <button>OK</button>
           </form>
         </dialog></p>
-          <p>Swell swETH supply: <span title="47127.851191304966">47,128</span>&nbsp;<button
+          <p>Swell swETH supply: <span title="47128.2789899463">47,128</span>&nbsp;<button
           onclick="document.getElementById('dialog-swETHSupply').showModal()"
         >
           ⓘ
@@ -146,7 +151,7 @@
         </div>
         <div>
           <h2>Lido stETH</h2>
-          <p>stETH supply: <span title="8787346.34896798">8,787,346</span>&nbsp;<button
+          <p>stETH supply: <span title="8787570.414610445">8,787,570</span>&nbsp;<button
           onclick="document.getElementById('dialog-stETHSupply').showModal()"
         >
           ⓘ
@@ -155,7 +160,7 @@
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 8,787,346</p>
+          <p><b>result</b>: 8,787,570</p>
           <form method="dialog">
             <button>OK</button>
           </form>
@@ -188,7 +193,7 @@
             <button>OK</button>
           </form>
         </dialog></p>
-          <p>stETH withdrawal queue: <span title="6206.501857902879">6206.5</span>&nbsp;<button
+          <p>stETH withdrawal queue: <span title="6388.268885092372">6388.27</span>&nbsp;<button
           onclick="document.getElementById('dialog-unstETHBalance').showModal()"
         >
           ⓘ
@@ -197,7 +202,7 @@
           <p><b>method</b>: balanceOf (0x70a08231)</p>
           <p><b>arg0</b>: unstETH  (0x889edC2eDab5f40e902b864aD4d7AdE8E412F9B1)</p>
           
-          <p><b>result</b>: 6206.5</p>
+          <p><b>result</b>: 6388.27</p>
           <form method="dialog">
             <button>OK</button>
           </form>
@@ -205,7 +210,7 @@
         </div>
         <div>
           <h2>Lido wstETH</h2>
-          <p>wstETH supply: <span title="3198677.1483122976">3,198,677</span>&nbsp;<button
+          <p>wstETH supply: <span title="3198821.0468287943">3,198,821</span>&nbsp;<button
           onclick="document.getElementById('dialog-wstETHSupply').showModal()"
         >
           ⓘ
@@ -214,7 +219,7 @@
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 3,198,677</p>
+          <p><b>result</b>: 3,198,821</p>
           <form method="dialog">
             <button>OK</button>
           </form>
@@ -264,6 +269,8 @@
             <button>OK</button>
           </form>
         </dialog></p>
+          <p>SSV ETH staked: 22k as of Oct 2023</p>
+          <p>Obol: testnet</p>
         </div>
       </div>
     </main>

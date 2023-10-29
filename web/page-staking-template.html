@@ -35,6 +35,11 @@
       content="no-cache, no-store, must-revalidate"
     />
     <meta http-equiv="Pragma" content="no-cache" />
+    <style>
+      * {
+        break-inside: avoid;
+      }
+    </style>
   </head>
   <body>
     <main>
@@ -49,7 +54,7 @@
           <p>Lido stETH supply: {stETHSupply}</p>
           <p>Coinbase cbETH supply: {cbETHSupply}</p>
           <p>RocketPool rETH supply: {rETHSupply}</p>
-          <p>Frax frxETH supply: {frxETHSupply}</p>
+          <p>Frax sfrxETH supply: {sfrxETHSupply}</p>
           <p>Stakewise sETH2 supply: {sETH2Supply}</p>
           <p>Swell swETH supply: {swETHSupply}</p>
         </div>
@@ -69,6 +74,8 @@
         <div>
           <h2>DVT</h2>
           <p>DIVA stETH staked: {divaStETHBalance}</p>
+          <p>SSV ETH staked: 22k as of Oct 2023</p>
+          <p>Obol: testnet</p>
         </div>
       </div>
     </main>
