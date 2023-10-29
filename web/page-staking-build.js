@@ -176,6 +176,7 @@ async function main() {
       [
         `<span title="${result.value}">${value}</span>`,
         "&nbsp;",
+        "&nbsp;",
         `<button
           onclick="document.getElementById('dialog-${key}').showModal()"
         >
