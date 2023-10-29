@@ -54,6 +54,14 @@ async function main() {
       call: RPC.balanceOf(CONTRACTS.cbETH, CONTRACTS["EigenLayer cbETH"]),
       description: "Balance of cbETH in Eigenlayer",
     },
+    eETHSupply: {
+      call: RPC.totalSupply(CONTRACTS.eETH),
+      description: "Total supply of ether.fi eETH",
+    },
+    ETHxSupply: {
+      call: RPC.totalSupply(CONTRACTS.ETHx),
+      description: "Total supply of Stader ETHx",
+    },
     elNumPods: {
       call: RPC.getEigenLayerNumPods(),
       description: "Number of EigenPods deployed for native restaking",
@@ -81,6 +89,10 @@ async function main() {
     rETHSupply: {
       call: RPC.totalSupply(CONTRACTS.rETH),
       description: "Total supply of Rocket Pool ETH (rETH)",
+    },
+    rstETHSupply: {
+      call: RPC.totalSupply(CONTRACTS.rstETH),
+      description: "Total supply of Astrid Finance rstETH",
     },
     sETH2Supply: {
       call: RPC.totalSupply(CONTRACTS.sETH2),
