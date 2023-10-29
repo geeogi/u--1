@@ -10,9 +10,29 @@ async function main() {
       call: RPC.balanceOf(CONTRACTS.stETH, CONTRACTS["Aave V2 stETH"]),
       description: "Balance of stETH in Aave V2",
     },
+    aaveV3WstETHBalance: {
+      call: RPC.balanceOf(CONTRACTS.wstETH, CONTRACTS["Aave V3 wstETH"]),
+      description: "Balance of wstETH in Aave V3",
+    },
+    aaveV3CbETHBalance: {
+      call: RPC.balanceOf(CONTRACTS.cbETH, CONTRACTS["Aave V3 cbETH"]),
+      description: "Balance of cbETH in Aave V3",
+    },
+    aaveV3RETHBalance: {
+      call: RPC.balanceOf(CONTRACTS.rETH, CONTRACTS["Aave V3 rETH"]),
+      description: "Balance of rETH in Aave V3",
+    },
     cbETHSupply: {
       call: RPC.totalSupply(CONTRACTS.cbETH),
       description: "Total supply of cbETH",
+    },
+    compoundV3CbETH: {
+      call: RPC.balanceOf(CONTRACTS.cbETH, CONTRACTS["Compound V3 WETH"]),
+      description: "Balance of cbETH in the Compound 3 WETH market",
+    },
+    compoundV3WstETH: {
+      call: RPC.balanceOf(CONTRACTS.wstETH, CONTRACTS["Compound V3 WETH"]),
+      description: "Balance of wstETH in the Compound 3 WETH market",
     },
     crvStETHLpETH: {
       call: RPC.ethBalance(CONTRACTS["Curve stETH"]),
@@ -29,6 +49,10 @@ async function main() {
     elCbETHBalance: {
       call: RPC.balanceOf(CONTRACTS.cbETH, CONTRACTS["EigenLayer cbETH"]),
       description: "Balance of cbETH in Eigenlayer",
+    },
+    elNumPods: {
+      call: RPC.getEigenLayerNumPods(),
+      description: "Number of EigenPods deployed for native restaking",
     },
     elRETHBalance: {
       call: RPC.balanceOf(CONTRACTS.rETH, CONTRACTS["EigenLayer rETH"]),

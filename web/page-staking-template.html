@@ -64,7 +64,6 @@
           <p>stETH/ETH price (Chainlink): {stETHPrice}</p>
           <p>Curve stETH LP ETH: {crvStETHLpETH}</p>
           <p>Curve stETH LP stETH: {crvStETHLpStETH}</p>
-          <p>Aave V2 stETH: {aaveV2StETHBalance}</p>
           <p>Lido operators: {stETHOperators}</p>
           <p>stETH buffered ETH: {stETHBufferedEther}</p>
           <p>stETH withdrawal queue: {unstETHBalance}</p>
@@ -83,9 +82,19 @@
         </div>
         <div>
           <h2>EigenLayer</h2>
-          <p>EL stETH staked: {elStETHBalance}</p>
-          <p>EL cbETH staked: {elCbETHBalance}</p>
-          <p>EL rETH staked: {elRETHBalance}</p>
+          <p>stETH staked: {elStETHBalance}</p>
+          <p>cbETH staked: {elCbETHBalance}</p>
+          <p>rETH staked: {elRETHBalance}</p>
+          <p>EigenPods deployed: {elNumPods}</p>
+        </div>
+        <div>
+          <h2>Lending</h2>
+          <p>Aave V2 stETH: {aaveV2StETHBalance}</p>
+          <p>Aave V3 wstETH: {aaveV3WstETHBalance}</p>
+          <p>Aave V3 cbETH: {aaveV3CbETHBalance}</p>
+          <p>Aave V3 rETH: {aaveV3RETHBalance}</p>
+          <p>Compound V3 wstETH: {compoundV3WstETH}</p>
+          <p>Compound V3 cbETH: {compoundV3CbETH}</p>
         </div>
       </div>
     </main>

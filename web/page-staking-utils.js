@@ -4,6 +4,10 @@ export const RPC = {
 
   CONTRACTS: {
     "Aave V2 stETH": "0x1982b2F5814301d4e9a8b0201555376e62F82428",
+    "Aave V3 wstETH": "0x0B925eD163218f6662a35e0f0371Ac234f9E9371",
+    "Aave V3 cbETH": "0x977b6fc5de62598b08c85ac8cf2b745874e8b78c",
+    "Aave V3 rETH": "0xCc9EE9483f662091a1de4795249E24aC0aC2630f",
+    "Compound V3 WETH": "0xA17581A9E3356d9A858b789D68B4d866e593aE94",
     "Arbitrum ERC20 bridge": "0x0F25c1DC2a9922304f2eac71DCa9B07E310e8E5a",
     "Chainlink ETH/USD": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
     "Chainlink stETH/ETH": "0x86392dC19c0b719886221c78AB11eb8Cf5c52812",
@@ -12,6 +16,7 @@ export const RPC = {
     "EigenLayer cbETH": "0x54945180dB7943c0ed0FEE7EdaB2Bd24620256bc",
     "EigenLayer rETH": "0x1BeE69b7dFFfA4E2d53C2a2Df135C388AD25dCD2",
     "EigenLayer stETH": "0x93c4b944D05dfe6df7645A86cd2206016c51564D",
+    "EigenLayer Pod Manager": "0x91E677b07F7AF907ec9a428aafA9fc14a0d3A338",
     "Lido Node Registry": "0x55032650b14df07b85bF18A3a3eC8E0Af2e028d5",
     "Lybra stETH": "0xa980d4c0C2E48d305b582AA439a3575e3de06f0E",
     "OP ERC20 Bridge": "0x76943C0D61395d8F2edF9060e1533529cAe05dE6",
@@ -37,6 +42,7 @@ export const RPC = {
     stEthPerToken: "0x035faf82",
     getNodeOperatorsCount: "0xa70c70e4",
     getBufferedEther: "0x47b714e0",
+    numPods: "0xa6a509be",
   },
 
   getName(hex) {
@@ -152,6 +158,14 @@ export const RPC = {
     const signature = this.SIGNATURES.getBufferedEther;
     const result = await this.callContractMethod(target, signature);
     result.value = parseInt(result.value, 16) / 10 ** 18;
+    return result;
+  },
+
+  async getEigenLayerNumPods() {
+    const target = this.CONTRACTS["EigenLayer Pod Manager"];
+    const signature = this.SIGNATURES.numPods;
+    const result = await this.callContractMethod(target, signature);
+    result.value = parseInt(result.value, 16);
     return result;
   },
 };
