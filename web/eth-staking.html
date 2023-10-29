@@ -44,9 +44,10 @@
   <body>
     <main>
       <h1>Ethereum staking directory</h1>
-      <div style="column-width: 300px; column-gap: 32px">
+      <i>All values updated via Alchemy RPC every 5 mins</i>
+      <div style="column-width: 300px; column-gap: 32px; row-gap: 32px">
         <div>
-          <h2>ETH</h2>
+          <h3>ETH</h3>
           <p>ETH price (Chainlink): <span title="1793.38291937">1793.38</span>&nbsp;<button
           onclick="document.getElementById('dialog-ethPrice').showModal()"
         >
@@ -64,8 +65,8 @@
         </dialog></p>
         </div>
         <div>
-          <h2>Liquid staking</h2>
-          <p>Lido stETH supply: <span title="8796550.889754254">8,796,551</span>&nbsp;<button
+          <h3>Liquid staking</h3>
+          <p>Lido stETH supply: <span title="8796551.522829229">8,796,552</span>&nbsp;<button
           onclick="document.getElementById('dialog-stETHSupply').showModal()"
         >
           ⓘ
@@ -75,7 +76,7 @@
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 8,796,551</p>
+          <p><b>result</b>: 8,796,552</p>
           <form method="dialog">
             <button>close</button>
           </form>
@@ -125,7 +126,7 @@
             <button>close</button>
           </form>
         </dialog></p>
-          <p>Stakewise sETH2 supply: <span title="85803.83102560262">85,804</span>&nbsp;<button
+          <p>Stakewise sETH2 supply: <span title="85804.83102560263">85,805</span>&nbsp;<button
           onclick="document.getElementById('dialog-sETH2Supply').showModal()"
         >
           ⓘ
@@ -135,7 +136,7 @@
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 85,804</p>
+          <p><b>result</b>: 85,805</p>
           <form method="dialog">
             <button>close</button>
           </form>
@@ -157,8 +158,8 @@
         </dialog></p>
         </div>
         <div>
-          <h2>Lido stETH</h2>
-          <p>stETH supply: <span title="8796550.889754254">8,796,551</span>&nbsp;<button
+          <h3>Lido stETH</h3>
+          <p>stETH supply: <span title="8796551.522829229">8,796,552</span>&nbsp;<button
           onclick="document.getElementById('dialog-stETHSupply').showModal()"
         >
           ⓘ
@@ -168,7 +169,7 @@
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 8,796,551</p>
+          <p><b>result</b>: 8,796,552</p>
           <form method="dialog">
             <button>close</button>
           </form>
@@ -233,7 +234,7 @@
             <button>close</button>
           </form>
         </dialog></p>
-          <p>stETH buffered ETH: <span title="15329.90096224005">15,330</span>&nbsp;<button
+          <p>stETH buffered ETH: <span title="15330.534037215522">15,331</span>&nbsp;<button
           onclick="document.getElementById('dialog-stETHBufferedEther').showModal()"
         >
           ⓘ
@@ -243,12 +244,12 @@
           <p><b>method</b>: getBufferedEther (0x47b714e0)</p>
           
           
-          <p><b>result</b>: 15,330</p>
+          <p><b>result</b>: 15,331</p>
           <form method="dialog">
             <button>close</button>
           </form>
         </dialog></p>
-          <p>stETH withdrawal queue: <span title="5077.101896370202">5077.1</span>&nbsp;<button
+          <p>stETH withdrawal queue: <span title="5080.712940313436">5080.71</span>&nbsp;<button
           onclick="document.getElementById('dialog-unstETHBalance').showModal()"
         >
           ⓘ
@@ -258,15 +259,15 @@
           <p><b>method</b>: balanceOf (0x70a08231)</p>
           <p><b>arg0</b>: unstETH  (0x889edC2eDab5f40e902b864aD4d7AdE8E412F9B1)</p>
           
-          <p><b>result</b>: 5077.1</p>
+          <p><b>result</b>: 5080.71</p>
           <form method="dialog">
             <button>close</button>
           </form>
         </dialog></p>
         </div>
         <div>
-          <h2>Lido wstETH</h2>
-          <p>wstETH supply: <span title="3199920.5046734004">3,199,921</span>&nbsp;<button
+          <h3>Lido wstETH</h3>
+          <p>wstETH supply: <span title="3199943.3589029936">3,199,943</span>&nbsp;<button
           onclick="document.getElementById('dialog-wstETHSupply').showModal()"
         >
           ⓘ
@@ -276,7 +277,7 @@
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 3,199,921</p>
+          <p><b>result</b>: 3,199,943</p>
           <form method="dialog">
             <button>close</button>
           </form>
@@ -313,7 +314,7 @@
         </dialog></p>
         </div>
         <div>
-          <h2>DVT</h2>
+          <h3>DVT</h3>
           <p>Diva stETH staked: <span title="16531.02545345121">16,531</span>&nbsp;<button
           onclick="document.getElementById('dialog-divaStETHBalance').showModal()"
         >
@@ -348,7 +349,7 @@
           <p>Obol: testnet as of Oct 2023</p>
         </div>
         <div>
-          <h2>EigenLayer</h2>
+          <h3>EigenLayer</h3>
           <p>stETH staked: <span title="85039.08853815198">85,039</span>&nbsp;<button
           onclick="document.getElementById('dialog-elStETHBalance').showModal()"
         >
@@ -411,7 +412,7 @@
         </dialog></p>
         </div>
         <div>
-          <h2>Lending</h2>
+          <h3>Lending</h3>
           <p>Aave V2 stETH: <span title="615599.1096709333">615,599</span>&nbsp;<button
           onclick="document.getElementById('dialog-aaveV2StETHBalance').showModal()"
         >
@@ -504,7 +505,15 @@
         </dialog></p>
         </div>
         <div>
-          <h2>Liquid restaking</h2>
+          <h3>Liquid restaking</h3>
+          <p>
+            <i
+              >protocol list from
+              <a href="https://x.com/0xkrane/status/1718133394465247360?s=20"
+                >0xkrane</a
+              >
+            </i>
+          </p>
           <p>Stader ETHx supply: <span title="36888.04381465915">36,888</span>&nbsp;<button
           onclick="document.getElementById('dialog-ETHxSupply').showModal()"
         >
@@ -585,9 +594,9 @@
   <script>
     function displayLastUpdateTime() {
       // prettier-ignore
-      const timestamp = 1698609893;
+      const timestamp = 1698610571;
       const date = new Date(timestamp * 1000);
-      const message = "Last updated: " + date.toLocaleString();
+      const message = "Last updated by Alchemy RPC: " + date.toLocaleString();
       document.getElementById("last_update").textContent = message;
     }
 

@@ -44,13 +44,14 @@
   <body>
     <main>
       <h1>Ethereum staking directory</h1>
-      <div style="column-width: 300px; column-gap: 32px">
+      <i>All values updated via Alchemy RPC every 5 mins</i>
+      <div style="column-width: 300px; column-gap: 32px; row-gap: 32px">
         <div>
-          <h2>ETH</h2>
+          <h3>ETH</h3>
           <p>ETH price (Chainlink): {ethPrice}</p>
         </div>
         <div>
-          <h2>Liquid staking</h2>
+          <h3>Liquid staking</h3>
           <p>Lido stETH supply: {stETHSupply}</p>
           <p>Coinbase cbETH supply: {cbETHSupply}</p>
           <p>RocketPool rETH supply: {rETHSupply}</p>
@@ -59,7 +60,7 @@
           <p>Swell swETH supply: {swETHSupply}</p>
         </div>
         <div>
-          <h2>Lido stETH</h2>
+          <h3>Lido stETH</h3>
           <p>stETH supply: {stETHSupply}</p>
           <p>stETH/ETH price (Chainlink): {stETHPrice}</p>
           <p>Curve stETH LP ETH: {crvStETHLpETH}</p>
@@ -69,27 +70,27 @@
           <p>stETH withdrawal queue: {unstETHBalance}</p>
         </div>
         <div>
-          <h2>Lido wstETH</h2>
+          <h3>Lido wstETH</h3>
           <p>wstETH supply: {wstETHSupply}</p>
           <p>wstETH on Arb: {wstETHSupplyArb}</p>
           <p>wstETH on Op: {wstETHSupplyOp}</p>
         </div>
         <div>
-          <h2>DVT</h2>
+          <h3>DVT</h3>
           <p>Diva stETH staked: {divaStETHBalance}</p>
           <p>Diva ETH staked: {divaETHBalance}</p>
           <p>SSV ETH staked: 22k as of Oct 2023</p>
           <p>Obol: testnet as of Oct 2023</p>
         </div>
         <div>
-          <h2>EigenLayer</h2>
+          <h3>EigenLayer</h3>
           <p>stETH staked: {elStETHBalance}</p>
           <p>cbETH staked: {elCbETHBalance}</p>
           <p>rETH staked: {elRETHBalance}</p>
           <p>EigenPods deployed: {elNumPods}</p>
         </div>
         <div>
-          <h2>Lending</h2>
+          <h3>Lending</h3>
           <p>Aave V2 stETH: {aaveV2StETHBalance}</p>
           <p>Aave V3 wstETH: {aaveV3WstETHBalance}</p>
           <p>Aave V3 cbETH: {aaveV3CbETHBalance}</p>
@@ -98,7 +99,15 @@
           <p>Compound V3 cbETH: {compoundV3CbETH}</p>
         </div>
         <div>
-          <h2>Liquid restaking</h2>
+          <h3>Liquid restaking</h3>
+          <p>
+            <i
+              >protocol list from
+              <a href="https://x.com/0xkrane/status/1718133394465247360?s=20"
+                >0xkrane</a
+              >
+            </i>
+          </p>
           <p>Stader ETHx supply: {ETHxSupply}</p>
           <p>ether.fi eETH supply: {eETHSupply}</p>
           <p>Astrid rstETH supply: {rstETHSupply}</p>
@@ -139,7 +148,7 @@
       // prettier-ignore
       const timestamp = {timestamp};
       const date = new Date(timestamp * 1000);
-      const message = "Last updated: " + date.toLocaleString();
+      const message = "Last updated by Alchemy RPC: " + date.toLocaleString();
       document.getElementById("last_update").textContent = message;
     }
 

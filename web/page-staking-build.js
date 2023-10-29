@@ -5,7 +5,6 @@ async function main() {
   const { CONTRACTS } = RPC;
 
   const values = {
-    // Add other balances for aave v3 (eth, op, arb, cbETH)
     aaveV2StETHBalance: {
       call: RPC.balanceOf(CONTRACTS.stETH, CONTRACTS["Aave V2 stETH"]),
       description: "Balance of stETH in Aave V2",
