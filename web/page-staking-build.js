@@ -61,11 +61,13 @@ async function main() {
     htmlContent = htmlContent.replaceAll(
       `{${key}}`,
       [
-        `<span
-          title="${call.value}"
+        `<span title="${call.value}">${value}</span>`,
+        "&nbsp;",
+        `<button
           onclick="document.getElementById('dialog-${key}').showModal()"
-          >${value}</span
-        >`,
+        >
+          ⓘ
+        </button>`,
         `<dialog id="dialog-${key}">
           <p><b>contract</b>: ${contractName} (${call.contractAddress})</p>
           <p><b>method</b>: ${methodName} (${call.methodSignature})</p>
