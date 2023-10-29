@@ -44,7 +44,11 @@ async function main() {
     },
     divaStETHBalance: {
       call: RPC.balanceOf(CONTRACTS.stETH, CONTRACTS["Diva stETH"]),
-      description: "Balance of stETH in Diva",
+      description: "Balance of stETH staked in Diva (DVTVL)",
+    },
+    divaETHBalance: {
+      call: RPC.totalSupply(CONTRACTS["Diva ETH"]),
+      description: "Balance of ETH staked in Diva (DSTVL)",
     },
     elCbETHBalance: {
       call: RPC.balanceOf(CONTRACTS.cbETH, CONTRACTS["EigenLayer cbETH"]),

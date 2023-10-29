@@ -13,6 +13,7 @@ export const RPC = {
     "Chainlink stETH/ETH": "0x86392dC19c0b719886221c78AB11eb8Cf5c52812",
     "Curve stETH": "0xdc24316b9ae028f1497c275eb9192a3ea0f67022",
     "Diva stETH": "0x1ce8aAfb51e79F6BDc0EF2eBd6fD34b00620f6dB",
+    "Diva ETH": "0x16770d642e882e1769ce4ac8612b8bc0601506fc",
     "EigenLayer cbETH": "0x54945180dB7943c0ed0FEE7EdaB2Bd24620256bc",
     "EigenLayer rETH": "0x1BeE69b7dFFfA4E2d53C2a2Df135C388AD25dCD2",
     "EigenLayer stETH": "0x93c4b944D05dfe6df7645A86cd2206016c51564D",

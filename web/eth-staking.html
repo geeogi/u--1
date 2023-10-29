@@ -65,7 +65,7 @@
         </div>
         <div>
           <h2>Liquid staking</h2>
-          <p>Lido stETH supply: <span title="8796397.609194761">8,796,398</span>&nbsp;<button
+          <p>Lido stETH supply: <span title="8796514.323627064">8,796,514</span>&nbsp;<button
           onclick="document.getElementById('dialog-stETHSupply').showModal()"
         >
           ⓘ
@@ -75,7 +75,7 @@
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 8,796,398</p>
+          <p><b>result</b>: 8,796,514</p>
           <form method="dialog">
             <button>close</button>
           </form>
@@ -158,7 +158,7 @@
         </div>
         <div>
           <h2>Lido stETH</h2>
-          <p>stETH supply: <span title="8796397.609194761">8,796,398</span>&nbsp;<button
+          <p>stETH supply: <span title="8796514.323627064">8,796,514</span>&nbsp;<button
           onclick="document.getElementById('dialog-stETHSupply').showModal()"
         >
           ⓘ
@@ -168,7 +168,7 @@
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 8,796,398</p>
+          <p><b>result</b>: 8,796,514</p>
           <form method="dialog">
             <button>close</button>
           </form>
@@ -233,7 +233,7 @@
             <button>close</button>
           </form>
         </dialog></p>
-          <p>stETH buffered ETH: <span title="15176.620402746683">15,177</span>&nbsp;<button
+          <p>stETH buffered ETH: <span title="15293.334835050047">15,293</span>&nbsp;<button
           onclick="document.getElementById('dialog-stETHBufferedEther').showModal()"
         >
           ⓘ
@@ -243,7 +243,7 @@
           <p><b>method</b>: getBufferedEther (0x47b714e0)</p>
           
           
-          <p><b>result</b>: 15,177</p>
+          <p><b>result</b>: 15,293</p>
           <form method="dialog">
             <button>close</button>
           </form>
@@ -266,7 +266,7 @@
         </div>
         <div>
           <h2>Lido wstETH</h2>
-          <p>wstETH supply: <span title="3199594.116492035">3,199,594</span>&nbsp;<button
+          <p>wstETH supply: <span title="3199797.245347024">3,199,797</span>&nbsp;<button
           onclick="document.getElementById('dialog-wstETHSupply').showModal()"
         >
           ⓘ
@@ -276,7 +276,7 @@
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 3,199,594</p>
+          <p><b>result</b>: 3,199,797</p>
           <form method="dialog">
             <button>close</button>
           </form>
@@ -314,17 +314,32 @@
         </div>
         <div>
           <h2>DVT</h2>
-          <p>DIVA stETH staked: <span title="16531.02545345121">16,531</span>&nbsp;<button
+          <p>Diva stETH staked: <span title="16531.02545345121">16,531</span>&nbsp;<button
           onclick="document.getElementById('dialog-divaStETHBalance').showModal()"
         >
           ⓘ
         </button><dialog id="dialog-divaStETHBalance">
-          <p><b>description</b>: Balance of stETH in Diva</p>
+          <p><b>description</b>: Balance of stETH staked in Diva (DVTVL)</p>
           <p><b>contract</b>: stETH (0xae7ab96520de3a18e5e111b5eaab095312d7fe84)</p>
           <p><b>method</b>: balanceOf (0x70a08231)</p>
           <p><b>arg0</b>: Diva stETH  (0x1ce8aAfb51e79F6BDc0EF2eBd6fD34b00620f6dB)</p>
           
           <p><b>result</b>: 16,531</p>
+          <form method="dialog">
+            <button>close</button>
+          </form>
+        </dialog></p>
+          <p>Diva ETH staked: <span title="1244.3766075181113">1244.38</span>&nbsp;<button
+          onclick="document.getElementById('dialog-divaETHBalance').showModal()"
+        >
+          ⓘ
+        </button><dialog id="dialog-divaETHBalance">
+          <p><b>description</b>: Balance of ETH staked in Diva (DSTVL)</p>
+          <p><b>contract</b>: Diva ETH (0x16770d642e882e1769ce4ac8612b8bc0601506fc)</p>
+          <p><b>method</b>: totalSupply (0x18160ddd)</p>
+          
+          
+          <p><b>result</b>: 1244.38</p>
           <form method="dialog">
             <button>close</button>
           </form>
@@ -412,7 +427,7 @@
             <button>close</button>
           </form>
         </dialog></p>
-          <p>Aave V3 wstETH: <span title="710794.1146246329">710,794</span>&nbsp;<button
+          <p>Aave V3 wstETH: <span title="710997.2434796223">710,997</span>&nbsp;<button
           onclick="document.getElementById('dialog-aaveV3WstETHBalance').showModal()"
         >
           ⓘ
@@ -422,7 +437,7 @@
           <p><b>method</b>: balanceOf (0x70a08231)</p>
           <p><b>arg0</b>: Aave V3 wstETH  (0x0B925eD163218f6662a35e0f0371Ac234f9E9371)</p>
           
-          <p><b>result</b>: 710,794</p>
+          <p><b>result</b>: 710,997</p>
           <form method="dialog">
             <button>close</button>
           </form>
@@ -497,7 +512,8 @@
   </body>
   <script>
     function displayLastUpdateTime() {
-      const timestamp = { timestamp };
+      // prettier-ignore
+      const timestamp = 1698608034;
       const date = new Date(timestamp * 1000);
       const message = "Last updated: " + date.toLocaleString();
       document.getElementById("last_update").textContent = message;
