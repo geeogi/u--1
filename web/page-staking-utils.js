@@ -14,7 +14,7 @@ export const RPC = {
     ethMulticall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
     ethUsdChainlink: "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
     frxETH: "0x5e8422345238f34275888049021821e8e08caa1f",
-    lidoCuratedStaking: "0x55032650b14df07b85bF18A3a3eC8E0Af2e028d5",
+    lidoNodeOperatorsRegistry: "0x55032650b14df07b85bF18A3a3eC8E0Af2e028d5",
     lybraStETH: "0xa980d4c0C2E48d305b582AA439a3575e3de06f0E",
     opWstETHBridge: "0x76943C0D61395d8F2edF9060e1533529cAe05dE6",
     rETH: "0xae78736cd615f374d3085123a210448e74fc6393",
@@ -27,6 +27,8 @@ export const RPC = {
     wstETH: "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
   },
 
+  // first 8 characters of keccak_256 of e.g. balanceOf(address)
+  // https://emn178.github.io/online-tools/keccak_256.html
   SIGNATURES: {
     balanceOf: "0x70a08231",
     totalSupply: "0x18160ddd",
@@ -34,6 +36,7 @@ export const RPC = {
     latestAnswer: "0x50d25bcd",
     stEthPerToken: "0x035faf82",
     getNodeOperatorsCount: "0xa70c70e4",
+    getBufferedEther: "0x47b714e0",
   },
 
   getName(hex) {
@@ -104,43 +107,51 @@ export const RPC = {
   },
 
   async ethBalance(address) {
-    const multicall = this.CONTRACTS.ethMulticall;
+    const target = this.CONTRACTS.ethMulticall;
     const signature = this.SIGNATURES.getEthBalance;
     const args = [address];
-    const result = await this.callContractMethod(multicall, signature, args);
+    const result = await this.callContractMethod(target, signature, args);
     result.value = parseInt(result.value, 16) / 10 ** 18;
     return result;
   },
 
   async ethPrice() {
-    const chainlink = this.CONTRACTS.ethUsdChainlink;
+    const target = this.CONTRACTS.ethUsdChainlink;
     const signature = this.SIGNATURES.latestAnswer;
-    const result = await this.callContractMethod(chainlink, signature, []);
+    const result = await this.callContractMethod(target, signature);
     result.value = parseInt(result.value, 16) / 10 ** 8;
     return result;
   },
 
   async stETHPrice() {
-    const chainlink = this.CONTRACTS.stETHETHChainlink;
+    const target = this.CONTRACTS.stETHETHChainlink;
     const signature = this.SIGNATURES.latestAnswer;
-    const result = await this.callContractMethod(chainlink, signature, []);
+    const result = await this.callContractMethod(target, signature);
     result.value = parseInt(result.value, 16) / 10 ** 18;
     return result;
   },
 
   async getStETHWstETHExchangeRate() {
-    const wstETH = this.CONTRACTS.wstETH;
+    const target = this.CONTRACTS.wstETH;
     const signature = this.SIGNATURES.stEthPerToken;
-    const result = await this.callContractMethod(wstETH, signature, []);
+    const result = await this.callContractMethod(target, signature);
     result.value = parseInt(result.value, 16) / 10 ** 18;
     return result;
   },
 
   async getLidoNodeOperatorsCount() {
-    const lidoCuratedStaking = this.CONTRACTS.lidoCuratedStaking;
+    const target = this.CONTRACTS.lidoNodeOperatorsRegistry;
     const signature = this.SIGNATURES.getNodeOperatorsCount;
-    const result = await this.callContractMethod(lidoCuratedStaking, signature);
+    const result = await this.callContractMethod(target, signature);
     result.value = parseInt(result.value, 16);
+    return result;
+  },
+
+  async getLidoBufferedEther() {
+    const target = this.CONTRACTS.stETH;
+    const signature = this.SIGNATURES.getBufferedEther;
+    const result = await this.callContractMethod(target, signature);
+    result.value = parseInt(result.value, 16) / 10 ** 18;
     return result;
   },
 };

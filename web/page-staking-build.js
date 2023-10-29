@@ -20,6 +20,7 @@ async function main() {
     rETHSupply: RPC.totalSupply(CONTRACTS.rETH),
     sETH2Supply: RPC.totalSupply(CONTRACTS.sETH2),
     sfrxETHSupply: RPC.totalSupply(CONTRACTS.sfrxETH),
+    stETHBufferedEther: RPC.getLidoBufferedEther(),
     stETHOperators: RPC.getLidoNodeOperatorsCount(),
     stETHPrice: RPC.stETHPrice(),
     stETHSupply: RPC.totalSupply(CONTRACTS.stETH),
