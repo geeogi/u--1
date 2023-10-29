@@ -150,7 +150,7 @@ async function main() {
           ${arg1 ? `<p><b>arg1</b>: ${arg1Name}  (${arg1})</p>` : ""}
           <p><b>result</b>: ${value}</p>
           <form method="dialog">
-            <button>CLOSE</button>
+            <button>close</button>
           </form>
         </dialog>`,
       ].join("")
