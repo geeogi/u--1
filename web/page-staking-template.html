@@ -7,23 +7,23 @@
       name="viewport"
     />
     <meta content="#ffffff" name="theme-color" />
-    <title>ETH staking | u--1</title>
-    <meta content="ETH staking monitor" name="description" />
+    <title>Ethereum staking directory | u--1</title>
+    <meta content="Ethereum staking directory" name="description" />
     <meta
       content="ethereum, ETH, staking, lido, stETH, crypto, Eigen Layer, u--1"
       name="keywords"
     />
     <meta content="https://u--1.com/eth-staking" property="og:url" />
-    <meta content="ETH staking monitor | u--1" property="og:title" />
+    <meta content="Ethereum staking directory | u--1" property="og:title" />
     <meta
-      content="Ethereum ETH staking monitor including Lido, Frax, EigenLayer"
+      content="Ethereum staking directory including LST, Restaking, Lido, EigenLayer"
       property="og:description"
     />
     <meta property="og:image" content="https://u--1.com/u--1.png" />
     <meta content="summary" name="twitter:card" />
-    <meta content="ETH staking monitor | u--1" name="twitter:title" />
+    <meta content="Ethereum staking directory | u--1" name="twitter:title" />
     <meta
-      content="Ethereum ETH staking monitor including Lido, Frax, EigenLayer"
+      content="Ethereum staking directory including LST, Restaking, Lido, EigenLayer"
       name="twitter:description"
     />
     <meta property="twitter:image" content="https://u--1.com/u--1.png" />
@@ -42,12 +42,27 @@
     </style>
   </head>
   <body>
+    <header
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 16px;
+        row-gap: 16px;
+        align-items: center;
+      "
+    >
+      <h1 style="margin: 0px">u--1: ethereum staking directory</h1>
+      <nav>
+        <a href="/">homepage →</a>
+        &nbsp;
+      </nav>
+    </header>
+    <i>Values updated every 5 mins</i>
+    <hr />
     <main>
-      <h1>Ethereum staking directory</h1>
-      <i>Values updated via Alchemy RPC every 5 mins</i>
       <div style="column-width: 300px; column-gap: 32px; row-gap: 32px">
         <div>
-          <h3>ETH</h3>
+          <h3 style="margin-top: 0px">ETH</h3>
           <p>ETH price (Chainlink): {ethPrice}</p>
         </div>
         <div>
@@ -58,6 +73,13 @@
           <p>Frax sfrxETH supply: {sfrxETHSupply}</p>
           <p>Stakewise sETH2 supply: {sETH2Supply}</p>
           <p>Swell swETH supply: {swETHSupply}</p>
+        </div>
+        <div>
+          <h3>DVT</h3>
+          <p>Diva stETH staked: {divaStETHBalance}</p>
+          <p>Diva ETH staked: {divaETHBalance}</p>
+          <p>SSV ETH staked: 22k as of Oct 2023</p>
+          <p>Obol: testnet as of Oct 2023</p>
         </div>
         <div>
           <h3>Lido stETH</h3>
@@ -74,13 +96,6 @@
           <p>wstETH supply: {wstETHSupply}</p>
           <p>wstETH on Arb: {wstETHSupplyArb}</p>
           <p>wstETH on Op: {wstETHSupplyOp}</p>
-        </div>
-        <div>
-          <h3>DVT</h3>
-          <p>Diva stETH staked: {divaStETHBalance}</p>
-          <p>Diva ETH staked: {divaETHBalance}</p>
-          <p>SSV ETH staked: 22k as of Oct 2023</p>
-          <p>Obol: testnet as of Oct 2023</p>
         </div>
         <div>
           <h3>EigenLayer</h3>
@@ -140,7 +155,7 @@
     </main>
     <footer
       id="last_update"
-      style="color: #525252; font-size: 0.8rem; padding: 4px"
+      style="color: #525252; font-size: 0.8rem; margin-top: 24px"
     ></footer>
   </body>
   <script>
@@ -148,7 +163,7 @@
       // prettier-ignore
       const timestamp = {timestamp};
       const date = new Date(timestamp * 1000);
-      const message = "Last updated by Alchemy RPC: " + date.toLocaleString();
+      const message = "Last updated via Alchemy RPC call: " + date.toLocaleString();
       document.getElementById("last_update").textContent = message;
     }
 
