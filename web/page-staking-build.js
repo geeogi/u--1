@@ -140,7 +140,7 @@ async function main() {
     },
     wstETHSupplyOp: {
       call: RPC.balanceOf(CONTRACTS.wstETH, CONTRACTS["OP ERC20 Bridge"]),
-      description: "Balance of wstETH in the Optimism wstETH bridge",
+      description: "Balance of wstETH in the Optimism bridge",
     },
   };
 
