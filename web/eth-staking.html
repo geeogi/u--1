@@ -10,7 +10,7 @@
     <title>Ethereum staking directory | u--1</title>
     <meta content="Ethereum staking directory" name="description" />
     <meta
-      content="ethereum, ETH, staking, lido, stETH, crypto, Eigen Layer, u--1"
+      content="Ethereum, ETH, staking, restaking, LST, lido, stETH, crypto, EigenLayer, u--1"
       name="keywords"
     />
     <meta content="https://u--1.com/eth-staking" property="og:url" />
@@ -51,7 +51,7 @@
         align-items: center;
       "
     >
-      <h1 style="margin: 0px">u--1: ethereum staking directory</h1>
+      <h1 style="margin: 0px">u--1: Ethereum staking directory</h1>
       <nav>
         <a href="/">homepage →</a>
         &nbsp;
@@ -81,7 +81,7 @@
         </div>
         <div>
           <h3>Liquid staking</h3>
-          <p>Lido stETH supply: <span title="8800684.188727103">8,800,684</span>&nbsp;&nbsp;<button
+          <p>Lido stETH supply: <span title="8800691.071241004">8,800,691</span>&nbsp;&nbsp;<button
           onclick="document.getElementById('dialog-stETHSupply').showModal()"
         >
           ⓘ
@@ -91,7 +91,7 @@
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 8,800,684</p>
+          <p><b>result</b>: 8,800,691</p>
           <form method="dialog">
             <button>close</button>
           </form>
@@ -209,7 +209,7 @@
         </div>
         <div>
           <h3>Lido stETH</h3>
-          <p>stETH supply: <span title="8800684.188727103">8,800,684</span>&nbsp;&nbsp;<button
+          <p>stETH supply: <span title="8800691.071241004">8,800,691</span>&nbsp;&nbsp;<button
           onclick="document.getElementById('dialog-stETHSupply').showModal()"
         >
           ⓘ
@@ -219,7 +219,7 @@
           <p><b>method</b>: totalSupply (0x18160ddd)</p>
           
           
-          <p><b>result</b>: 8,800,684</p>
+          <p><b>result</b>: 8,800,691</p>
           <form method="dialog">
             <button>close</button>
           </form>
@@ -284,7 +284,7 @@
             <button>close</button>
           </form>
         </dialog></p>
-          <p>stETH buffered ETH: <span title="6001.9774272334425">6001.98</span>&nbsp;&nbsp;<button
+          <p>stETH buffered ETH: <span title="6008.859941133468">6008.86</span>&nbsp;&nbsp;<button
           onclick="document.getElementById('dialog-stETHBufferedEther').showModal()"
         >
           ⓘ
@@ -294,7 +294,7 @@
           <p><b>method</b>: getBufferedEther (0x47b714e0)</p>
           
           
-          <p><b>result</b>: 6001.98</p>
+          <p><b>result</b>: 6008.86</p>
           <form method="dialog">
             <button>close</button>
           </form>
@@ -317,7 +317,7 @@
         </div>
         <div>
           <h3>Lido wstETH</h3>
-          <p>wstETH supply: <span title="3209279.1706494717">3,209,279</span>&nbsp;&nbsp;<button
+          <p>wstETH supply: <span title="3209279.229024753">3,209,279</span>&nbsp;&nbsp;<button
           onclick="document.getElementById('dialog-wstETHSupply').showModal()"
         >
           ⓘ
@@ -443,7 +443,7 @@
             <button>close</button>
           </form>
         </dialog></p>
-          <p>Aave V3 wstETH: <span title="705224.8795293977">705,225</span>&nbsp;&nbsp;<button
+          <p>Aave V3 wstETH: <span title="705246.2473414147">705,246</span>&nbsp;&nbsp;<button
           onclick="document.getElementById('dialog-aaveV3WstETHBalance').showModal()"
         >
           ⓘ
@@ -453,7 +453,7 @@
           <p><b>method</b>: balanceOf (0x70a08231)</p>
           <p><b>arg0</b>: Aave V3 wstETH  (0x0B925eD163218f6662a35e0f0371Ac234f9E9371)</p>
           
-          <p><b>result</b>: 705,225</p>
+          <p><b>result</b>: 705,246</p>
           <form method="dialog">
             <button>close</button>
           </form>
@@ -609,9 +609,10 @@
   <script>
     function displayLastUpdateTime() {
       // prettier-ignore
-      const timestamp = 1698696793;
+      const timestamp = 1698696933;
       const date = new Date(timestamp * 1000);
-      const message = "Last updated via Alchemy RPC call: " + date.toLocaleString();
+      const message =
+        "Last updated via Alchemy RPC call: " + date.toLocaleString();
       document.getElementById("last_update").textContent = message;
     }
 
