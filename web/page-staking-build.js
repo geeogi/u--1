@@ -21,6 +21,10 @@ async function main() {
       call: RPC.balanceOf(CONTRACTS.rETH, CONTRACTS["Aave V3 rETH"]),
       description: "Balance of rETH in Aave V3",
     },
+    ankrETHSupply: {
+      call: RPC.totalSupply(CONTRACTS.ankrETH),
+      description: "Total supply of ankrETH",
+    },
     cbETHSupply: {
       call: RPC.totalSupply(CONTRACTS.cbETH),
       description: "Total supply of cbETH",
