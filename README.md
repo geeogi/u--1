@@ -1,9 +1,18 @@
 # u--1
 
-Some quick crypto analytics websites with these goals:
+## homepage
+
+- [ui](http://u--1.com/)
+
+## ethereum staking directory
+
+- [ui](http://u--1.com/eth-staking)
+- [api](http://u--1.com/eth-staking.json)
+
+## goals
 
 - zero loading time pre-built html files
-- well structured, minimum styling, minimum JS
+- stay as close to RPC as possible, no 3rd party
 - simple, navigable/searchable using browser UI
-- attempt some difference in the UI
 - be fully live websites, something I use often
+- free and easy to maintain
