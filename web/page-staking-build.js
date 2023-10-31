@@ -157,9 +157,10 @@ async function main() {
   );
 
   let htmlContent = fs.readFileSync("page-staking-template.html", "utf8");
+  const jsonContent = { values: {} };
 
   Object.entries(values).forEach(([key, { description, result }]) => {
-    const value =
+    const displayValue =
       typeof result.value === "number"
         ? result.value > 9999
           ? Math.round(result.value).toLocaleString()
@@ -178,7 +179,7 @@ async function main() {
     htmlContent = htmlContent.replaceAll(
       `{${key}}`,
       [
-        `<span title="${result.value}">${value}</span>`,
+        `<span title="${result.value}">${displayValue}</span>`,
         "&nbsp;",
         "&nbsp;",
         `<button
@@ -192,19 +193,43 @@ async function main() {
           <p><b>method</b>: ${methodName} (${result.methodSignature})</p>
           ${arg0 ? `<p><b>arg0</b>: ${arg0Name}  (${arg0})</p>` : ""}
           ${arg1 ? `<p><b>arg1</b>: ${arg1Name}  (${arg1})</p>` : ""}
-          <p><b>result</b>: ${value}</p>
+          <p><b>result</b>: ${displayValue}</p>
           <form method="dialog">
             <button>close</button>
           </form>
         </dialog>`,
       ].join("")
     );
+
+    jsonContent.values[key] = {
+      key,
+      description,
+      methodName,
+      contractName,
+      arg0Name,
+      arg1Name,
+      displayValue,
+      result,
+    };
   });
 
-  htmlContent = htmlContent.replace(
-    "{timestamp}",
-    Math.round(Date.now() / 1000)
-  );
+  const timestamp = Math.round(Date.now() / 1000);
+
+  htmlContent = htmlContent.replace("{timestamp}", timestamp);
+
+  jsonContent.lastUpdated = timestamp;
+  jsonContent.citation = "u--1.com";
+  jsonContent.contact = "@geeogi";
+  jsonContent.page = "https://u--1.com/eth-staking";
+  jsonContent.api = "https://u--1.com/eth-staking.json";
+  jsonContent.title = "Ethereum staking directory";
+  jsonContent.sourceCode = "https://github.com/geeogi/u--1";
+  jsonContent.description = [
+    "Assorted onchain values related to",
+    "Ethereum staking, LST, DVT, EigenLayer, Lending and Restaking.",
+    "Built by u--1 and powered by Alchemy RPC.",
+    "This API is free to use.",
+  ].join(" ");
 
   fs.writeFile("eth-staking.html", htmlContent, "utf8", (err) => {
     if (err) {
@@ -213,6 +238,19 @@ async function main() {
       console.log("HTML file written successfully");
     }
   });
+
+  fs.writeFile(
+    "eth-staking.json",
+    JSON.stringify(jsonContent, null, 2),
+    "utf8",
+    (err) => {
+      if (err) {
+        console.error("An error occurred:", err);
+      } else {
+        console.log("JSON file written successfully");
+      }
+    }
+  );
 }
 
 main();
