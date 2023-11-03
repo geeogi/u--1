@@ -85,9 +85,17 @@ async function main() {
       call: RPC.totalSupply(CONTRACTS.frxETH),
       description: "Total supply of Frax Ether (frxETH)",
     },
-    lybraStETHBalance: {
-      call: RPC.balanceOf(CONTRACTS.stETH, CONTRACTS["Lybra stETH"]),
-      description: "Balance of stETH in Lybra",
+    lybraEUSDSupply: {
+      call: RPC.totalSupply(CONTRACTS.eUSD),
+      description: "Total supply of Lybra eUSD",
+    },
+    prismaMkUSDSupply: {
+      call: RPC.totalSupply(CONTRACTS.mkUSD),
+      description: "Total supply of Prisma mkUSD",
+    },
+    raftRSupply: {
+      call: RPC.totalSupply(CONTRACTS.r),
+      description: "Total supply of Raft R",
     },
     rETHSupply: {
       call: RPC.totalSupply(CONTRACTS.rETH),
