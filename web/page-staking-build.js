@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import { renderToString } from "./urpc.js";
+import { renderToString } from "./urpc";
 
 async function main() {
   const urpcTemplate = fs.readFileSync("page-staking-template.html", "utf8");
