@@ -187,8 +187,8 @@ function getResultTemplate(call, result) {
     "&nbsp;",
     `<button onclick="${onClick}">ⓘ</button>`,
     `<dialog id="dialog-${key}">
-      <p><b>contract</b>: ${toName} (${call.to})</p>
-      <p><b>method</b>: ${methodName} (${call.method})</p>
+      <p><b>contract</b>: ${toName} (${call.values.to})</p>
+      <p><b>method</b>: ${methodName} (${call.values.method})</p>
       ${arg0 ? `<p><b>arg0</b>: ${arg0Name}  (${arg0})</p>` : ""}
       ${arg1 ? `<p><b>arg1</b>: ${arg1Name}  (${arg1})</p>` : ""}
       <p><b>result</b>: ${displayValue}</p>
@@ -236,10 +236,9 @@ export async function renderToString(html) {
         const callString = item.split(">")[1];
         const call = parseUrpcCallString(callString, lookup);
         const result = await callRPC(url, call);
-        const displayValue = getDisplayValue(result, call.values.decimals);
-        const template = getResultTemplate(call, result);
+        const { template, displayValue } = getResultTemplate(call, result);
 
-        return { key, call, displayValue, result, template };
+        return { key, call, callString, displayValue, result, template };
       })
   );
 
