@@ -1,10 +1,10 @@
 import * as fs from "fs";
-import { renderToString } from "./urpc";
+import * as urpc from "./urpc.js";
 
 async function main() {
   const urpcTemplate = fs.readFileSync("page-staking-template.html", "utf8");
 
-  const { template, json } = await renderToString(urpcTemplate);
+  const { template, json } = await urpc.renderToString(urpcTemplate);
 
   let htmlContent = template;
   let jsonContent = json;
