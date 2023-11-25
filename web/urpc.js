@@ -138,7 +138,7 @@ function parseUrpcCallString(call) {
 }
 
 // Make an RPC call
-async function callRPC(url, type, to, method, args = []) {
+export async function callRPC(url, type, to, method, args = []) {
   const data = encodeMethodCall(method, args);
 
   const payload = {
@@ -228,10 +228,11 @@ async function renderToString(html) {
     html
       .split(`<${CALL_TAG}`)
       .filter((item) => item.includes(`</${CALL_TAG}`))
+      .map((item) => item.split(`</${CALL_TAG}`)[0])
       .map(async (item) => {
         const type = item.split('type="')[1]?.split('"')[0] || "eth_call";
         const key = item.split('key="')[1]?.split('"')[0];
-        const callString = item.split(">")[1].split(`</${CALL_TAG}`)[0];
+        const callString = item.split(">")[1];
         const call = parseUrpcCallString(callString);
         const to = lookup(call.to);
         const method = lookup(call.method);
