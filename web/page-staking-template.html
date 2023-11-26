@@ -58,6 +58,7 @@
       <!-- method signatures -->
       <var>balanceOf(address):0x70a08231</var>
       <var>totalSupply():0x18160ddd</var>
+      <var>totalUSDBalanceNoUpdate():0x1a66371a</var>
       <var>getEthBalance(address):0x4d2301cc</var>
       <var>latestAnswer():0x50d25bcd</var>
       <var>stEthPerToken():0x035faf82</var>
@@ -99,6 +100,7 @@
       <var>elStETH:0x93c4b944D05dfe6df7645A86cd2206016c51564D</var>
       <var>lidoRegistry:0x55032650b14df07b85bF18A3a3eC8E0Af2e028d5</var>
       <var>op20Bridge:0x76943C0D61395d8F2edF9060e1533529cAe05dE6</var>
+      <var>blast:0x5F6AE08B8AeB7078cf2F96AFb089D7c9f51DA47d</var>
     </u-directory>
     <header
       style="
@@ -176,6 +178,11 @@
           <p>wstETH supply: <u-c>$wstETH.$totalSupply().18</u-c></p>
           <p>wstETH on Arb: <u-c>$wstETH.$balanceOf($arb20Bridge).18</u-c></p>
           <p>wstETH on Op: <u-c>$wstETH.$balanceOf($op20Bridge).18</u-c></p>
+        </div>
+        <div>
+          <h2>Blast L2</h2>
+          <p>stETH balance: <u-c>$stETH.$balanceOf($blast).18</u-c></p>
+          <p>USD balance: <u-c>$blast.$totalUSDBalanceNoUpdate().18</u-c></p>
         </div>
         <div>
           <h2>EigenLayer</h2>
