@@ -276,7 +276,3 @@ export async function renderToString(html) {
 
   return { template, json };
 }
-
-if (typeof module !== "undefined") {
-  module.exports = { renderToString };
-}
