@@ -61,7 +61,7 @@ if (typeof window !== "undefined") {
     // Executes the RPC call
     async connectedCallback() {
       const url = document.querySelector(URL_TAG)?.textContent?.trim();
-      const directory = document.getElementsByTagName(DIRECTORY_TAG)?.[0];
+      const directory = document.querySelector(DIRECTORY_TAG);
       const callString = this.textContent.trim();
       const lookup = (v) => directory.lookup(v);
       const call = parseUrpcCallString(callString, lookup);
@@ -173,20 +173,20 @@ function getDisplayValue(value, decimals) {
 // Generate template for RPC result
 function getResultTemplate(call, result) {
   const displayValue = getDisplayValue(result, call.values.decimals);
-  const key = Date.now();
   const arg0 = call.values.args?.[0];
   const arg1 = call.values.args?.[1];
   const arg0Name = call.args?.[0]?.replace("$", "");
   const arg1Name = call.args?.[1]?.replace("$", "");
   const toName = call.to?.replace("$", "");
   const methodName = call.method?.replace("$", "");
-  const onClick = `this.getRootNode().getElementById('dialog-${key}').showModal()`;
+  const id = `dialog-${Date.now()}`;
+  const onClick = `this.getRootNode().getElementById('${id}').showModal()`;
   const template = [
     `<span>${displayValue}</span>`,
     "&nbsp;",
     "&nbsp;",
     `<button onclick="${onClick}">ⓘ</button>`,
-    `<dialog id="dialog-${key}">
+    `<dialog id="${id}">
       <p><b>contract</b>: ${toName} (${call.values.to})</p>
       <p><b>method</b>: ${methodName} (${call.values.method})</p>
       ${arg0 ? `<p><b>arg0</b>: ${arg0Name}  (${arg0})</p>` : ""}
@@ -233,7 +233,7 @@ export async function renderToString(html) {
       .map((item) => item.split(`</${CALL_TAG}`)[0])
       .map(async (item) => {
         const key = item.split('key="')[1]?.split('"')[0];
-        const callString = item.split(">")[1];
+        const callString = item.split(">")[1].trim();
         const call = parseUrpcCallString(callString, lookup);
         const result = await callRPC(url, call);
         const { template, displayValue } = getResultTemplate(call, result);
@@ -247,10 +247,7 @@ export async function renderToString(html) {
 
   // insert call results
   calls.forEach((item) => {
-    template =
-      template.split(`<${CALL_TAG}`)[0] +
-      item.template +
-      template.split(`</${CALL_TAG}>`).slice(1).join(`</${CALL_TAG}>`);
+    template = template.replace(item.callString, item.template);
 
     const key = item.key || item.callString;
 

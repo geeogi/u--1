@@ -12,7 +12,7 @@ async function main() {
   const timestamp = Math.round(Date.now() / 1000);
   htmlContent = htmlContent.replace("{timestamp}", timestamp);
 
-  jsonContent.lastUpdated = timestamp;
+  jsonContent.lastUpdatedUnix = timestamp;
   jsonContent.citation = "u--1.com";
   jsonContent.contact = "@geeogi";
   jsonContent.page = "https://u--1.com/eth-staking";
