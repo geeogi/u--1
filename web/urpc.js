@@ -226,27 +226,28 @@ export async function renderToString(html) {
   const lookup = (v) =>
     v?.includes("$") ? directory.get(v.replace("$", ""))?.trim() : v || v;
 
-  const calls = await Promise.all(
-    html
-      .split(`<${CALL_TAG}`)
-      .filter((item) => item.includes(`</${CALL_TAG}`))
-      .map((item) => item.split(`</${CALL_TAG}`)[0])
-      .map(async (item) => {
-        const key = item.split('key="')[1]?.split('"')[0];
-        const callString = item.split(">")[1].trim();
-        const call = parseUrpcCallString(callString, lookup);
-        const result = await callRPC(url, call);
-        const { template, displayValue } = getResultTemplate(call, result);
+  const calls = html
+    .split(`<${CALL_TAG}`)
+    .filter((item) => item.includes(`</${CALL_TAG}`))
+    .map((item) => item.split(`</${CALL_TAG}`)[0]);
 
-        return { key, call, callString, displayValue, result, template };
-      })
-  );
+  const results = [];
+
+  for (const item of calls) {
+    const key = item.split('key="')[1]?.split('"')[0];
+    const callString = item.split(">")[1].trim();
+    const call = parseUrpcCallString(callString, lookup);
+    const result = await callRPC(url, call);
+    const { template, displayValue } = getResultTemplate(call, result);
+
+    results.push({ key, call, callString, displayValue, result, template });
+  }
 
   let template = html.slice();
   const json = { values: {} };
 
   // insert call results
-  calls.forEach((item) => {
+  results.forEach((item) => {
     template = template.replace(item.callString, item.template);
 
     const key = item.key || item.callString;
