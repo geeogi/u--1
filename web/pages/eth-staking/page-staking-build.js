@@ -1,9 +1,9 @@
 import * as fs from "fs";
-import * as urpc from "./urpc.js";
+import * as urpc from "../../utils/urpc.js";
 
 async function main() {
   const urpcTemplate = fs.readFileSync(
-    "/pages/eth-staking/page-staking-template.html",
+    "./pages/eth-staking/page-staking-template.html",
     "utf8"
   );
 
