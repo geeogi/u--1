@@ -43,7 +43,7 @@ async function hunt() {
       });
     });
   } catch (e) {
-    footerEl.innerText = "error occured and dev is asleep";
+    footerEl.innerText = "error occurred and dev is asleep";
   }
 }
 
