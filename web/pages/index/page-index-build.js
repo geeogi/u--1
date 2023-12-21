@@ -31,16 +31,23 @@ const SVGO_CONFIG = {
 async function fetchTop250() {
   if (USE_LOCAL_DATA) {
     return new Promise((resolve) => {
-      fs.readFile("page-index-mock-api.json", "utf8", (_err, data) => {
-        resolve(JSON.parse(data));
-      });
+      fs.readFile(
+        "/pages/index/page-index-mock-api.json",
+        "utf8",
+        (_err, data) => {
+          resolve(JSON.parse(data));
+        }
+      );
     });
   } else {
     return fetch(TOP_250_URL).then((response) => response.json());
   }
 }
 
-const HTML_TEMPLATE = fs.readFileSync("page-index-template.html", "utf8");
+const HTML_TEMPLATE = fs.readFileSync(
+  "pages/index/page-index-template.html",
+  "utf8"
+);
 
 fetchTop250().then(async (data) => {
   const coins = await Promise.all(
