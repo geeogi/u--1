@@ -34,7 +34,8 @@ async function hunt() {
         const tx = await txResponse.json();
         const link = `${exploreTx}/${hash}`;
         try {
-          txEl.innerHTML = `<a href="${link}">${atob(tx.tx.body.memo)}</a>`;
+          const decoded = atob(tx.tx.body.memo);
+          txEl.innerHTML = `<a href="${link}">${decoded}</a>`;
         } catch (e) {
           txEl.innerHTML = `<a href="${link}">${tx.tx.body.memo}</a>`;
         }
