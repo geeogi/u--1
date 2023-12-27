@@ -37,11 +37,12 @@ async function hunt() {
 
         const body = tx.tx.body;
         const messages = body.messages;
-
         const type = messages?.[0]?.["@type"]?.split?.(".")?.reverse()?.[0];
         const namespace = messages?.[0]?.["namespaces"]?.[0];
-        const amount = messages?.[0]?.["amount"]?.[0]?.amount;
-        const denom = messages?.[0]?.["amount"]?.[0]?.denom;
+        const blobSizes = messages?.[0]?.["blob_sizes"];
+        const amountObj = messages?.[0]?.["amount"] || messages?.[0]?.["token"];
+        const amount = amountObj?.[0]?.amount || amountObj?.amount;
+        const denom = amountObj?.[0]?.denom || amountObj?.denom;
 
         let memo = body.memo;
 
@@ -49,7 +50,8 @@ async function hunt() {
           !memo.includes(" ") &&
           !memo.includes("celestia") &&
           !Array.from(memo).every((char) => numChars.includes(char)) &&
-          memo.length % 4 === 0;
+          memo.length % 4 === 0 &&
+          memo.length > 8;
 
         if (isLikelyBase64) {
           try {
@@ -60,16 +62,37 @@ async function hunt() {
         }
 
         txEl.innerHTML = [
-          '<div style="display:grid;grid-template-columns: 1fr 1fr 1fr">',
-          `<div>${type}</div>`,
-          namespace ? `<div>${namespace}</div>` : "<div></div>",
-          amount ? `<div>${amount} ${denom}</div>` : "<div></div>",
-          memo ? `<div title="memo"><i>${memo}</i></div>` : "<div></div>",
-          `<a href="${link}" style="min-width:110px;display:block">${hash
+          '<div style="display:flex;column-gap:12px">',
+          `<a href="${link}" style="min-width:95px;display:block">${hash
             .slice(0, 12)
             .toLowerCase()}</a>`,
+          `<div>${type}</div>`,
+          namespace ? `<div>${namespace}</div>` : undefined,
+          amount
+            ? `<div>${Number(
+                denom === "utia" ? Number(amount) / 1000000 : amount
+              ).toLocaleString()} ${denom.replace("utia", "tia")}</div>`
+            : undefined,
+          memo ? `<div title="memo"><i>${memo}</i></div>` : undefined,
+          blobSizes?.length
+            ? blobSizes
+                .map((_, i) =>
+                  [
+                    '<a target="_blank" href="',
+                    "https://explorer.modular.cloud/celestia-mainnet/transactions/",
+                    `${hash.toLowerCase()}/blobs/${i}`,
+                    '" style="min-width:110px;display:block">',
+                    '<span style="font-size:0.5rem;">',
+                    `💧</span> view blob ${i + 1}`,
+                    "</a>",
+                  ].join("")
+                )
+                .join(" ")
+            : [],
           "</div>",
-        ].join("");
+        ]
+          .filter(Boolean)
+          .join("");
 
         footerEl.innerText = "";
       });
