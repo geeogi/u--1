@@ -1,19 +1,17 @@
 async function hunt() {
+  const mainEl = document.getElementById("main");
+  const footerEl = document.getElementById("footer");
+
   try {
-    const mainEl = document.getElementById("main");
-    const footerEl = document.getElementById("footer");
+    footerEl.innerText = "hunting blocks...";
 
     const urlParams = new URLSearchParams(window.location.search);
     const paramHeight = urlParams.get("height");
-
-    footerEl.innerText = "hunting blocks...";
-
     const base = "https://celestia.api.explorers.guru/api/v1";
     const exploreTx = "https://celestia.explorers.guru/transaction";
     const latestBlockResponse = await fetch(`${base}/blocks?limit=1`);
     const latestBlock = (await latestBlockResponse.json())?.data?.[0];
     const latestBlockHeight = latestBlock?.height;
-
     const selectedBlockHeight = Number(paramHeight || latestBlockHeight);
 
     footerEl.innerText = "hunting txs...";
@@ -25,7 +23,6 @@ async function hunt() {
         blockEl.style.backgroundColor = "#f0f0f0";
         blockEl.innerText = `block: ${blockHeight}`;
         mainEl.appendChild(blockEl);
-
         const txsResponse = await fetch(`${base}/blocks/${blockHeight}/txs`);
         const txs = await txsResponse.json();
 
@@ -41,13 +38,12 @@ async function hunt() {
           const tx = await txResponse.json();
           const link = `${exploreTx}/${hash}`;
           const numChars = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(String);
-
           const body = tx.tx.body;
           const messages = body.messages;
           const firstMessage = messages?.[0];
           const type = firstMessage?.["@type"]?.split?.(".")?.reverse()?.[0];
           const namespace = firstMessage?.["namespaces"]?.[0];
-          const blobSizes = firstMessage?.["blob_sizes"];
+          const shareCommitments = firstMessage?.["share_commitments"];
           const amountObj = firstMessage?.["amount"] || firstMessage?.["token"];
           const amount = amountObj?.[0]?.amount || amountObj?.amount;
           const denom = amountObj?.[0]?.denom || amountObj?.denom;
@@ -69,57 +65,115 @@ async function hunt() {
             }
           }
 
-          const onViewBlob = () =>
-            fetch("https://api.celenium.io/v1/blob", {
-              body: '{"hash":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJBA=","height":428903,"commitment":"C6sopM14hIXHSzXII+hy5raakpCJACEbW+Z7wnHUBKw="}',
-              cache: "default",
-              credentials: "omit",
-              headers: {
-                Accept: "application/json",
-                "Accept-Language": "en-GB,en;q=0.9",
-                "Content-Type": "application/json",
-              },
-              method: "POST",
-              mode: "cors",
-              redirect: "follow",
-              referrer: "https://celenium.io/",
-              referrerPolicy: "strict-origin-when-cross-origin",
-            })
-              .then((blob) => blob.json())
-              .then((blob) => alert(blob.data));
+          const txRow = document.createElement("div");
+          txRow.style = "display:flex;column-gap:12px";
 
-          txEl.innerHTML = [
-            '<div style="display:flex;column-gap:12px">',
-            `<a href="${link}" style="min-width:95px;display:block">${hash
-              .slice(0, 12)
-              .toLowerCase()}</a>`,
-            `<div>${type}</div>`,
-            namespace ? `<div>${namespace}</div>` : undefined,
-            amount
-              ? `<div>${Number(
-                  denom === "utia" ? Number(amount) / 1000000 : amount
-                ).toLocaleString()} ${denom.replace("utia", "tia")}</div>`
-              : undefined,
-            memo ? `<div title="memo"><i>${memo}</i></div>` : undefined,
-            blobSizes?.length
-              ? blobSizes
-                  .map((_, i) =>
-                    [
-                      '<a target="_blank" href="',
-                      "https://explorer.modular.cloud/celestia-mainnet/transactions/",
-                      `${hash.toLowerCase()}/blobs/${i}`,
-                      '" style="min-width:110px;display:block">',
-                      '<span style="font-size:0.5rem;">',
-                      `💧</span> view blob ${i + 1}`,
-                      "</a>",
-                    ].join("")
-                  )
-                  .join(" ")
-              : [],
-            "</div>",
-          ]
-            .filter(Boolean)
-            .join("");
+          const linkElement = document.createElement("a");
+          linkElement.href = link;
+          linkElement.style.minWidth = "95px";
+          linkElement.style.display = "block";
+          linkElement.textContent = hash.slice(0, 12).toLowerCase();
+          txRow.appendChild(linkElement);
+
+          const typeElement = document.createElement("div");
+          typeElement.textContent = type;
+          txRow.appendChild(typeElement);
+
+          if (namespace) {
+            const namespaceElement = document.createElement("div");
+            namespaceElement.textContent = namespace;
+            txRow.appendChild(namespaceElement);
+          }
+
+          if (amount) {
+            const amountElement = document.createElement("div");
+            const m = 1000000;
+            const amountValue = denom === "utia" ? Number(amount) / m : amount;
+            const displayAmount = Number(amountValue).toLocaleString();
+            const symbol = denom.replace("utia", "tia");
+            amountElement.textContent = `${displayAmount} ${symbol}`;
+            txRow.appendChild(amountElement);
+          }
+
+          if (memo) {
+            const memoElement = document.createElement("div");
+            memoElement.title = "memo";
+            memoElement.style = "word-break:break-word;max-width:70%;";
+            const italicElement = document.createElement("i");
+            italicElement.textContent = memo;
+            memoElement.appendChild(italicElement);
+            txRow.appendChild(memoElement);
+          }
+
+          if (shareCommitments?.length) {
+            const onViewBlob = (commitment) => () =>
+              fetch("https://api.celenium.io/v1/blob", {
+                body: JSON.stringify({
+                  hash: namespace,
+                  height: blockHeight,
+                  commitment,
+                }),
+                cache: "default",
+                credentials: "omit",
+                headers: {
+                  Accept: "application/json",
+                  "Accept-Language": "en-GB,en;q=0.9",
+                  "Content-Type": "application/json",
+                },
+                method: "POST",
+                mode: "cors",
+                redirect: "follow",
+                referrer: "https://celenium.io/",
+                referrerPolicy: "strict-origin-when-cross-origin",
+              })
+                .then((blob) => blob.json())
+                .then((blob) => {
+                  const id = `dialog-${Date.now()}-${Math.random()}`;
+                  const dialogHTML = `
+                    <dialog id="${id}">
+                      <p><b>namespace</b>: ${namespace}</p>
+                      <p><b>height</b>: ${blockHeight}</p>
+                      <p><b>commitment</b>: ${commitment}</p>
+                      <p><b>blob</b></p>
+                      <p
+                        style="
+                          max-width:500px;
+                          max-height:150px;
+                          overflow:auto;
+                          word-break:break-word;
+                        "
+                      >
+                        ${blob.data}
+                      </p>
+                      <p>
+                        <i
+                          >powered by
+                          <a target="_blank" href="https://celenium.io"
+                            >celenium.io</a
+                          >
+                        </i>
+                      </p>
+                      <form method="dialog">
+                        <button>Close</button>
+                      </form>
+                    </dialog>
+                  `;
+
+                  document.body.insertAdjacentHTML("beforeend", dialogHTML);
+                  document.getElementById(id).showModal();
+                })
+                .catch(() => alert("failed to fetch blob"));
+
+            shareCommitments?.forEach((commitment, index) => {
+              const blobButton = document.createElement("button");
+              blobButton.innerText = `view blob ${index + 1}`;
+              blobButton.onclick = onViewBlob(commitment);
+              txRow.appendChild(blobButton);
+            });
+          }
+
+          txEl.innerHTML = "";
+          txEl.appendChild(txRow);
         });
       }
     );
@@ -127,23 +181,35 @@ async function hunt() {
     const prevBlock = selectedBlockHeight - 10;
     const nextBlock = Math.min(selectedBlockHeight + 10, latestBlockHeight);
 
-    footerEl.innerHTML = [
-      '<div style="display:flex;column-gap:16px;">',
-      `<a href="${location.pathname}?height=${prevBlock}">prev page</a>`,
-      selectedBlockHeight < latestBlockHeight
-        ? nextBlock < latestBlockHeight
-          ? `<a href="${location.pathname}?height=${nextBlock}">next page</a>`
-          : false
-        : false,
-      selectedBlockHeight < latestBlockHeight
-        ? `<a href="${location.pathname}">latest page</a>`
-        : false,
-      "</div>",
-    ]
-      .filter(Boolean)
-      .join("");
+    footerEl.innerHTML = "";
+
+    const footerRow = document.createElement("div");
+    footerRow.style.display = "flex";
+    footerRow.style.columnGap = "16px";
+
+    const prevPageLink = document.createElement("a");
+    prevPageLink.href = `${location.pathname}?height=${prevBlock}`;
+    prevPageLink.textContent = "prev page";
+    footerRow.appendChild(prevPageLink);
+
+    if (selectedBlockHeight < latestBlockHeight) {
+      if (nextBlock < latestBlockHeight) {
+        const nextPageLink = document.createElement("a");
+        nextPageLink.href = `${location.pathname}?height=${nextBlock}`;
+        nextPageLink.textContent = "next page";
+        footerRow.appendChild(nextPageLink);
+      }
+
+      const latestPageLink = document.createElement("a");
+      latestPageLink.href = `${location.pathname}`;
+      latestPageLink.textContent = "latest page";
+      footerRow.appendChild(latestPageLink);
+    }
+
+    footerEl.appendChild(footerRow);
   } catch (e) {
-    footerEl.innerText = "error occurred and dev is asleep";
+    console.error(e);
+    footerEl.innerText = "error occured and dev needs to fix";
   }
 }
 
