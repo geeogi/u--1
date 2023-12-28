@@ -14,17 +14,30 @@ async function hunt() {
     const latestBlockHeight = latestBlock?.height;
     const selectedBlockHeight = Number(paramHeight || latestBlockHeight);
 
+    if (paramHeight) {
+      const noticeEl = document.createElement("div");
+      noticeEl.style.fontStyle = "italic";
+      noticeEl.innerText = `starting from block ${selectedBlockHeight}`;
+      mainEl.appendChild(noticeEl);
+    }
+
     footerEl.innerText = "hunting txs...";
 
     Array.from({ length: 10 }, (_, i) => selectedBlockHeight - i).forEach(
       async (blockHeight) => {
         const blockEl = document.createElement("div");
         blockEl.id = blockHeight;
-        blockEl.style.backgroundColor = "#f0f0f0";
-        blockEl.innerText = `block: ${blockHeight}`;
+        const blockTitleEl = document.createElement("div");
+        blockTitleEl.style.backgroundColor = "#f0f0f0";
+        blockTitleEl.innerText = `block: ${blockHeight}`;
+        blockEl.appendChild(blockTitleEl);
         mainEl.appendChild(blockEl);
         const txsResponse = await fetch(`${base}/blocks/${blockHeight}/txs`);
         const txs = await txsResponse.json();
+
+        if (txs.data.length === 0) {
+          blockTitleEl.innerText = `block: ${blockHeight} (no txs)`;
+        }
 
         txs.data.forEach(async (txInfo) => {
           const txEl = document.createElement("div");
@@ -81,7 +94,7 @@ async function hunt() {
 
           if (namespace) {
             const namespaceElement = document.createElement("div");
-            namespaceElement.textContent = namespace;
+            namespaceElement.innerHTML = `<i>${namespace}</i>`;
             txRow.appendChild(namespaceElement);
           }
 
@@ -106,68 +119,15 @@ async function hunt() {
           }
 
           if (shareCommitments?.length) {
-            const onViewBlob = (commitment) => () =>
-              fetch("https://api.celenium.io/v1/blob", {
-                body: JSON.stringify({
-                  hash: namespace,
-                  height: blockHeight,
-                  commitment,
-                }),
-                cache: "default",
-                credentials: "omit",
-                headers: {
-                  Accept: "application/json",
-                  "Accept-Language": "en-GB,en;q=0.9",
-                  "Content-Type": "application/json",
-                },
-                method: "POST",
-                mode: "cors",
-                redirect: "follow",
-                referrer: "https://celenium.io/",
-                referrerPolicy: "strict-origin-when-cross-origin",
-              })
-                .then((blob) => blob.json())
-                .then((blob) => {
-                  const id = `dialog-${Date.now()}-${Math.random()}`;
-                  const dialogHTML = `
-                    <dialog id="${id}">
-                      <p><b>namespace</b>: ${namespace}</p>
-                      <p><b>height</b>: ${blockHeight}</p>
-                      <p><b>commitment</b>: ${commitment}</p>
-                      <p><b>blob</b></p>
-                      <p
-                        style="
-                          max-width:500px;
-                          max-height:150px;
-                          overflow:auto;
-                          word-break:break-word;
-                        "
-                      >
-                        ${blob.data}
-                      </p>
-                      <p>
-                        <i
-                          >powered by
-                          <a target="_blank" href="https://celenium.io"
-                            >celenium.io</a
-                          >
-                        </i>
-                      </p>
-                      <form method="dialog">
-                        <button>Close</button>
-                      </form>
-                    </dialog>
-                  `;
-
-                  document.body.insertAdjacentHTML("beforeend", dialogHTML);
-                  document.getElementById(id).showModal();
-                })
-                .catch(() => alert("failed to fetch blob"));
-
             shareCommitments?.forEach((commitment, index) => {
               const blobButton = document.createElement("button");
-              blobButton.innerText = `view blob ${index + 1}`;
-              blobButton.onclick = onViewBlob(commitment);
+              blobButton.innerText = `💧 view blob ${index + 1}`;
+              blobButton.onclick = onViewBlob(
+                namespace,
+                blockHeight,
+                commitment,
+                blobButton
+              );
               txRow.appendChild(blobButton);
             });
           }
@@ -189,7 +149,7 @@ async function hunt() {
 
     const prevPageLink = document.createElement("a");
     prevPageLink.href = `${location.pathname}?height=${prevBlock}`;
-    prevPageLink.textContent = "prev page";
+    prevPageLink.textContent = "previous page";
     footerRow.appendChild(prevPageLink);
 
     if (selectedBlockHeight < latestBlockHeight) {
@@ -206,11 +166,83 @@ async function hunt() {
       footerRow.appendChild(latestPageLink);
     }
 
+    const explorersGuruLink = document.createElement("a");
+    explorersGuruLink.href = "https://celestia.explorers.guru";
+    explorersGuruLink.target = "_blank";
+    explorersGuruLink.textContent = "powered by explorers.guru";
+    explorersGuruLink.style.fontStyle = "italic";
+    explorersGuruLink.style.color = "#444444";
+    footerRow.appendChild(explorersGuruLink);
+
     footerEl.appendChild(footerRow);
   } catch (e) {
     console.error(e);
     footerEl.innerText = "error occured and dev needs to fix";
   }
 }
+
+const onViewBlob = (namespace, blockHeight, commitment, button) => () => {
+  const prevText = button.innerText;
+  button.innerText = "loading...";
+
+  fetch("https://api.celenium.io/v1/blob", {
+    body: JSON.stringify({
+      hash: namespace,
+      height: blockHeight,
+      commitment,
+    }),
+    cache: "default",
+    credentials: "omit",
+    headers: {
+      Accept: "application/json",
+      "Accept-Language": "en-GB,en;q=0.9",
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    mode: "cors",
+    redirect: "follow",
+    referrer: "https://celenium.io/",
+    referrerPolicy: "strict-origin-when-cross-origin",
+  })
+    .then((blob) => blob.json())
+    .then((blob) => {
+      const id = `dialog-${Date.now()}-${Math.random()}`;
+
+      const dialogStyle = [
+        "max-width:500px;",
+        "max-height:150px;",
+        "overflow:auto;",
+        "word-break:break-word;",
+      ].join("");
+
+      const celeniumLink = [
+        '<a target="_blank" href="https://celenium.io">',
+        "celenium.io",
+        "</a>",
+      ].join("");
+
+      const dialogHTML = `
+        <dialog id="${id}">
+          <p><b>namespace</b>: ${namespace}</p>
+          <p><b>base64 decoded namespace</b>: ${atob(namespace)}</p>
+          <p><b>height</b>: ${blockHeight}</p>
+          <p><b>commitment</b>: ${commitment}</p>
+          <p><b>blob</b></p>
+          <p style="${dialogStyle}">${blob.data}</p>
+          <p><i>powered by ${celeniumLink}</i></p>
+          <form method="dialog">
+            <button>Close</button>
+          </form>
+        </dialog>
+      `;
+
+      document.body.insertAdjacentHTML("beforeend", dialogHTML);
+      document.getElementById(id).showModal();
+    })
+    .catch(() => alert("failed to fetch blob"))
+    .finally(() => {
+      button.innerText = prevText;
+    });
+};
 
 window.onload = hunt;
