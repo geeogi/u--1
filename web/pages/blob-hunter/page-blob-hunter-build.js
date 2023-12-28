@@ -2,16 +2,16 @@ import * as fs from "fs";
 
 async function main() {
   const htmlContent = fs.readFileSync(
-    "./pages/memo-hunter/page-memo-hunter-template.html",
+    "./pages/blob-hunter/page-blob-hunter-template.html",
     "utf8"
   );
 
   const jsContent = fs.readFileSync(
-    "./pages/memo-hunter/memo-hunter.js",
+    "./pages/blob-hunter/blob-hunter.js",
     "utf8"
   );
 
-  fs.writeFile("memo-hunter.html", htmlContent, "utf8", (err) => {
+  fs.writeFile("blob-hunter.html", htmlContent, "utf8", (err) => {
     if (err) {
       console.error("An error occurred:", err);
     } else {
@@ -19,7 +19,7 @@ async function main() {
     }
   });
 
-  fs.writeFile("memo-hunter.js", jsContent, "utf8", (err) => {
+  fs.writeFile("blob-hunter.js", jsContent, "utf8", (err) => {
     if (err) {
       console.error("An error occurred:", err);
     } else {
