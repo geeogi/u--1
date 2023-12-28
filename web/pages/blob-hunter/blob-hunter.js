@@ -146,31 +146,31 @@ async function hunt() {
       }
     );
 
-    const prevBlock = selectedBlockHeight - 10;
-    const nextBlock = Math.min(selectedBlockHeight + 10, latestBlockHeight);
+    const nextPage = selectedBlockHeight - 10;
+    const previousPage = Math.min(selectedBlockHeight + 10, latestBlockHeight);
 
     const footerRow = document.createElement("div");
     footerRow.style.display = "flex";
     footerRow.style.columnGap = "16px";
 
-    const prevPageLink = document.createElement("a");
-    prevPageLink.href = `${location.pathname}?height=${prevBlock}`;
-    prevPageLink.textContent = "previous page";
-    footerRow.appendChild(prevPageLink);
-
     if (selectedBlockHeight < latestBlockHeight) {
-      if (nextBlock < latestBlockHeight) {
-        const nextPageLink = document.createElement("a");
-        nextPageLink.href = `${location.pathname}?height=${nextBlock}`;
-        nextPageLink.textContent = "next page";
-        footerRow.appendChild(nextPageLink);
-      }
-
       const latestPageLink = document.createElement("a");
       latestPageLink.href = `${location.pathname}`;
-      latestPageLink.textContent = "latest page";
+      latestPageLink.textContent = "show latest";
       footerRow.appendChild(latestPageLink);
+
+      if (previousPage < latestBlockHeight) {
+        const prevPageLink = document.createElement("a");
+        prevPageLink.href = `${location.pathname}?height=${previousPage}`;
+        prevPageLink.textContent = "previous page";
+        footerRow.appendChild(prevPageLink);
+      }
     }
+
+    const nextPageLink = document.createElement("a");
+    nextPageLink.href = `${location.pathname}?height=${nextPage}`;
+    nextPageLink.textContent = "next page";
+    footerRow.appendChild(nextPageLink);
 
     const explorersGuruLink = document.createElement("a");
     explorersGuruLink.href = "https://celestia.explorers.guru";
@@ -178,6 +178,7 @@ async function hunt() {
     explorersGuruLink.textContent = "powered by explorers.guru";
     explorersGuruLink.style.fontStyle = "italic";
     explorersGuruLink.style.color = "#444444";
+    explorersGuruLink.style.marginLeft = "auto";
     footerRow.appendChild(explorersGuruLink);
 
     footerEl.innerHTML = "";
