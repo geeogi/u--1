@@ -10,14 +10,14 @@ async function hunt() {
     const base = "https://celestia.api.explorers.guru/api/v1";
     const exploreTx = "https://celestia.explorers.guru/transaction";
     const latestBlockResponse = await fetch(`${base}/blocks?limit=1`);
-    const latestBlock = (await latestBlockResponse.json())?.data?.[0];
-    const latestBlockHeight = latestBlock?.height;
+    const latestBlock = (await latestBlockResponse.json()).data[0];
+    const latestBlockHeight = latestBlock.height;
     const selectedBlockHeight = Number(paramHeight || latestBlockHeight);
 
     if (paramHeight) {
       const noticeEl = document.createElement("div");
       noticeEl.style.fontStyle = "italic";
-      noticeEl.innerText = `starting from block ${selectedBlockHeight}`;
+      noticeEl.innerText = `from height ${selectedBlockHeight}`;
       mainEl.appendChild(noticeEl);
     }
 
@@ -29,27 +29,34 @@ async function hunt() {
         blockEl.id = blockHeight;
         const blockTitleEl = document.createElement("div");
         blockTitleEl.style.backgroundColor = "#f0f0f0";
-        blockTitleEl.innerText = `block: ${blockHeight}`;
+        blockTitleEl.innerText = `${blockHeight}`;
         blockEl.appendChild(blockTitleEl);
         mainEl.appendChild(blockEl);
         const txsResponse = await fetch(`${base}/blocks/${blockHeight}/txs`);
         const txs = await txsResponse.json();
 
         if (txs.data.length === 0) {
-          blockTitleEl.innerText = `block: ${blockHeight} (no txs)`;
+          blockTitleEl.innerText = `${blockHeight} (no txs)`;
         }
 
         txs.data.forEach(async (txInfo) => {
           const txEl = document.createElement("div");
           txEl.id = txInfo.hash;
-          txEl.style.backgroundColor = "#fff";
           txEl.innerText = `hash: ${txInfo.hash}`;
           blockEl.appendChild(txEl);
           const hash = txInfo.hash;
           const param = `height=${blockHeight}`;
           const txResponse = await fetch(`${base}/txs/${hash}/raw?${param}`);
           const tx = await txResponse.json();
-          const link = `${exploreTx}/${hash}`;
+
+          const date = new Date(tx.tx_response.timestamp).toLocaleString();
+          blockTitleEl.innerHTML = [
+            '<div style="display:flex;column-gap:16px;justify-content:space-between;">',
+            `<span>${blockHeight}</span>`,
+            `<span style="color:#555555">${date}</span>`,
+            "</div>",
+          ].join("");
+
           const numChars = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(String);
           const body = tx.tx.body;
           const messages = body.messages;
@@ -79,27 +86,30 @@ async function hunt() {
           }
 
           const txRow = document.createElement("div");
-          txRow.style = "display:flex;column-gap:12px";
+          txRow.style = "display:flex;column-gap:12px;margin-left:12px;";
 
           const linkElement = document.createElement("a");
-          linkElement.href = link;
+          linkElement.href = `${exploreTx}/${hash}`;
           linkElement.style.minWidth = "95px";
           linkElement.style.display = "block";
           linkElement.textContent = hash.slice(0, 12).toLowerCase();
           txRow.appendChild(linkElement);
 
           const typeElement = document.createElement("div");
+          typeElement.title = "transaction type";
           typeElement.textContent = type;
           txRow.appendChild(typeElement);
 
           if (namespace) {
             const namespaceElement = document.createElement("div");
+            namespaceElement.title = "namespace";
             namespaceElement.innerHTML = `<i>${namespace}</i>`;
             txRow.appendChild(namespaceElement);
           }
 
           if (amount) {
             const amountElement = document.createElement("div");
+            amountElement.title = "amount";
             const m = 1000000;
             const amountValue = denom === "utia" ? Number(amount) / m : amount;
             const displayAmount = Number(amountValue).toLocaleString();
@@ -112,9 +122,7 @@ async function hunt() {
             const memoElement = document.createElement("div");
             memoElement.title = "memo";
             memoElement.style = "word-break:break-word;max-width:70%;";
-            const italicElement = document.createElement("i");
-            italicElement.textContent = memo;
-            memoElement.appendChild(italicElement);
+            memoElement.innerHTML = `<i>${memo}</i>`;
             txRow.appendChild(memoElement);
           }
 
@@ -140,8 +148,6 @@ async function hunt() {
 
     const prevBlock = selectedBlockHeight - 10;
     const nextBlock = Math.min(selectedBlockHeight + 10, latestBlockHeight);
-
-    footerEl.innerHTML = "";
 
     const footerRow = document.createElement("div");
     footerRow.style.display = "flex";
@@ -174,16 +180,17 @@ async function hunt() {
     explorersGuruLink.style.color = "#444444";
     footerRow.appendChild(explorersGuruLink);
 
+    footerEl.innerHTML = "";
     footerEl.appendChild(footerRow);
   } catch (e) {
     console.error(e);
-    footerEl.innerText = "error occured and dev needs to fix";
+    footerEl.innerText = "error occurred and dev needs to fix";
   }
 }
 
 const onViewBlob = (namespace, blockHeight, commitment, button) => () => {
-  const prevText = button.innerText;
-  button.innerText = "loading...";
+  const prevButtonText = button.innerText;
+  button.innerText = "💧 loading...";
 
   fetch("https://api.celenium.io/v1/blob", {
     body: JSON.stringify({
@@ -241,7 +248,7 @@ const onViewBlob = (namespace, blockHeight, commitment, button) => () => {
     })
     .catch(() => alert("failed to fetch blob"))
     .finally(() => {
-      button.innerText = prevText;
+      button.innerText = prevButtonText;
     });
 };
 
