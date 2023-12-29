@@ -111,7 +111,7 @@ async function hunt() {
         typeElement.textContent = type;
         txRow.appendChild(typeElement);
 
-        if (namespace) {
+        if (namespace && window.innerWidth > 800) {
           const namespaceElement = document.createElement("div");
           namespaceElement.title = "namespace";
           namespaceElement.innerHTML = `<i>${namespace}</i>`;
