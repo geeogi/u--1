@@ -61,7 +61,6 @@ async function hunt() {
           "</div>",
         ].join("");
 
-        const numChars = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(String);
         const body = tx.tx.body;
         const messages = body.messages;
         const firstMessage = messages?.[0];
@@ -73,6 +72,7 @@ async function hunt() {
         const amountObj = firstMessage?.["amount"] || firstMessage?.["token"];
         const amount = amountObj?.[0]?.amount || amountObj?.amount;
         const denom = amountObj?.[0]?.denom || amountObj?.denom;
+        const numChars = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(String);
 
         let memo = body.memo;
 
@@ -85,7 +85,7 @@ async function hunt() {
 
         if (isLikelyBase64) {
           try {
-            memo = atob(memo);
+            memo = window.atob(memo);
           } catch (e) {
             // do nothing
           }
@@ -135,7 +135,7 @@ async function hunt() {
         if (receiver?.slice(0, 4) === "osmo") {
           const receiverElement = document.createElement("div");
           receiverElement.title = `receiver: ${receiver}`;
-          receiverElement.innerHTML = `<i>to osmosis 🧪</i>`;
+          receiverElement.innerHTML = `<i>→ to osmosis 🧪</i>`;
           txRow.appendChild(receiverElement);
         }
 
@@ -207,7 +207,7 @@ async function hunt() {
     footerEl.appendChild(footerRow);
   } catch (e) {
     console.error(e);
-    footerEl.innerText = "error occurred and dev needs to fix";
+    footerEl.innerText = `error occurred and dev needs to fix: ${e?.message}`;
   }
 }
 
@@ -254,7 +254,7 @@ const onViewBlob = (namespace, blockHeight, commitment, button) => () => {
       const dialogHTML = `
         <dialog id="${id}">
           <p><b>namespace</b>: ${namespace}</p>
-          <p><b>base64 decoded namespace</b>: ${atob(namespace)}</p>
+          <p><b>base64 decoded namespace</b>: ${window.atob(namespace)}</p>
           <p><b>height</b>: ${blockHeight}</p>
           <p><b>commitment</b>: ${commitment}</p>
           <p><b>blob</b></p>
