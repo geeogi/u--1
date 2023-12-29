@@ -3,4 +3,4 @@
  */
 import "./pages/index/page-index-build.js";
 import "./pages/eth-staking/page-staking-build.js";
-import "./pages/memo-hunter/page-memo-hunter-build.js";
+import "./pages/celestia-hunter/page-celestia-hunter-build.js";
