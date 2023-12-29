@@ -92,7 +92,8 @@ async function hunt() {
         }
 
         const txRow = document.createElement("div");
-        txRow.style = "display:flex;column-gap:12px;margin-left:12px;";
+        txRow.style =
+          "display:flex;column-gap:12px;margin-left:12px;flex-wrap:wrap;";
 
         const linkElement = document.createElement("a");
         linkElement.href = `${exploreTx}/${hash}`;
