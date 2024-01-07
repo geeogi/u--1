@@ -1,0 +1,802 @@
+{
+  "values": {
+    "$ETH/USD.$latestAnswer().8": {
+      "key": "$ETH/USD.$latestAnswer().8",
+      "call": {
+        "to": "$ETH/USD",
+        "method": "$latestAnswer()",
+        "args": [],
+        "decimals": "8",
+        "values": {
+          "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+          "method": "0x50d25bcd",
+          "args": [],
+          "decimals": "8"
+        }
+      },
+      "displayValue": 2249.89,
+      "result": "0x0000000000000000000000000000000000000000000000000000003462613c41"
+    },
+    "$stETH.$totalSupply().18": {
+      "key": "$stETH.$totalSupply().18",
+      "call": {
+        "to": "$stETH",
+        "method": "$totalSupply()",
+        "args": [],
+        "decimals": "18",
+        "values": {
+          "to": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+          "method": "0x18160ddd",
+          "args": [],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "9,254,399",
+      "result": "0x00000000000000000000000000000000000000000007a7b1fa2f15f5e3082de7"
+    },
+    "$cbETH.$totalSupply().18": {
+      "key": "$cbETH.$totalSupply().18",
+      "call": {
+        "to": "$cbETH",
+        "method": "$totalSupply()",
+        "args": [],
+        "decimals": "18",
+        "values": {
+          "to": "0xBe9895146f7AF43049ca1c1AE358B0541Ea49704",
+          "method": "0x18160ddd",
+          "args": [],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "1,387,526",
+      "result": "0x0000000000000000000000000000000000000000000125d1f1427668e3bed58c"
+    },
+    "$rETH.$totalSupply().18": {
+      "key": "$rETH.$totalSupply().18",
+      "call": {
+        "to": "$rETH",
+        "method": "$totalSupply()",
+        "args": [],
+        "decimals": "18",
+        "values": {
+          "to": "0xae78736cd615f374d3085123a210448e74fc6393",
+          "method": "0x18160ddd",
+          "args": [],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "562,217",
+      "result": "0x00000000000000000000000000000000000000000000770dd93a7a6cbc910274"
+    },
+    "$sfrxETH.$totalSupply().18": {
+      "key": "$sfrxETH.$totalSupply().18",
+      "call": {
+        "to": "$sfrxETH",
+        "method": "$totalSupply()",
+        "args": [],
+        "decimals": "18",
+        "values": {
+          "to": "0xac3e018457b222d93114458476f3e3416abbe38f",
+          "method": "0x18160ddd",
+          "args": [],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "208,274",
+      "result": "0x000000000000000000000000000000000000000000002c1a883aabeefead32f5"
+    },
+    "$sETH2.$totalSupply().18": {
+      "key": "$sETH2.$totalSupply().18",
+      "call": {
+        "to": "$sETH2",
+        "method": "$totalSupply()",
+        "args": [],
+        "decimals": "18",
+        "values": {
+          "to": "0xFe2e637202056d30016725477c5da089Ab0A043A",
+          "method": "0x18160ddd",
+          "args": [],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "27,942",
+      "result": "0x0000000000000000000000000000000000000000000005eac208ae5cdf78028c"
+    },
+    "$swETH.$totalSupply().18": {
+      "key": "$swETH.$totalSupply().18",
+      "call": {
+        "to": "$swETH",
+        "method": "$totalSupply()",
+        "args": [],
+        "decimals": "18",
+        "values": {
+          "to": "0xf951e335afb289353dc249e82926178eac7ded78",
+          "method": "0x18160ddd",
+          "args": [],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "137,035",
+      "result": "0x000000000000000000000000000000000000000000001d04ada9bfba9855d8c1"
+    },
+    "$ankrETH.$totalSupply().18": {
+      "key": "$ankrETH.$totalSupply().18",
+      "call": {
+        "to": "$ankrETH",
+        "method": "$totalSupply()",
+        "args": [],
+        "decimals": "18",
+        "values": {
+          "to": "0xe95a203b1a91a908f9b9ce46459d101078c2c3cb",
+          "method": "0x18160ddd",
+          "args": [],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "21,134",
+      "result": "0x000000000000000000000000000000000000000000000479b0df55480b08c093"
+    },
+    "$ETHx.$totalSupply().18": {
+      "key": "$ETHx.$totalSupply().18",
+      "call": {
+        "to": "$ETHx",
+        "method": "$totalSupply()",
+        "args": [],
+        "decimals": "18",
+        "values": {
+          "to": "0xA35b1B31Ce002FBF2058D22F30f95D405200A15b",
+          "method": "0x18160ddd",
+          "args": [],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "69,617",
+      "result": "0x000000000000000000000000000000000000000000000ebdf57ad6c1515c7aae"
+    },
+    "$stETH.$balanceOf($divaStETH).18": {
+      "key": "$stETH.$balanceOf($divaStETH).18",
+      "call": {
+        "to": "$stETH",
+        "method": "$balanceOf(address)",
+        "args": [
+          "$divaStETH"
+        ],
+        "decimals": "18",
+        "values": {
+          "to": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+          "method": "0x70a08231",
+          "args": [
+            "0x1ce8aAfb51e79F6BDc0EF2eBd6fD34b00620f6dB"
+          ],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "17,584",
+      "result": "0x0000000000000000000000000000000000000000000003b93e7412c64f1e92e2"
+    },
+    "$divaETH.$totalSupply().18": {
+      "key": "$divaETH.$totalSupply().18",
+      "call": {
+        "to": "$divaETH",
+        "method": "$totalSupply()",
+        "args": [],
+        "decimals": "18",
+        "values": {
+          "to": "0x16770d642e882e1769ce4ac8612b8bc0601506fc",
+          "method": "0x18160ddd",
+          "args": [],
+          "decimals": "18"
+        }
+      },
+      "displayValue": 1543.72,
+      "result": "0x000000000000000000000000000000000000000000000053af6bd12a83f00a49"
+    },
+    "$stETH/ETH.$latestAnswer().18": {
+      "key": "$stETH/ETH.$latestAnswer().18",
+      "call": {
+        "to": "$stETH/ETH",
+        "method": "$latestAnswer()",
+        "args": [],
+        "decimals": "18",
+        "values": {
+          "to": "0x86392dC19c0b719886221c78AB11eb8Cf5c52812",
+          "method": "0x50d25bcd",
+          "args": [],
+          "decimals": "18"
+        }
+      },
+      "displayValue": 0.99878,
+      "result": "0x0000000000000000000000000000000000000000000000000ddc644cfbf6994c"
+    },
+    "$multicall.$getEthBalance($crvStETH).18": {
+      "key": "$multicall.$getEthBalance($crvStETH).18",
+      "call": {
+        "to": "$multicall",
+        "method": "$getEthBalance(address)",
+        "args": [
+          "$crvStETH"
+        ],
+        "decimals": "18",
+        "values": {
+          "to": "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
+          "method": "0x4d2301cc",
+          "args": [
+            "0xdc24316b9ae028f1497c275eb9192a3ea0f67022"
+          ],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "48,718",
+      "result": "0x000000000000000000000000000000000000000000000a5106b6d9d0e098a6b3"
+    },
+    "$stETH.$balanceOf($crvStETH).18": {
+      "key": "$stETH.$balanceOf($crvStETH).18",
+      "call": {
+        "to": "$stETH",
+        "method": "$balanceOf(address)",
+        "args": [
+          "$crvStETH"
+        ],
+        "decimals": "18",
+        "values": {
+          "to": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+          "method": "0x70a08231",
+          "args": [
+            "0xdc24316b9ae028f1497c275eb9192a3ea0f67022"
+          ],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "48,966",
+      "result": "0x000000000000000000000000000000000000000000000a5e74dbbdd2246b1b36"
+    },
+    "$lidoRegistry.$getNodeOperatorsCount().0": {
+      "key": "$lidoRegistry.$getNodeOperatorsCount().0",
+      "call": {
+        "to": "$lidoRegistry",
+        "method": "$getNodeOperatorsCount()",
+        "args": [],
+        "decimals": "0",
+        "values": {
+          "to": "0x55032650b14df07b85bF18A3a3eC8E0Af2e028d5",
+          "method": "0xa70c70e4",
+          "args": [],
+          "decimals": "0"
+        }
+      },
+      "displayValue": 39,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000027"
+    },
+    "$stETH.$getBufferedEther().18": {
+      "key": "$stETH.$getBufferedEther().18",
+      "call": {
+        "to": "$stETH",
+        "method": "$getBufferedEther()",
+        "args": [],
+        "decimals": "18",
+        "values": {
+          "to": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+          "method": "0x47b714e0",
+          "args": [],
+          "decimals": "18"
+        }
+      },
+      "displayValue": 1892.27,
+      "result": "0x000000000000000000000000000000000000000000000066948313470a38a7e7"
+    },
+    "$stETH.$balanceOf($unstETH).18": {
+      "key": "$stETH.$balanceOf($unstETH).18",
+      "call": {
+        "to": "$stETH",
+        "method": "$balanceOf(address)",
+        "args": [
+          "$unstETH"
+        ],
+        "decimals": "18",
+        "values": {
+          "to": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+          "method": "0x70a08231",
+          "args": [
+            "0x889edC2eDab5f40e902b864aD4d7AdE8E412F9B1"
+          ],
+          "decimals": "18"
+        }
+      },
+      "displayValue": 9123.87,
+      "result": "0x0000000000000000000000000000000000000000000001ee9b2881217a0457f9"
+    },
+    "$wstETH.$totalSupply().18": {
+      "key": "$wstETH.$totalSupply().18",
+      "call": {
+        "to": "$wstETH",
+        "method": "$totalSupply()",
+        "args": [],
+        "decimals": "18",
+        "values": {
+          "to": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+          "method": "0x18160ddd",
+          "args": [],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "3,263,331",
+      "result": "0x00000000000000000000000000000000000000000002b30980d9f5824388d675"
+    },
+    "$wstETH.$balanceOf($arb20Bridge).18": {
+      "key": "$wstETH.$balanceOf($arb20Bridge).18",
+      "call": {
+        "to": "$wstETH",
+        "method": "$balanceOf(address)",
+        "args": [
+          "$arb20Bridge"
+        ],
+        "decimals": "18",
+        "values": {
+          "to": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+          "method": "0x70a08231",
+          "args": [
+            "0x0F25c1DC2a9922304f2eac71DCa9B07E310e8E5a"
+          ],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "115,265",
+      "result": "0x00000000000000000000000000000000000000000000186884cdf73cb6c0cad5"
+    },
+    "$wstETH.$balanceOf($op20Bridge).18": {
+      "key": "$wstETH.$balanceOf($op20Bridge).18",
+      "call": {
+        "to": "$wstETH",
+        "method": "$balanceOf(address)",
+        "args": [
+          "$op20Bridge"
+        ],
+        "decimals": "18",
+        "values": {
+          "to": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+          "method": "0x70a08231",
+          "args": [
+            "0x76943C0D61395d8F2edF9060e1533529cAe05dE6"
+          ],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "43,998",
+      "result": "0x000000000000000000000000000000000000000000000951233cd24a18b10dc2"
+    },
+    "$stETH.$balanceOf($blast).18": {
+      "key": "$stETH.$balanceOf($blast).18",
+      "call": {
+        "to": "$stETH",
+        "method": "$balanceOf(address)",
+        "args": [
+          "$blast"
+        ],
+        "decimals": "18",
+        "values": {
+          "to": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+          "method": "0x70a08231",
+          "args": [
+            "0x5F6AE08B8AeB7078cf2F96AFb089D7c9f51DA47d"
+          ],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "451,278",
+      "result": "0x000000000000000000000000000000000000000000005f8fd7f633804ab34785"
+    },
+    "$blast.$totalUSDBalanceNoUpdate().18": {
+      "key": "$blast.$totalUSDBalanceNoUpdate().18",
+      "call": {
+        "to": "$blast",
+        "method": "$totalUSDBalanceNoUpdate()",
+        "args": [],
+        "decimals": "18",
+        "values": {
+          "to": "0x5F6AE08B8AeB7078cf2F96AFb089D7c9f51DA47d",
+          "method": "0x1a66371a",
+          "args": [],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "119,103,859",
+      "result": "0x00000000000000000000000000000000000000000062853928c021494184c4e6"
+    },
+    "elStETHBalance": {
+      "key": "elStETHBalance",
+      "call": {
+        "to": "$stETH",
+        "method": "$balanceOf(address)",
+        "args": [
+          "$elStETH"
+        ],
+        "decimals": "18",
+        "values": {
+          "to": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+          "method": "0x70a08231",
+          "args": [
+            "0x93c4b944D05dfe6df7645A86cd2206016c51564D"
+          ],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "199,200",
+      "result": "0x000000000000000000000000000000000000000000002a2ea082b7d6c8de33d5"
+    },
+    "elSwETHBalance": {
+      "key": "elSwETHBalance",
+      "call": {
+        "to": "$swETH",
+        "method": "$balanceOf(address)",
+        "args": [
+          "$elSwETH"
+        ],
+        "decimals": "18",
+        "values": {
+          "to": "0xf951e335afb289353dc249e82926178eac7ded78",
+          "method": "0x70a08231",
+          "args": [
+            "0x0Fe4F44beE93503346A3Ac9EE5A26b130a5796d6"
+          ],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "113,977",
+      "result": "0x000000000000000000000000000000000000000000001822b3f5db3635b05890"
+    },
+    "elETHxBalance": {
+      "key": "elETHxBalance",
+      "call": {
+        "to": "$ETHx",
+        "method": "$balanceOf(address)",
+        "args": [
+          "$elETHx"
+        ],
+        "decimals": "18",
+        "values": {
+          "to": "0xA35b1B31Ce002FBF2058D22F30f95D405200A15b",
+          "method": "0x70a08231",
+          "args": [
+            "0x9d7eD45EE2E8FC5482fa2428f15C971e6369011d"
+          ],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "49,288",
+      "result": "0x000000000000000000000000000000000000000000000a6fe2bb4682e48a94df"
+    },
+    "elCbETHBalance": {
+      "key": "elCbETHBalance",
+      "call": {
+        "to": "$cbETH",
+        "method": "$balanceOf(address)",
+        "args": [
+          "$elCbETH"
+        ],
+        "decimals": "18",
+        "values": {
+          "to": "0xBe9895146f7AF43049ca1c1AE358B0541Ea49704",
+          "method": "0x70a08231",
+          "args": [
+            "0x54945180dB7943c0ed0FEE7EdaB2Bd24620256bc"
+          ],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "26,776",
+      "result": "0x0000000000000000000000000000000000000000000005ab8794058cabadd958"
+    },
+    "elRETHBalance": {
+      "key": "elRETHBalance",
+      "call": {
+        "to": "$rETH",
+        "method": "$balanceOf(address)",
+        "args": [
+          "$elRETH"
+        ],
+        "decimals": "18",
+        "values": {
+          "to": "0xae78736cd615f374d3085123a210448e74fc6393",
+          "method": "0x70a08231",
+          "args": [
+            "0x1BeE69b7dFFfA4E2d53C2a2Df135C388AD25dCD2"
+          ],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "53,566",
+      "result": "0x000000000000000000000000000000000000000000000b57cc2da40d54978f57"
+    },
+    "elNumPods": {
+      "key": "elNumPods",
+      "call": {
+        "to": "$elPodManager",
+        "method": "$numPods()",
+        "args": [],
+        "decimals": "0",
+        "values": {
+          "to": "0x91E677b07F7AF907ec9a428aafA9fc14a0d3A338",
+          "method": "0xa6a509be",
+          "args": [],
+          "decimals": "0"
+        }
+      },
+      "displayValue": 5058,
+      "result": "0x00000000000000000000000000000000000000000000000000000000000013c2"
+    },
+    "$stETH.$balanceOf($aaveV2StETH).18": {
+      "key": "$stETH.$balanceOf($aaveV2StETH).18",
+      "call": {
+        "to": "$stETH",
+        "method": "$balanceOf(address)",
+        "args": [
+          "$aaveV2StETH"
+        ],
+        "decimals": "18",
+        "values": {
+          "to": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+          "method": "0x70a08231",
+          "args": [
+            "0x1982b2F5814301d4e9a8b0201555376e62F82428"
+          ],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "413,418",
+      "result": "0x00000000000000000000000000000000000000000000578b6f3f2ab286f7d4f1"
+    },
+    "$wstETH.$balanceOf($aaveV3WstETH).18": {
+      "key": "$wstETH.$balanceOf($aaveV3WstETH).18",
+      "call": {
+        "to": "$wstETH",
+        "method": "$balanceOf(address)",
+        "args": [
+          "$aaveV3WstETH"
+        ],
+        "decimals": "18",
+        "values": {
+          "to": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+          "method": "0x70a08231",
+          "args": [
+            "0x0B925eD163218f6662a35e0f0371Ac234f9E9371"
+          ],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "756,981",
+      "result": "0x00000000000000000000000000000000000000000000a04c01fe9d10c761ae2d"
+    },
+    "$cbETH.$balanceOf($aaveV3CbETH).18": {
+      "key": "$cbETH.$balanceOf($aaveV3CbETH).18",
+      "call": {
+        "to": "$cbETH",
+        "method": "$balanceOf(address)",
+        "args": [
+          "$aaveV3CbETH"
+        ],
+        "decimals": "18",
+        "values": {
+          "to": "0xBe9895146f7AF43049ca1c1AE358B0541Ea49704",
+          "method": "0x70a08231",
+          "args": [
+            "0x977b6fc5de62598b08c85ac8cf2b745874e8b78c"
+          ],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "11,318",
+      "result": "0x00000000000000000000000000000000000000000000026589bec19441d9d6e8"
+    },
+    "$rETH.$balanceOf($aaveV3RETH).18": {
+      "key": "$rETH.$balanceOf($aaveV3RETH).18",
+      "call": {
+        "to": "$rETH",
+        "method": "$balanceOf(address)",
+        "args": [
+          "$aaveV3RETH"
+        ],
+        "decimals": "18",
+        "values": {
+          "to": "0xae78736cd615f374d3085123a210448e74fc6393",
+          "method": "0x70a08231",
+          "args": [
+            "0xCc9EE9483f662091a1de4795249E24aC0aC2630f"
+          ],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "42,724",
+      "result": "0x00000000000000000000000000000000000000000000090c0d92188030fa9a27"
+    },
+    "$wstETH.$balanceOf($compV3ETH).18": {
+      "key": "$wstETH.$balanceOf($compV3ETH).18",
+      "call": {
+        "to": "$wstETH",
+        "method": "$balanceOf(address)",
+        "args": [
+          "$compV3ETH"
+        ],
+        "decimals": "18",
+        "values": {
+          "to": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+          "method": "0x70a08231",
+          "args": [
+            "0xA17581A9E3356d9A858b789D68B4d866e593aE94"
+          ],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "27,269",
+      "result": "0x0000000000000000000000000000000000000000000005c63d16a02e04587348"
+    },
+    "$cbETH.$balanceOf($compV3ETH).18": {
+      "key": "$cbETH.$balanceOf($compV3ETH).18",
+      "call": {
+        "to": "$cbETH",
+        "method": "$balanceOf(address)",
+        "args": [
+          "$compV3ETH"
+        ],
+        "decimals": "18",
+        "values": {
+          "to": "0xBe9895146f7AF43049ca1c1AE358B0541Ea49704",
+          "method": "0x70a08231",
+          "args": [
+            "0xA17581A9E3356d9A858b789D68B4d866e593aE94"
+          ],
+          "decimals": "18"
+        }
+      },
+      "displayValue": 58.11,
+      "result": "0x0000000000000000000000000000000000000000000000032664aad924a96a36"
+    },
+    "$wstETH.$balanceOf($prismaWstETH).18": {
+      "key": "$wstETH.$balanceOf($prismaWstETH).18",
+      "call": {
+        "to": "$wstETH",
+        "method": "$balanceOf(address)",
+        "args": [
+          "$prismaWstETH"
+        ],
+        "decimals": "18",
+        "values": {
+          "to": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+          "method": "0x70a08231",
+          "args": [
+            "0xBf6883a03FD2FCfa1B9fc588ad6193b3C3178F8F"
+          ],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "90,712",
+      "result": "0x000000000000000000000000000000000000000000001335853c6c8808292c6d"
+    },
+    "$mkUSD.$totalSupply().18": {
+      "key": "$mkUSD.$totalSupply().18",
+      "call": {
+        "to": "$mkUSD",
+        "method": "$totalSupply()",
+        "args": [],
+        "decimals": "18",
+        "values": {
+          "to": "0x4591dbff62656e7859afe5e45f6f47d3669fbb28",
+          "method": "0x18160ddd",
+          "args": [],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "165,327,571",
+      "result": "0x00000000000000000000000000000000000000000088c17999ad737adb1d8a1d"
+    },
+    "$eUSD.$totalSupply().18": {
+      "key": "$eUSD.$totalSupply().18",
+      "call": {
+        "to": "$eUSD",
+        "method": "$totalSupply()",
+        "args": [],
+        "decimals": "18",
+        "values": {
+          "to": "0x97de57eC338AB5d51557DA3434828C5DbFaDA371",
+          "method": "0x18160ddd",
+          "args": [],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "9,230,701",
+      "result": "0x00000000000000000000000000000000000000000007a2ad4a7609118ca2530a"
+    },
+    "$r.$totalSupply().18": {
+      "key": "$r.$totalSupply().18",
+      "call": {
+        "to": "$r",
+        "method": "$totalSupply()",
+        "args": [],
+        "decimals": "18",
+        "values": {
+          "to": "0x183015a9bA6fF60230fdEaDc3F43b3D788b13e21",
+          "method": "0x18160ddd",
+          "args": [],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "16,044,258",
+      "result": "0x0000000000000000000000000000000000000000000d4580fb50c0c875bde7f5"
+    },
+    "$eETH.$totalSupply().18": {
+      "key": "$eETH.$totalSupply().18",
+      "call": {
+        "to": "$eETH",
+        "method": "$totalSupply()",
+        "args": [],
+        "decimals": "18",
+        "values": {
+          "to": "0x35fA164735182de50811E8e2E824cFb9B6118ac2",
+          "method": "0x18160ddd",
+          "args": [],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "50,751",
+      "result": "0x000000000000000000000000000000000000000000000abf30d02473c64188ce"
+    },
+    "$ezETH.$totalSupply().18": {
+      "key": "$ezETH.$totalSupply().18",
+      "call": {
+        "to": "$ezETH",
+        "method": "$totalSupply()",
+        "args": [],
+        "decimals": "18",
+        "values": {
+          "to": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+          "method": "0x18160ddd",
+          "args": [],
+          "decimals": "18"
+        }
+      },
+      "displayValue": 8590.97,
+      "result": "0x0000000000000000000000000000000000000000000001d1b7afc4a0585a5f3b"
+    },
+    "$genETH.$totalSupply().18": {
+      "key": "$genETH.$totalSupply().18",
+      "call": {
+        "to": "$genETH",
+        "method": "$totalSupply()",
+        "args": [],
+        "decimals": "18",
+        "values": {
+          "to": "0xf073bAC22DAb7FaF4a3Dd6c6189a70D54110525C",
+          "method": "0x18160ddd",
+          "args": [],
+          "decimals": "18"
+        }
+      },
+      "displayValue": 9.22,
+      "result": "0x0000000000000000000000000000000000000000000000007fe84bd15d57c000"
+    },
+    "$rsETH.$totalSupply().18": {
+      "key": "$rsETH.$totalSupply().18",
+      "call": {
+        "to": "$rsETH",
+        "method": "$totalSupply()",
+        "args": [],
+        "decimals": "18",
+        "values": {
+          "to": "0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7",
+          "method": "0x18160ddd",
+          "args": [],
+          "decimals": "18"
+        }
+      },
+      "displayValue": "63,179",
+      "result": "0x000000000000000000000000000000000000000000000d60f060d72c37320556"
+    }
+  },
+  "lastUpdatedUnix": 1704658510,
+  "citation": "u--1.com",
+  "contact": "@geeogi",
+  "page": "https://u--1.com/eth-staking",
+  "api": "https://u--1.com/eth-staking.json",
+  "title": "Ethereum staking directory",
+  "sourceCode": "https://github.com/geeogi/u--1",
+  "description": "Assorted onchain values related to Ethereum staking, LST, DVT, EigenLayer, Lending and Restaking. Built by u--1 and powered by Alchemy RPC. This API is free to use."
+}

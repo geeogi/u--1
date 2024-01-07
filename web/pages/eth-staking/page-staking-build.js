@@ -29,7 +29,7 @@ async function main() {
     "This API is free to use.",
   ].join(" ");
 
-  fs.writeFile("eth-staking.html", htmlContent, "utf8", (err) => {
+  fs.writeFile("dist/eth-staking.html", htmlContent, "utf8", (err) => {
     if (err) {
       console.error("An error occurred:", err);
     } else {
@@ -38,7 +38,7 @@ async function main() {
   });
 
   fs.writeFile(
-    "eth-staking.json",
+    "dist/eth-staking.json",
     JSON.stringify(jsonContent, null, 2),
     "utf8",
     (err) => {
