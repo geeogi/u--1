@@ -3,8 +3,7 @@ import { execSync } from "child_process";
 async function build() {
   execSync("rm -rf dist");
   execSync("mkdir dist");
-  execSync("mkdir dist/assets");
-  execSync("cp -R assets/. dist/assets");
+  execSync("cp -R assets/. dist/");
 
   await import("./pages/index/page-index-build.js");
   await import("./pages/eth-staking/page-staking-build.js");
