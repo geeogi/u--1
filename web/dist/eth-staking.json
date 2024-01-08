@@ -31,8 +31,8 @@
           "decimals": "18"
         }
       },
-      "displayValue": "9,257,073",
-      "result": "0x00000000000000000000000000000000000000000007a842efb31388f7756d9f"
+      "displayValue": "9,257,076",
+      "result": "0x00000000000000000000000000000000000000000007a843152b673ad5036da2"
     },
     "$cbETH.$totalSupply().18": {
       "key": "$cbETH.$totalSupply().18",
@@ -116,8 +116,8 @@
           "decimals": "18"
         }
       },
-      "displayValue": "137,232",
-      "result": "0x000000000000000000000000000000000000000000001d0f615df75c10c5e7d7"
+      "displayValue": "137,233",
+      "result": "0x000000000000000000000000000000000000000000001d0f64045e7f805dcc56"
     },
     "$ankrETH.$totalSupply().18": {
       "key": "$ankrETH.$totalSupply().18",
@@ -150,8 +150,8 @@
           "decimals": "18"
         }
       },
-      "displayValue": "69,633",
-      "result": "0x000000000000000000000000000000000000000000000ebeca1d23ab4ffdd1ec"
+      "displayValue": "69,647",
+      "result": "0x000000000000000000000000000000000000000000000ebf96929b3470cb6b45"
     },
     "$stETH.$balanceOf($divaStETH).18": {
       "key": "$stETH.$balanceOf($divaStETH).18",
@@ -226,8 +226,8 @@
           "decimals": "18"
         }
       },
-      "displayValue": "47,594",
-      "result": "0x000000000000000000000000000000000000000000000a14187c225672b6c185"
+      "displayValue": "47,627",
+      "result": "0x000000000000000000000000000000000000000000000a15db6f5f7e7bd8b2be"
     },
     "$stETH.$balanceOf($crvStETH).18": {
       "key": "$stETH.$balanceOf($crvStETH).18",
@@ -247,8 +247,8 @@
           "decimals": "18"
         }
       },
-      "displayValue": "48,820",
-      "result": "0x000000000000000000000000000000000000000000000a56830ecbd3a7d9402a"
+      "displayValue": "48,763",
+      "result": "0x000000000000000000000000000000000000000000000a5378a87753a2ee0023"
     },
     "$lidoRegistry.$getNodeOperatorsCount().0": {
       "key": "$lidoRegistry.$getNodeOperatorsCount().0",
@@ -281,8 +281,8 @@
           "decimals": "18"
         }
       },
-      "displayValue": 4088.67,
-      "result": "0x0000000000000000000000000000000000000000000000dda5ab78dff2d1519f"
+      "displayValue": 4091.37,
+      "result": "0x0000000000000000000000000000000000000000000000ddcb23cc91d05f51a2"
     },
     "$stETH.$balanceOf($unstETH).18": {
       "key": "$stETH.$balanceOf($unstETH).18",
@@ -319,8 +319,8 @@
           "decimals": "18"
         }
       },
-      "displayValue": "3,257,545",
-      "result": "0x00000000000000000000000000000000000000000002b1cfd8e7950c588d90fa"
+      "displayValue": "3,257,575",
+      "result": "0x00000000000000000000000000000000000000000002b1d18227f5929dbc0ff4"
     },
     "$wstETH.$balanceOf($arb20Bridge).18": {
       "key": "$wstETH.$balanceOf($arb20Bridge).18",
@@ -399,8 +399,8 @@
           "decimals": "18"
         }
       },
-      "displayValue": "119,631,366",
-      "result": "0x00000000000000000000000000000000000000000062f4ed537dad28e27d6393"
+      "displayValue": "119,631,553",
+      "result": "0x00000000000000000000000000000000000000000062f4f77bcaea03eb5fc407"
     },
     "elStETHBalance": {
       "key": "elStETHBalance",
@@ -521,8 +521,8 @@
           "decimals": "0"
         }
       },
-      "displayValue": 5095,
-      "result": "0x00000000000000000000000000000000000000000000000000000000000013e7"
+      "displayValue": 5097,
+      "result": "0x00000000000000000000000000000000000000000000000000000000000013e9"
     },
     "$stETH.$balanceOf($aaveV2StETH).18": {
       "key": "$stETH.$balanceOf($aaveV2StETH).18",
@@ -543,7 +543,7 @@
         }
       },
       "displayValue": "411,917",
-      "result": "0x00000000000000000000000000000000000000000000573a0b396484efd62d9b"
+      "result": "0x00000000000000000000000000000000000000000000573a0b396484efd62d9c"
     },
     "$wstETH.$balanceOf($aaveV3WstETH).18": {
       "key": "$wstETH.$balanceOf($aaveV3WstETH).18",
@@ -584,8 +584,8 @@
           "decimals": "18"
         }
       },
-      "displayValue": "12,720",
-      "result": "0x0000000000000000000000000000000000000000000002b190a20589f94ccd68"
+      "displayValue": "11,654",
+      "result": "0x000000000000000000000000000000000000000000000277c478ec2e6964fcfd"
     },
     "$rETH.$balanceOf($aaveV3RETH).18": {
       "key": "$rETH.$balanceOf($aaveV3RETH).18",
@@ -668,8 +668,8 @@
           "decimals": "18"
         }
       },
-      "displayValue": "90,040",
-      "result": "0x0000000000000000000000000000000000000000000013110e4641bf0d35b53a"
+      "displayValue": "90,046",
+      "result": "0x0000000000000000000000000000000000000000000013116295e311be7dc320"
     },
     "$mkUSD.$totalSupply().18": {
       "key": "$mkUSD.$totalSupply().18",
@@ -685,8 +685,8 @@
           "decimals": "18"
         }
       },
-      "displayValue": "163,769,253",
-      "result": "0x00000000000000000000000000000000000000000087777cfbc8f5f812ef2110"
+      "displayValue": "163,775,295",
+      "result": "0x0000000000000000000000000000000000000000008778c485279ac0eda11050"
     },
     "$eUSD.$totalSupply().18": {
       "key": "$eUSD.$totalSupply().18",
@@ -736,8 +736,8 @@
           "decimals": "18"
         }
       },
-      "displayValue": "51,309",
-      "result": "0x000000000000000000000000000000000000000000000add73a531a417b9a426"
+      "displayValue": "51,317",
+      "result": "0x000000000000000000000000000000000000000000000addea2789e4983f82e0"
     },
     "$ezETH.$totalSupply().18": {
       "key": "$ezETH.$totalSupply().18",
@@ -753,8 +753,8 @@
           "decimals": "18"
         }
       },
-      "displayValue": 9617.2,
-      "result": "0x000000000000000000000000000000000000000000000209596c045a42959c6a"
+      "displayValue": 9618.2,
+      "result": "0x00000000000000000000000000000000000000000000020967486ec81008035b"
     },
     "$genETH.$totalSupply().18": {
       "key": "$genETH.$totalSupply().18",
@@ -791,7 +791,7 @@
       "result": "0x000000000000000000000000000000000000000000000d7f2419bcac96ded66a"
     }
   },
-  "lastUpdatedUnix": 1704742937,
+  "lastUpdatedUnix": 1704743484,
   "citation": "u--1.com",
   "contact": "@geeogi",
   "page": "https://u--1.com/eth-staking",
