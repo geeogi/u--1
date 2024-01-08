@@ -116,7 +116,7 @@ fetchTop250().then(async (data) => {
       .join("\n")
   ).replace("0; // TIMESTAMP", Math.round(Date.now() / 1000));
 
-  fs.writeFile("index.html", htmlContent, "utf8", (err) => {
+  fs.writeFile("dist/index.html", htmlContent, "utf8", (err) => {
     if (err) {
       console.error("An error occurred:", err);
     } else {

@@ -11,7 +11,7 @@ async function main() {
     "utf8"
   );
 
-  fs.writeFile("celestia-hunter.html", htmlContent, "utf8", (err) => {
+  fs.writeFile("dist/celestia-hunter.html", htmlContent, "utf8", (err) => {
     if (err) {
       console.error("An error occurred:", err);
     } else {
@@ -19,11 +19,11 @@ async function main() {
     }
   });
 
-  fs.writeFile("celestia-hunter.js", jsContent, "utf8", (err) => {
+  fs.writeFile("dist/celestia-hunter.js", jsContent, "utf8", (err) => {
     if (err) {
       console.error("An error occurred:", err);
     } else {
-      console.log("HTML file written successfully");
+      console.log("JS file written successfully");
     }
   });
 }

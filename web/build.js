@@ -1,6 +1,15 @@
-/*
- * Main entry point for the build step
- */
-import "./pages/index/page-index-build.js";
-import "./pages/eth-staking/page-staking-build.js";
-import "./pages/celestia-hunter/page-celestia-hunter-build.js";
+import { execSync } from "child_process";
+
+async function build() {
+  execSync("rm -rf dist");
+  execSync("mkdir dist");
+  execSync("cp -R assets/. dist/");
+
+  await import("./pages/index/page-index-build.js");
+  await import("./pages/eth-staking/page-staking-build.js");
+  await import("./pages/celestia-hunter/page-celestia-hunter-build.js");
+}
+
+build()
+  .then(() => console.log("Build process completed."))
+  .catch((err) => console.error("An error occurred:", err));
