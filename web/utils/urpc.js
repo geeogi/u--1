@@ -109,8 +109,16 @@ function parseUrpcCallString(callString, lookup) {
   return { to, method, args, decimals, values };
 }
 
+const CACHE = {};
+
 // Make an RPC call
 async function callRPC(url, call) {
+  const cacheKey = `${url}-${JSON.stringify(call)}`;
+
+  if (CACHE[cacheKey]) {
+    return CACHE[cacheKey];
+  }
+
   const { method, args, to } = call.values;
   const data = encodeMethodCall(method, args || []);
 
@@ -133,6 +141,8 @@ async function callRPC(url, call) {
     console.error("RPC call failed:", { to, method, args });
     throw new Error(json.error.message);
   }
+
+  CACHE[cacheKey] = json.result;
 
   return json.result;
 }
